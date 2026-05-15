@@ -57,6 +57,8 @@ export type HouseholdSettingsSummary = {
   timezone: string;
   weekStartsOn: number;
   allowPhotoProof: boolean;
+  winnerRewardText: string | null;
+  bottomForfeitText: string | null;
 };
 
 export type ChoreEngineDashboard = {
@@ -71,6 +73,12 @@ export type ChoreEngineDashboard = {
   canManageChores: boolean;
 };
 
+export type WeeklyCompetitionSummary = {
+  winner: WeeklyMemberScore | null;
+  bottom: WeeklyMemberScore | null;
+  hasMeaningfulScores: boolean;
+};
+
 function emptyDashboard(viewer: ViewerContext): ChoreEngineDashboard {
   return {
     viewer,
@@ -79,6 +87,8 @@ function emptyDashboard(viewer: ViewerContext): ChoreEngineDashboard {
       timezone: viewer.household?.timezone || defaultTimezone,
       weekStartsOn: 1,
       allowPhotoProof: true,
+      winnerRewardText: null,
+      bottomForfeitText: null,
     },
     templates: [],
     chores: [],
@@ -160,6 +170,26 @@ function getWeekStartDate(timezone: string, weekStartsOn: number) {
   const offsetMinutes = getTimeZoneOffsetMinutes(timezone, localDate);
   localDate.setUTCMinutes(localDate.getUTCMinutes() - offsetMinutes);
   return localDate;
+}
+
+export function getWeeklyCompetitionSummary(
+  scores: WeeklyMemberScore[],
+): WeeklyCompetitionSummary {
+  const hasMeaningfulScores = scores.some((score) => score.points > 0);
+
+  if (!hasMeaningfulScores) {
+    return {
+      winner: null,
+      bottom: null,
+      hasMeaningfulScores: false,
+    };
+  }
+
+  return {
+    winner: scores[0] ?? null,
+    bottom: scores.length > 1 ? scores[scores.length - 1] ?? null : null,
+    hasMeaningfulScores: true,
+  };
 }
 
 function mapToTemplateSummary(row: {
@@ -262,7 +292,9 @@ export async function getChoreEngineDashboard(
     await Promise.all([
       supabase
         .from("household_settings")
-        .select("locale, timezone, week_starts_on, allow_photo_proof")
+        .select(
+          "locale, timezone, week_starts_on, allow_photo_proof, winner_reward_text, bottom_forfeit_text",
+        )
         .eq("household_id", viewer.household.id)
         .maybeSingle(),
       supabase
@@ -377,6 +409,8 @@ export async function getChoreEngineDashboard(
       timezone,
       weekStartsOn,
       allowPhotoProof: settingsRow?.allow_photo_proof ?? true,
+      winnerRewardText: settingsRow?.winner_reward_text ?? null,
+      bottomForfeitText: settingsRow?.bottom_forfeit_text ?? null,
     },
     templates,
     chores,

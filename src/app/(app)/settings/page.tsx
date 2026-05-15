@@ -1,18 +1,21 @@
 import { signOutAction } from "@/app/auth/actions";
+import { HouseholdRulesForm } from "@/components/chore-engine/household-rules-form";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
+import { getChoreEngineDashboard } from "@/lib/chore-engine";
 import { getViewerContext } from "@/lib/auth";
 
 export default async function SettingsPage() {
   const viewer = await getViewerContext();
+  const dashboard = await getChoreEngineDashboard(viewer);
 
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
       <ScreenHeader
         eyebrow="Settings"
         title="Household settings"
-        description="Account and household basics are live. More controls come later."
+        description="Account, household, and house rule basics are live. More controls come later."
         action={<Button href="/home" variant="secondary">Home</Button>}
       />
 
@@ -33,6 +36,12 @@ export default async function SettingsPage() {
             {viewer.household?.name ?? "No household selected"}
           </p>
         </Card>
+
+        <HouseholdRulesForm
+          winnerRewardText={dashboard.settings.winnerRewardText}
+          bottomForfeitText={dashboard.settings.bottomForfeitText}
+          canEdit={dashboard.canManageChores}
+        />
 
         <Card className="space-y-3">
           <p className="text-sm font-semibold">Session</p>

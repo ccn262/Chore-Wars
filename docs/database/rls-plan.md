@@ -22,3 +22,4 @@ Every household record must only be visible to authorised members.
 - Let invitees accept their own pending invites by email match
 - Review any service-role usage carefully
 - Expose chore completion through a security-definer RPC that validates the current household and acquires an advisory transaction lock before inserting
+- Keep reward and forfeit rule text in household settings under the same household-scoped access controls

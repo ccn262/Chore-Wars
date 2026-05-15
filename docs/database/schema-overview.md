@@ -8,6 +8,7 @@
 - Support locale-aware display without storing presentation logic
 - Keep Supabase Auth users separate from app profiles and household members
 - Use household-scoped identity for scoring and household access
+- Keep household reward and forfeit rule text inside household settings
 
 ## Core entities
 
@@ -39,3 +40,4 @@
 - The function validates the caller's current household membership before writing
 - The function serialises concurrent completion attempts for the same member and chore
 - The existing completion trigger still writes the corresponding points ledger entry
+- Household settings can also store lightweight weekly reward and forfeit rule text
