@@ -25,6 +25,7 @@ Record visible project changes and notable doc updates here.
 - Phase 4 Codex prompt created
 - Phase 4 chore engine foundation implemented and smoke-tested
 - Phase 4 profile bootstrap race fixed during runtime validation
+- Phase 4 chore engine foundation reviewed and hardened
 
 ## Entry format
 

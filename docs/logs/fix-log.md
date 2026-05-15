@@ -43,3 +43,9 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: made `ensureProfileForUser()` treat the unique-constraint conflict as a harmless concurrent bootstrap and re-read the existing profile
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
 - Verification: Phase 4 runtime smoke test passed after the fix; /home, /chores, chore completion, points ledger, and sign-out all validated locally
+
+- Issue: Phase 4 review still showed the same profile bootstrap race on repeated authenticated `/home` renders
+- Root cause: the insert-and-recover path was still non-atomic, so two concurrent bootstrap calls could both miss the profile and race on the unique constraint
+- Fix: switched profile bootstrap to a single `upsert(..., { onConflict: "auth_user_id" })` path so repeated renders converge on one profile row safely
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: Phase 4 runtime smoke test passed again after the atomic bootstrap fix; lint, build, and repository checks remained clean

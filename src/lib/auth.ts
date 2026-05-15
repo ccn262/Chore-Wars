@@ -89,51 +89,24 @@ export async function ensureProfileForUser(
   const profileDisplayName =
     displayName?.trim() || displayNameFromEmail(email);
 
-  const { data: createdProfile, error: profileCreateError } = await supabase
+  const { data: createdProfile, error: profileUpsertError } = await supabase
     .from("profiles")
-    .insert({
-      auth_user_id: user.id,
-      email,
-      display_name: profileDisplayName,
-      locale: defaultLocale,
-      timezone: defaultTimezone,
-    })
+    .upsert(
+      {
+        auth_user_id: user.id,
+        email,
+        display_name: profileDisplayName,
+        locale: defaultLocale,
+        timezone: defaultTimezone,
+      },
+      { onConflict: "auth_user_id" },
+    )
     .select("id, auth_user_id, email, display_name, locale, timezone")
     .single();
 
-  if (profileCreateError || !createdProfile) {
-    const message = getAuthErrorMessage(
-      profileCreateError,
-      "Unable to create your profile.",
-    );
-
-    if (
-      profileCreateError &&
-      message.toLowerCase().includes("profiles_auth_user_id_key")
-    ) {
-      const { data: conflictedProfile, error: conflictedLookupError } =
-        await supabase
-          .from("profiles")
-          .select("id, auth_user_id, email, display_name, locale, timezone")
-          .eq("auth_user_id", user.id)
-          .maybeSingle();
-
-      if (conflictedLookupError) {
-        throw new Error(
-          getAuthErrorMessage(
-            conflictedLookupError,
-            "Unable to load your profile.",
-          ),
-        );
-      }
-
-      if (conflictedProfile) {
-        return conflictedProfile as ViewerProfile;
-      }
-    }
-
+  if (profileUpsertError || !createdProfile) {
     throw new Error(
-      message,
+      getAuthErrorMessage(profileUpsertError, "Unable to create your profile."),
     );
   }
 
@@ -204,10 +177,13 @@ export async function getViewerContext(): Promise<ViewerContext> {
     };
   }
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  const user = session?.user ?? null;
+  const [{ data: sessionData }, { data: userData }] = await Promise.all([
+    supabase.auth.getSession(),
+    supabase.auth.getUser(),
+  ]);
+
+  const session = sessionData.session ?? null;
+  const user = userData.user ?? null;
 
   if (!user) {
     return {
