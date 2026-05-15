@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f1e8;
+  --foreground: #1f1a17;
+  --surface: #fffdf9;
+  --muted: #efe3d7;
+  --border: #dccdbd;
+  --muted-foreground: #6d6259;
+  --accent: #ff6f61;
+  --accent-2: #25b7a1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular,
+    monospace;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(255, 111, 97, 0.08), transparent 34%),
+    radial-gradient(circle at 85% 10%, rgba(37, 183, 161, 0.09), transparent 28%),
+    var(--background);
+  color: var(--foreground);
+}
+
+* {
+  box-sizing: border-box;
+}
+
