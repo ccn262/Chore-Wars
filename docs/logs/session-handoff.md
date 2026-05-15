@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 5 duplicate-tap atomicity fix in progress
-- Current branch: codex/phase5-usability-polish
-- Repo status: Phase 1, Phase 2, Phase 3, and Phase 4 merged; Phase 5 implementation is in the working tree
-- Supabase status: project created, migration and seed applied successfully
+- Current phase: Phase 5 merged / planning future App Store readiness
+- Current branch: main
+- Repo status: Phases 1-5 merged
+- Supabase status: migrations, seed, and atomic completion RPC applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: codex/phase5-usability-polish
-- Next task: finish the Phase 5 atomic duplicate-tap fix handoff and keep the branch ready for any follow-up review comments
+- Next branch planned: none yet
+- Next task: sync main, test the Vercel-hosted MVP on a phone, then plan production readiness or the next MVP feature phase
 - Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and database-level smoke validation passed
-- Current blockers: hosted Supabase auth sign-up remains rate-limited for fresh disposable users, so browser-based auth retesting is currently environment-limited
+- Current blockers: none known, but hosted auth and real-phone smoke testing should be verified
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -81,6 +81,13 @@ Use this file to leave a concise handoff for the next working session.
 - The latest local smoke attempt hit Supabase email rate limiting on fresh sign-up, so full auth retesting is currently environment-limited
 - The Phase 5 duplicate-tap fix now routes chore completion through an atomic RPC with an advisory lock and the database-level duplicate test passed
 - The hosted auth service still rate-limits fresh sign-ups, so browser-based smoke testing remains limited even though the database-level atomic completion test passed
+
+## App Store readiness note
+
+- App Store readiness is planned as a later phase after the hosted MVP proves stable on real phones
+- The recommended approach is an Expo plus React Native WebView wrapper around the production web app
+- Apple Developer, App Store Connect, privacy policy, terms, support, account deletion, screenshots, and app metadata work are still pending
+- Vercel production and Supabase production readiness should be confirmed before any wrapper or store submission work starts
 
 ## Include
 

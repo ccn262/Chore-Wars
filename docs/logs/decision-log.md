@@ -77,6 +77,15 @@ Record major product and technical decisions here.
 - Duplicate-tap protection is required before heavier usage
 - Completion feedback should be clear, fast, and playful but not intrusive
 
+## App Store readiness decisions
+
+- App Store work will be a later phase after the web MVP stabilises
+- The recommended App Store route is Expo plus a React Native WebView wrapper
+- The wrapper must include native-feeling loading, offline, and error states
+- Privacy policy, terms, support URL, and account deletion are required before App Store submission
+- App Store privacy labels must match the actual data collection and retention model
+- Service-role keys must not be exposed to mobile or client code
+
 ## Entry format
 
 - Date

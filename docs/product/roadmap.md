@@ -67,3 +67,23 @@
 - Push notifications
 - Store-specific polish
 - Locale expansion and regional tuning
+
+## Phase 8: App Store readiness and Expo wrapper
+
+- Expo wrapper
+- TestFlight
+- App Store Connect
+- Apple Developer setup
+- Privacy policy
+- Terms
+- Support/contact page
+- Account deletion path
+- App icon and splash screen
+- Screenshots
+- App Store listing copy
+- Production Vercel/domain checks
+- Supabase production checks
+
+## Note
+
+- Phase 8 is a future release-readiness phase and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.

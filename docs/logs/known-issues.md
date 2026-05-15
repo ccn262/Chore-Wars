@@ -37,6 +37,15 @@ Track unresolved issues that are understood and accepted for now.
 - Phase 5 atomic duplicate-completion protection has now been validated at the database level
 - Hosted auth sign-up still rate-limits fresh disposable users, so browser-based auth smoke testing remains environment-limited
 
+## App Store readiness notes
+
+- App Store implementation not started
+- Apple Developer account status unknown
+- Privacy policy, terms, and account deletion are not yet implemented
+- App icon, splash screen, and screenshot assets are not yet created
+- Production custom domain is not yet connected
+- Hosted Vercel real-phone smoke testing still needs confirmation if not already done
+
 ## Entry format
 
 - Issue
