@@ -17,7 +17,8 @@ export default function AccountDeletionPage() {
           <ol className="space-y-2 text-sm leading-6 text-muted-foreground">
             <li>1. Open the support page if you need help first.</li>
             <li>2. Confirm the account you want removed.</li>
-            <li>3. Replace this draft path with the final deletion flow later.</li>
+            <li>3. Expect account, profile, and household membership data to be reviewed for deletion.</li>
+            <li>4. Replace this draft path with the final deletion flow later.</li>
           </ol>
         </Card>
 
@@ -26,6 +27,10 @@ export default function AccountDeletionPage() {
           <p className="text-sm leading-6 text-muted-foreground">
             This page exists so production testing can verify that an account
             deletion path is discoverable. It is not the final submission flow.
+          </p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            Self-service deletion is planned for later. During early testing,
+            contact support to request deletion.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button href="/support" variant="secondary" className="w-full sm:flex-1">

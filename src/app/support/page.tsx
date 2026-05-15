@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
+import { supportEmail } from "@/lib/site";
 
 export default function SupportPage() {
   return (
@@ -19,6 +20,17 @@ export default function SupportPage() {
             <li>Keep private contact details out of the public UI for now.</li>
             <li>Replace this draft with a real support contact before launch.</li>
           </ul>
+        </Card>
+
+        <Card className="space-y-3">
+          <p className="text-sm font-semibold">Support contact</p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            Early testers can use this placeholder contact for help with the app
+            or account deletion requests.
+          </p>
+          <p className="rounded-2xl bg-muted px-4 py-3 text-sm font-semibold text-foreground">
+            {supportEmail}
+          </p>
         </Card>
 
         <Card className="space-y-3">

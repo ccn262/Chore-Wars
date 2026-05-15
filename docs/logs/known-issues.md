@@ -51,6 +51,7 @@ Track unresolved issues that are understood and accepted for now.
 - Hosted Vercel retest still needs confirmation after the chore visibility and leaderboard fixes are deployed
 - Legal, privacy, and terms pages exist as drafts but still need final review
 - Account deletion path exists as a draft placeholder but still needs a final implementation
+- Support contact currently uses a placeholder value
 - Custom domain not yet connected
 - App Store implementation not started
 - Hosted production verification remains pending even though the local draft-page smoke test passed

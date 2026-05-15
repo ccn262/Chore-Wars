@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
 import { AuthForm } from "@/components/auth/auth-form";
 import { signInAction } from "@/app/auth/actions";
@@ -29,6 +31,24 @@ export default async function SignInPage() {
           alternateHref="/auth/sign-up"
           alternateLabel="Create an account"
         />
+
+        <Card className="space-y-3">
+          <p className="text-sm font-semibold">Need help?</p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            Use the draft support pages while the app is in early hosted testing.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <Button href="/support" variant="secondary" className="w-full">
+              Support
+            </Button>
+            <Button href="/privacy" variant="secondary" className="w-full">
+              Privacy
+            </Button>
+            <Button href="/terms" variant="secondary" className="w-full">
+              Terms
+            </Button>
+          </div>
+        </Card>
       </div>
     </main>
   );

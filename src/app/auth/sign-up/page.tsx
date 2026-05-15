@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
 import { AuthForm } from "@/components/auth/auth-form";
 import { signUpAction } from "@/app/auth/actions";
@@ -30,6 +32,25 @@ export default async function SignUpPage() {
           alternateLabel="I already have an account"
           showDisplayName
         />
+
+        <Card className="space-y-3">
+          <p className="text-sm font-semibold">Before launch</p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            These draft support pages stay visible during early hosted testing so
+            testers know where to go for help.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <Button href="/support" variant="secondary" className="w-full">
+              Support
+            </Button>
+            <Button href="/privacy" variant="secondary" className="w-full">
+              Privacy
+            </Button>
+            <Button href="/account-deletion" variant="secondary" className="w-full">
+              Account deletion
+            </Button>
+          </div>
+        </Card>
       </div>
     </main>
   );
