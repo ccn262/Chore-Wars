@@ -29,3 +29,11 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: reran the Supabase SQL Editor flow after correcting the migration and seed file
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/supabase/migrations/20260515120000_phase2_database_foundation.sql`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/supabase/migrations/20260515120000_phase2_database_foundation.sql) and [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/supabase/seed/20260515121000_phase2_seed.sql`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/supabase/seed/20260515121000_phase2_seed.sql)
 - Verification: Phase 2 database foundation manually validated in Supabase SQL Editor
+
+## 2026-05-15
+
+- Issue: Phase 3 household creation helper failed during runtime smoke testing when it tried to return the inserted household row immediately after insert
+- Root cause: the `insert(...).select(...)` pattern could trip household RLS during the return path, even though the insert itself was valid
+- Fix: changed household creation to use a minimal insert, then query the inserted household back in a separate read before creating settings and verifying the owner member
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: runtime smoke test passed after the fix, including sign-in, household creation, owner-member creation, and sign-out
