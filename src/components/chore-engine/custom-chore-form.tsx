@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import { createCustomChoreAction } from "@/app/chores/actions";
 import type { FormState } from "@/lib/form-state";
@@ -15,11 +16,33 @@ const initialState: FormState = {
 };
 
 export function CustomChoreForm() {
+  const router = useRouter();
   const [state, formAction, pending] = useActionState(
     createCustomChoreAction,
     initialState,
   );
   const isSuccess = state.status === "success";
+  const lastSuccessKey = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (pending) {
+      lastSuccessKey.current = null;
+      return;
+    }
+
+    if (state.status === "success" && state.message) {
+      const key = `success:${state.message}`;
+      if (lastSuccessKey.current !== key) {
+        lastSuccessKey.current = key;
+        router.refresh();
+      }
+      return;
+    }
+
+    if (state.status !== "success") {
+      lastSuccessKey.current = null;
+    }
+  }, [pending, router, state.message, state.status]);
 
   return (
     <Card className="space-y-4">

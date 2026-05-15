@@ -93,6 +93,7 @@ Record major product and technical decisions here.
 - Account deletion must be planned before App Store submission and should start in Phase 6 as a basic request or instructions path
 - Hosted Vercel smoke testing is required before wider beta sharing
 - Custom domain work can follow after hosted Vercel testing is stable
+- Draft production-basics pages can be linked from public and authenticated screens while legal review is pending
 
 ## Entry format
 

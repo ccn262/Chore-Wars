@@ -48,11 +48,18 @@ Track unresolved issues that are understood and accepted for now.
 
 ## Phase 6 notes
 
-- Hosted Vercel full smoke test still needs confirmation
-- Legal, privacy, and terms pages are not yet implemented
-- Account deletion path is not yet implemented
+- Hosted Vercel retest still needs confirmation after the chore visibility and leaderboard fixes are deployed
+- Legal, privacy, and terms pages exist as drafts but still need final review
+- Account deletion path exists as a draft placeholder but still needs a final implementation
 - Custom domain not yet connected
 - App Store implementation not started
+- Hosted production verification remains pending even though the local draft-page smoke test passed
+
+## Hosted smoke follow-up notes
+
+- The custom chore visibility issue was caused by missing client refresh after successful chore creation, not by a database insert failure
+- The leaderboard score issue was caused by the weekly score window cutoff not lining up cleanly with the household timezone boundary
+- Local smoke verification passed after the narrow fix, but the hosted Vercel deployment should be retested after merge
 
 ## Entry format
 

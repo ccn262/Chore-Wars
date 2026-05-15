@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 5 merged / preparing Phase 6 production readiness
-- Current branch: main
-- Repo status: Phases 1-5 merged; App Store readiness planned
+- Current phase: Phase 5 hosted smoke-fix branch in progress
+- Current branch: codex/fix-hosted-chore-visibility-leaderboard
+- Repo status: Phases 1-5 merged; hosted smoke-test follow-up branch in progress; App Store readiness planned
 - Supabase status: migrations, seed, and atomic completion RPC applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: codex/phase6-production-readiness
-- Next task: create production readiness foundation from Phase 6 blueprint
-- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and database-level smoke validation passed
-- Current blockers: hosted Vercel smoke test still needs confirmation if not already done
+- Next branch planned: none yet
+- Next task: commit and push the hosted chore visibility and leaderboard fixes, then retest the deployed Vercel build after merge
+- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and the hosted chore visibility / leaderboard follow-up is being fixed
+- Current blockers: hosted Vercel retest still needs confirmation after the fix is deployed
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -95,6 +95,20 @@ Use this file to leave a concise handoff for the next working session.
 - Hosted smoke testing, mobile browser QA, legal/support placeholders, and account deletion guidance are the main deliverables
 - The next branch should be `codex/phase6-production-readiness`
 - App Store wrapper work remains later than Phase 6
+
+## Phase 6 implementation note
+
+- Draft privacy, terms, support, and account deletion pages now exist
+- Public and authenticated discovery links now point to the draft production-basics pages
+- Local smoke testing confirmed the new public pages render and `/settings` still redirects unauthenticated visitors to sign-in
+- Final legal review and hosted verification still remain before this phase can be considered complete
+
+## Hosted smoke fix note
+
+- Hosted Vercel smoke testing exposed a custom chore visibility gap and a weekly leaderboard score gap after Phase 5
+- Custom chore and template creation now force a client refresh after success so the active chore list updates immediately
+- Weekly score calculations now respect the household timezone boundary more carefully so current-week points appear when expected
+- Local smoke verification passed with a disposable Supabase account, direct DB setup, and sign-out confirmation
 
 ## Include
 

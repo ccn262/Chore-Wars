@@ -92,6 +92,25 @@ function clampWeekStart(value: number | null | undefined) {
   return typeof value === "number" && value >= 0 && value <= 6 ? value : 1;
 }
 
+function getTimeZoneOffsetMinutes(timezone: string, date: Date) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    timeZoneName: "shortOffset",
+  }).formatToParts(date);
+  const offsetLabel =
+    parts.find((part) => part.type === "timeZoneName")?.value || "GMT";
+  const match = offsetLabel.match(/GMT([+-])(\d{1,2})(?::?(\d{2}))?/i);
+
+  if (!match) {
+    return 0;
+  }
+
+  const sign = match[1] === "-" ? -1 : 1;
+  const hours = Number(match[2] || 0);
+  const minutes = Number(match[3] || 0);
+  return sign * (hours * 60 + minutes);
+}
+
 function getWeekStartDate(timezone: string, weekStartsOn: number) {
   const now = new Date();
   const localParts = new Intl.DateTimeFormat("en-CA", {
@@ -109,6 +128,9 @@ function getWeekStartDate(timezone: string, weekStartsOn: number) {
   const currentWeekday = localDate.getUTCDay();
   const offset = (currentWeekday - weekStartsOn + 7) % 7;
   localDate.setUTCDate(localDate.getUTCDate() - offset);
+
+  const offsetMinutes = getTimeZoneOffsetMinutes(timezone, localDate);
+  localDate.setUTCMinutes(localDate.getUTCMinutes() - offsetMinutes);
   return localDate;
 }
 
