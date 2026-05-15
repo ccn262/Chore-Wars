@@ -1,25 +1,32 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ScreenHeader } from "@/components/screen-header";
+import { redirect } from "next/navigation";
 
-export default function CreateHouseholdPage() {
+import { HouseholdForm } from "@/components/auth/household-form";
+import { ScreenHeader } from "@/components/screen-header";
+import { createHouseholdAction } from "@/app/setup/actions";
+import { getViewerContext } from "@/lib/auth";
+
+export default async function CreateHouseholdPage() {
+  const viewer = await getViewerContext();
+
+  if (!viewer.session) {
+    redirect("/auth/sign-in");
+  }
+
+  if (viewer.household) {
+    redirect("/home");
+  }
+
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-[560px] flex-col px-4 pb-8 pt-4">
       <div className="flex min-h-dvh flex-col justify-between gap-6">
         <ScreenHeader
           eyebrow="Setup"
-          title="Create household placeholder"
-          description="The first-run setup flow will be added later once the scaffold stabilises."
+          title="Create your household"
+          description="Give your home a name so the owner record can be created and protected routes can open."
         />
 
-        <Card className="space-y-3">
-          <p className="text-sm leading-6 text-muted-foreground">
-            Household creation, invite flows, and persistence are not implemented yet.
-          </p>
-          <Button href="/setup/add-members">Next step</Button>
-        </Card>
+        <HouseholdForm action={createHouseholdAction} />
       </div>
     </main>
   );
 }
-

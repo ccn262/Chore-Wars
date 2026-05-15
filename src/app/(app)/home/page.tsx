@@ -1,44 +1,55 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
+import { getViewerContext } from "@/lib/auth";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const viewer = await getViewerContext();
+
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
       <ScreenHeader
         eyebrow="Home"
-        title="Household scoreboard"
-        description="This is the main hero surface. Later, chore taps and points will live here."
-        action={<Button href="/setup/create-household" variant="secondary">Setup</Button>}
+        title={`Welcome back${viewer.profile ? `, ${viewer.profile.display_name}` : ""}`}
+        description={
+          viewer.household
+            ? `${viewer.household.name} is ready. The quick chore flow will land here next.`
+            : "Your household will appear here once setup is complete."
+        }
+        action={<Button href="/settings" variant="secondary">Settings</Button>}
       />
 
       <Card className="space-y-3">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          Placeholder
+          Auth foundation
         </p>
         <p className="text-lg font-semibold leading-7">
-          The quick chore tap flow will be built on top of this shell.
+          Sign-in, sign-up, session handling, and household onboarding are now
+          connected.
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          Keep the layout light, thumb-friendly, and easy to scan on a phone.
+          The chore engine will use this surface later, but the foundation now
+          keeps the app shell protected and ready.
         </p>
       </Card>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3">
         <Card>
-          <p className="text-sm font-semibold">Today</p>
+          <p className="text-sm font-semibold">Current household</p>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            Live chores and points will appear here later.
+            {viewer.household
+              ? `${viewer.household.name} · ${viewer.household.memberRole}`
+              : "Create a household to continue."}
           </p>
         </Card>
         <Card>
-          <p className="text-sm font-semibold">Shortcuts</p>
+          <p className="text-sm font-semibold">Next phase</p>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            Fast actions for chores, rewards, and setup will land here.
+            Chore cards, points, and reporting will be added after auth is
+            stable.
           </p>
         </Card>
       </div>
     </div>
   );
 }
-

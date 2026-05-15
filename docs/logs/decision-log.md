@@ -59,6 +59,9 @@ Record major product and technical decisions here.
 - Additional member invites and Resend emails remain a later phase
 - Phase 3 should keep UI functional and mobile-first rather than final-polished
 - Protected route handling should stay narrow and predictable before chore features are added
+- Sign-in, sign-up, sign-out, and household creation should use server actions to keep session handling simple
+- Supabase auth callback handling should complete sign-up confirmation redirects without introducing extra UI
+- Profile bootstrap should happen before household creation and remain separate from household membership
 
 ## Entry format
 

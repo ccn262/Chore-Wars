@@ -1,16 +1,25 @@
+import { redirect } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
 import { appName } from "@/lib/site";
+import { getViewerContext } from "@/lib/auth";
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const viewer = await getViewerContext();
+
+  if (viewer.session) {
+    redirect(viewer.household ? "/home" : "/setup/create-household");
+  }
+
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-[560px] flex-col px-4 pb-8 pt-4">
       <div className="flex min-h-dvh flex-col justify-between gap-6">
         <ScreenHeader
-          eyebrow="Phase 1 scaffold"
+          eyebrow="Phase 3"
           title={appName}
-          description="A mobile-first chore competition app that turns household fairness into a quick tap."
+          description="Turn household chores into a fast, fair competition for real homes."
         />
 
         <Card className="space-y-4">
@@ -19,20 +28,25 @@ export default function LandingPage() {
               What this is
             </p>
             <p className="text-lg font-semibold leading-7">
-              A phone-first shell for chore battles, quick taps, and clear scores.
+              A mobile-first chore competition app with clean auth and quick
+              onboarding.
             </p>
             <p className="text-sm leading-6 text-muted-foreground">
-              The implementation phase starts with the app foundation only. No
-              chore engine, no auth logic, and no reporting logic yet.
+              Sign in to reach your household, or create an account to get
+              started. The chore engine comes later.
             </p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button href="/home" className="w-full sm:flex-1">
-              Enter the app shell
+            <Button href="/auth/sign-up" className="w-full sm:flex-1">
+              Get started
             </Button>
-            <Button href="/setup/create-household" variant="secondary" className="w-full sm:flex-1">
-              Start setup
+            <Button
+              href="/auth/sign-in"
+              variant="secondary"
+              className="w-full sm:flex-1"
+            >
+              Sign in
             </Button>
           </div>
         </Card>
@@ -42,13 +56,12 @@ export default function LandingPage() {
             Foundation goals
           </p>
           <ul className="space-y-2 text-sm leading-6 text-muted-foreground">
-            <li>Mobile-first shell with bottom navigation.</li>
-            <li>Placeholder routes for auth, setup, and dashboard areas.</li>
-            <li>Reusable primitives ready for later feature work.</li>
+            <li>Supabase Auth connection with simple mobile forms.</li>
+            <li>Household onboarding that creates the first owner member.</li>
+            <li>Protected app routes ready for the chore engine later.</li>
           </ul>
         </Card>
       </div>
     </main>
   );
 }
-
