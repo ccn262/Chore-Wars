@@ -51,6 +51,8 @@ Record visible project changes and notable doc updates here.
 - Phase 7 household settings rule text columns added
 - Phase 7 weekly winner and bottom-place summary cards added
 - Phase 7 rewards and forfeits smoke test passed locally
+- Phase 8 household invites blueprint created
+- Phase 8 Codex prompt created
 
 ## Entry format
 

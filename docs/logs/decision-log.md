@@ -106,6 +106,15 @@ Record major product and technical decisions here.
 - Weekly winner and bottom-place summaries should stay lightweight and derived from current score data
 - Owner/admin rule editing should remain household-scoped and mobile-first
 
+## Phase 8 decisions
+
+- Household invites are the next priority because the app becomes most valuable with multiple household members
+- Phase 8 should use copyable invite links before adding Resend email automation
+- Invite tokens must be secure and unguessable
+- Invite acceptance must be household-scoped and RLS-safe
+- New users should be able to sign up or sign in and return to the invite flow
+- Resend email invitations remain future work
+
 ## Entry format
 
 - Date

@@ -84,7 +84,18 @@
 - Lightweight rule cards
 - No payments, emails, or notifications yet
 
-## Phase 8: App Store readiness and Expo wrapper
+## Phase 8: Household invites and member joining foundation
+
+- Invite creation
+- Copyable invite link
+- Accept invite route
+- Signed-in accept flow
+- Sign-up/sign-in then return to invite flow
+- Member role default
+- Invite status and expiry handling
+- No Resend yet
+
+## Phase 9: App Store readiness and Expo wrapper
 
 - Expo wrapper
 - TestFlight
@@ -104,4 +115,5 @@
 
 - Phase 6 is the production-readiness phase for hosted testing.
 - Phase 7 is the next product phase after the hosted MVP readiness checkpoint.
-- Phase 8 is a future release-readiness phase and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.
+- Phase 8 is household invites and member joining.
+- Phase 9 is the future release-readiness phase for App Store and Expo work and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.

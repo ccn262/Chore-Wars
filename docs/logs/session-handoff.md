@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 7 rewards and forfeits implementation in progress
-- Current branch: codex/phase7-rewards-forfeits
-- Repo status: Phases 1-6 merged and hosted MVP working
+- Current phase: Phase 7 merged and deployed / preparing Phase 8 household invites
+- Current branch: main
+- Repo status: Phases 1-7 merged and hosted MVP working
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, atomic completion RPC, and rewards/forfeits settings columns applied
+- Supabase status: migrations, seed, atomic completion RPC, and rewards/forfeits migration applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: none yet
-- Next task: commit, push, and open the Phase 7 rewards/forfeits PR
-- Implementation status: hosted MVP core loop complete; rewards/forfeits settings and summary cards are now implemented
+- Next branch planned: `codex/phase8-household-invites`
+- Next task: create household invite and member joining foundation from the Phase 8 blueprint
+- Implementation status: hosted MVP core loop and rewards/forfeits complete; household invites not started
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders
@@ -25,6 +25,7 @@ Use this file to leave a concise handoff for the next working session.
   - App Store/Expo not started
   - advanced reports not implemented
   - photo proof not implemented
+  - invite emails not implemented
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -122,28 +123,18 @@ Use this file to leave a concise handoff for the next working session.
 - Automatic enforcement, email notifications, payments, and advanced reporting remain out of scope
 - The next branch should be `codex/phase7-rewards-forfeits`
 
+## Phase 8 planning note
+
+- Household invites are the next step after rewards and forfeits
+- The first invite flow should use copyable links before email automation
+- Invite acceptance must remain household-scoped and RLS-safe
+- Invite tokens must be secure and unguessable
+- Email invitations remain future work
+- The next branch should be `codex/phase8-household-invites`
+
 ## Hosted smoke fix note
 
 - Hosted Vercel smoke testing exposed a custom chore visibility gap and a weekly leaderboard score gap after Phase 5
 - Custom chore and template creation now force a client refresh after success so the active chore list updates immediately
 - Weekly score calculations now respect the household timezone boundary more carefully so current-week points appear when expected
 - Local smoke verification passed with a disposable Supabase account, direct DB setup, and sign-out confirmation
-
-## Include
-
-- What changed
-- What is still missing
-- Assumptions made
-- Risks or open questions
-- Suggested next step
-
-## Hosted smoke fix note
-
-- Current phase: Phase 5 hosted quick-actions follow-up complete; ready to retest hosted deployment after merge
-- Current branch: codex/fix-custom-chores-quick-actions
-- Repo status: Phase 1-6 planning and implementation are present; this branch contains a narrow Home quick-actions fix
-- Next branch planned: none yet
-- Next task: commit, push, and open the PR for the quick-actions fix, then retest the Vercel-hosted deployment after merge
-- Implementation status: Home quick actions now prefer active custom chores first; repeat completions remain allowed after the short duplicate window
-- Current blockers: none
-- Security note: secrets must remain outside git and only in `.env.local` or deployment env vars

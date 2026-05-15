@@ -66,6 +66,18 @@ Track unresolved issues that are understood and accepted for now.
 - App Store and Expo not started
 - Resend not configured
 
+## Phase 8 notes
+
+- Household invites not yet implemented
+- Invite email sending not implemented
+- Resend not configured
+- Legal pages remain placeholders
+- Support email remains placeholder
+- Account deletion is request/instructions only
+- App Store and Expo not started
+- Advanced reporting not implemented
+- Photo proof not implemented
+
 ## Hosted smoke follow-up notes
 
 - The custom chore visibility issue was caused by missing client refresh after successful chore creation, not by a database insert failure
