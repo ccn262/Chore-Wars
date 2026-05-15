@@ -1,31 +1,41 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
+import { RecentActivityFeed } from "@/components/chore-engine/recent-activity-feed";
+import { ScoreSummary } from "@/components/chore-engine/score-summary";
+import { getChoreEngineDashboard } from "@/lib/chore-engine";
+import { getViewerContext } from "@/lib/auth";
 
-export default function LeaderboardPage() {
+export default async function LeaderboardPage() {
+  const viewer = await getViewerContext();
+  const dashboard = await getChoreEngineDashboard(viewer);
+
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
       <ScreenHeader
         eyebrow="Leaderboard"
-        title="Scoreboard placeholder"
-        description="Live and daily scores will appear here once the points ledger is implemented."
-        action={<Button href="/reports" variant="secondary">Reports</Button>}
+        title="Who’s winning"
+        description="A simple, phone-friendly view of the household scoreboard."
       />
 
-      <div className="grid gap-3">
-        <Card>
-          <p className="text-sm font-semibold">Top positions</p>
-          <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            Ranking, prizes, and forfeits will be visual and easy to scan.
-          </p>
-        </Card>
-        <Card>
-          <p className="text-sm font-semibold">Current round</p>
-          <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            This view will later show the household competition at a glance.
-          </p>
-        </Card>
-      </div>
+      <ScoreSummary
+        scores={dashboard.weeklyScores}
+        weekStartsOn={dashboard.settings.weekStartsOn}
+      />
+
+      <Card className="space-y-2 bg-muted/40">
+        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+          Quick read
+        </p>
+        <p className="text-sm leading-6 text-foreground">
+          The leaderboard stays simple for now: clear names, clear points, clear winner.
+        </p>
+      </Card>
+
+      <RecentActivityFeed
+        activity={dashboard.activity}
+        locale={dashboard.settings.locale}
+        timezone={dashboard.settings.timezone}
+      />
     </div>
   );
 }

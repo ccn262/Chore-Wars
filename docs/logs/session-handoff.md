@@ -5,15 +5,15 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 4 merged / preparing Phase 5 usability polish
-- Current branch: main
-- Repo status: Phase 1, Phase 2, Phase 3, and Phase 4 merged
+- Current phase: Phase 5 implementation in progress
+- Current branch: codex/phase5-usability-polish
+- Repo status: Phase 1, Phase 2, Phase 3, and Phase 4 merged; Phase 5 implementation is in the working tree
 - Supabase status: project created, migration and seed applied successfully
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: codex/phase5-usability-polish
-- Next task: improve MVP usability, simple leaderboard clarity, and mobile polish from Phase 5 blueprint
-- Implementation status: app scaffold, database, auth, household onboarding, and core chore loop complete; usability polish not started
+- Next task: commit and push the Phase 5 usability polish implementation
+- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; Phase 5 runtime smoke test passed
 - Current blockers: none
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
@@ -73,6 +73,10 @@ Use this file to leave a concise handoff for the next working session.
 - A Codex-ready prompt is prepared for the next usability implementation task
 - Duplicate-tap protection, completion feedback, and clearer score/readability surfaces are planned
 - Advanced reports, charts, rewards, streaks, and photo proof remain out of scope
+- Phase 5 implementation now includes clearer Home hierarchy, improved chores usability, a simple leaderboard surface, duplicate-tap protection, and stronger empty/loading/error states
+- Phase 5 runtime smoke test passed locally against the Chore Wars Supabase project with a disposable admin-created test user
+- Test data from the smoke run was cleaned up after verification
+- Sign-out now returns to the public landing page as intended
 
 ## Include
 

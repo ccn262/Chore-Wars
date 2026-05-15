@@ -14,6 +14,9 @@ export default async function HomePage() {
   const { household, profile } = viewer;
   const chores = dashboard.chores.slice(0, 4);
   const starterTemplates = dashboard.templates.slice(0, 4);
+  const leadingMember = dashboard.weeklyScores[0];
+  const viewerScore = dashboard.weeklyScores.find((score) => score.isViewer);
+  const nextAction = chores[0] ?? starterTemplates[0];
 
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
@@ -28,16 +31,36 @@ export default async function HomePage() {
         action={<Button href="/chores" variant="secondary">Chores</Button>}
       />
 
-      <Card className="space-y-3">
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          Quick tap
-        </p>
-        <p className="text-lg font-semibold leading-7">
-          Tap a chore below to record completion and add points straight away.
-        </p>
-        <p className="text-sm leading-6 text-muted-foreground">
-          The home screen stays focused on the fastest path in the app.
-        </p>
+      <Card className="space-y-4 border-foreground/10 bg-foreground text-background">
+        <div className="space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-background/70">
+            Fast path
+          </p>
+          <p className="text-lg font-semibold leading-7">
+            Tap once, score points, and keep the house fair.
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="rounded-[1.25rem] bg-background/10 px-4 py-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-background/70">
+              Scoreboard
+            </p>
+            <p className="mt-1 text-sm font-semibold leading-6">
+              {leadingMember
+                ? `${leadingMember.displayName} is leading with ${leadingMember.points} points.`
+                : "No scores yet. The first tap will start the board."}
+            </p>
+          </div>
+          <div className="rounded-[1.25rem] bg-background/10 px-4 py-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-background/70">
+              Your score
+            </p>
+            <p className="mt-1 text-sm font-semibold leading-6">
+              {viewerScore ? `${viewerScore.points} points this week.` : "No points yet."}
+            </p>
+          </div>
+        </div>
       </Card>
 
       <ScoreSummary
@@ -91,6 +114,19 @@ export default async function HomePage() {
         locale={dashboard.settings.locale}
         timezone={dashboard.settings.timezone}
       />
+
+      {nextAction ? (
+        <Card className="space-y-2 bg-muted/40">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            Next move
+          </p>
+          <p className="text-sm leading-6 text-foreground">
+            {chores.length
+              ? `Tap ${nextAction.title} to keep the week moving.`
+              : `Add ${nextAction.title} from the starter templates to begin.`}
+          </p>
+        </Card>
+      ) : null}
     </div>
   );
 }

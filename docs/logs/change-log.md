@@ -28,6 +28,7 @@ Record visible project changes and notable doc updates here.
 - Phase 4 chore engine foundation reviewed and hardened
 - Phase 5 usability and polish blueprint created
 - Phase 5 Codex prompt created
+- Phase 5 usability polish implemented and smoke-tested
 
 ## Entry format
 

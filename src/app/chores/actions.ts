@@ -43,6 +43,19 @@ function refreshChorePaths() {
   revalidatePath("/reports");
 }
 
+function isRecentTap(completedAt: string | null | undefined) {
+  if (!completedAt) {
+    return false;
+  }
+
+  const completedTime = new Date(completedAt).getTime();
+  if (Number.isNaN(completedTime)) {
+    return false;
+  }
+
+  return Date.now() - completedTime < 10_000;
+}
+
 export async function createChoreFromTemplateAction(
   _state: FormState,
   formData: FormData,
@@ -191,6 +204,33 @@ export async function completeChoreAction(
     return {
       status: "error",
       message: getActionErrorMessage(choreError, "That chore is not available."),
+    };
+  }
+
+  const { data: recentCompletion, error: recentCompletionError } = await supabase
+    .from("chore_completions")
+    .select("id, completed_at")
+    .eq("household_id", viewer.household.id)
+    .eq("chore_id", chore.id)
+    .eq("completed_by_member_id", viewer.household.memberId)
+    .order("completed_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (recentCompletionError) {
+    return {
+      status: "error",
+      message: getActionErrorMessage(
+        recentCompletionError,
+        "Could not check the latest completion.",
+      ),
+    };
+  }
+
+  if (isRecentTap(recentCompletion?.completed_at)) {
+    return {
+      status: "error",
+      message: "That tap already landed. Give the house a second to catch up.",
     };
   }
 

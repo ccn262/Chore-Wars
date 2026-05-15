@@ -28,9 +28,11 @@ export function ChoreCard({ chore, canComplete }: ChoreCardProps) {
       {canComplete ? (
         <ChoreCompleteButton choreId={chore.id} points={chore.points} />
       ) : (
-        <p className="text-xs leading-5 text-muted-foreground">
-          View only. Ask the owner to complete or edit chores.
-        </p>
+        <div className="rounded-2xl bg-muted/50 px-3 py-2">
+          <p className="text-xs font-medium leading-5 text-muted-foreground">
+            View only. Ask the owner or admin to complete or edit chores.
+          </p>
+        </div>
       )}
     </Card>
   );

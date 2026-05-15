@@ -30,9 +30,11 @@ export function TemplateCard({ template, canManageChores }: TemplateCardProps) {
       {canManageChores ? (
         <TemplateCreateButton templateId={template.id} />
       ) : (
-        <p className="text-xs leading-5 text-muted-foreground">
-          Only the owner or admin can add starter chores.
-        </p>
+        <div className="rounded-2xl bg-muted/50 px-3 py-2">
+          <p className="text-xs font-medium leading-5 text-muted-foreground">
+            Only the owner or admin can add starter chores.
+          </p>
+        </div>
       )}
     </Card>
   );

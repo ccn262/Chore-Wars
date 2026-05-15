@@ -19,6 +19,7 @@ export function CustomChoreForm() {
     createCustomChoreAction,
     initialState,
   );
+  const isSuccess = state.status === "success";
 
   return (
     <Card className="space-y-4">
@@ -34,11 +35,12 @@ export function CustomChoreForm() {
       {state.message ? (
         <p
           className={`rounded-2xl px-4 py-3 text-sm leading-6 ${
-            state.status === "error"
-              ? "bg-red-500/10 text-red-700"
-              : "bg-emerald-500/10 text-emerald-700"
+            isSuccess
+              ? "border border-emerald-500/20 bg-emerald-500/10 text-emerald-800"
+              : "border border-red-500/20 bg-red-500/10 text-red-800"
           }`}
           aria-live="polite"
+          role="status"
         >
           {state.message}
         </p>
@@ -79,7 +81,7 @@ export function CustomChoreForm() {
           </label>
         </div>
 
-        <Button type="submit" className="w-full" disabled={pending}>
+        <Button type="submit" className="w-full" disabled={pending} aria-busy={pending}>
           {pending ? "Adding..." : "Add chore"}
         </Button>
       </form>
