@@ -2,6 +2,12 @@
 
 ## Rules
 
+- English first
+- UK and US ready
+- Locale-aware dates
+- Currency-ready reward and allowance values
+- Prepare for future languages such as Spanish, French, German, Portuguese, and Italian
+- Do not hardcode currency or region assumptions
 - Design for international users from the start
 - Avoid hardcoded currency assumptions
 - Use locale-aware dates, times, and numbers
@@ -13,4 +19,5 @@
 - Separate formatting from data
 - Test with longer labels and different date formats
 - Plan for right-to-left support where appropriate
+- Prepare for future languages such as Spanish, French, German, Portuguese, and Italian
 

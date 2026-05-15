@@ -2,6 +2,37 @@
 
 This file is the operating guide for Codex and collaborators working in this repo.
 
+## Non-negotiable rules
+
+- Codex must read `AGENTS.md` before every task
+- Codex must check relevant docs before changing files
+- Work in small, scoped tasks only
+- Do not create implementation files unless explicitly asked
+- Do not perform broad rewrites unless requested
+- Mobile-first is non-negotiable
+- The app should feel like a phone app, not a desktop website
+- Desktop is secondary
+- Design for thumb-first interactions
+- The home screen is the core product surface
+- A user should be able to open the app, tap a chore, and receive points within 3 seconds
+- UI must be minimal, clear, colourful, uncluttered, and app-like
+- Use quick press button selections for chores
+- Avoid dense dashboards, desktop tables, admin-heavy layouts, and unnecessary friction
+- Reporting must be smart, visual, colourful, card-based, and easy to understand
+- The app tone is friendly, funny, and playful, but still professional and polished
+- The app is a game-like household fairness tool, not a corporate task manager
+- Design for families, couples, flatmates, shared homes, and international users
+- Build internationalisation readiness from the start
+- Avoid hardcoded user-facing text where practical
+- Avoid hardcoded currency assumptions
+- Use locale-aware dates and times
+- Keep auth users separate from household members
+- Use a points ledger for scoring
+- Keep scoring logic centralised and auditable
+- Use Supabase Row Level Security from the start
+- Keep logs updated after meaningful changes
+- Update decision, change, fix, and handoff logs when relevant
+
 ## Working rules
 
 - Treat this as a planning-first repository until implementation is explicitly requested
@@ -58,4 +89,3 @@ This file is the operating guide for Codex and collaborators working in this rep
 3. Make the smallest safe change
 4. Update logs or handoff notes when the change matters
 5. Summarise assumptions clearly at the end
-

@@ -13,6 +13,20 @@ Make it effortless for people who share a home to agree on chores, complete them
 - The app feels light, cheerful, and a little bit funny
 - Everyone understands progress without reading a lot of text
 
+## Product shape
+
+- Chore Wars turns household chores into a fun competition
+- Members complete chores through quick tap buttons
+- The app tracks who has done what
+- The app shows live or daily scores
+- Winners can earn prizes
+- Bottom place can receive forfeits
+- Default chores are available at setup
+- Chores can be added, edited, removed, and given icons
+- Members can be added, edited, or removed
+- Reports should be clear, visual, colourful, and uncluttered
+- The app should reduce arguments and make chores feel fair
+
 ## Product principles
 
 - Speed first: the core action must be nearly instant
@@ -28,4 +42,3 @@ Make it effortless for people who share a home to agree on chores, complete them
 - Desktop-first workflows
 - Deep social network features
 - Feature bloat that slows down chore completion
-

@@ -2,10 +2,14 @@
 
 ## Phase 0: Planning
 
-- Lock product principles
-- Define schema and data flows
-- Define UI rules and screen inventory
-- Set up repo and deployment guardrails
+- Planning docs
+- Repo setup
+- GitHub remote setup
+- Market and brand planning
+- UI principles
+- Database design
+- Codex guardrails
+- Vercel / Supabase / Resend preparation
 
 ## Phase 1: MVP build
 
@@ -28,4 +32,3 @@
 - Push notifications
 - Store-specific polish
 - Locale expansion and regional tuning
-

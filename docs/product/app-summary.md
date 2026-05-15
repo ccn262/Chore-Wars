@@ -14,6 +14,20 @@ Track chores, award points, and keep the home moving with a fast, colourful mobi
 - Shared homes
 - International households
 
+## Product summary
+
+- Chore Wars turns chores into a fun household competition
+- Members complete chores through quick tap buttons
+- The app tracks who has done what
+- The app shows live or daily scores
+- Winners can earn prizes
+- Bottom place can receive forfeits
+- Default chores are available at setup
+- Chores can be added, edited, removed, and given icons
+- Members can be added, edited, or removed
+- Reporting is clear, visual, colourful, and uncluttered
+- The app reduces arguments and makes chores feel fair
+
 ## Core loop
 
 1. Open the home screen
@@ -25,4 +39,3 @@ Track chores, award points, and keep the home moving with a fast, colourful mobi
 ## Why it exists
 
 Most chore tools are too dull, too slow, or too desktop-like. Chore Wars should be simple enough to use in real life, in the hallway, in the kitchen, or while holding a phone with one hand.
-
