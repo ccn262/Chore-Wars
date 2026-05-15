@@ -8,6 +8,7 @@ Use this file to leave a concise handoff for the next working session.
 - Current phase: Phase 1 scaffold complete / ready for feature work
 - Current branch: codex/phase1-app-foundation
 - Repo status: Phase 1 app foundation scaffolded and validated
+- Route review status: confirmed no duplicate auth/setup placeholder routes in the repo
 - Next task: start the first feature branch after the foundation is reviewed
 - Implementation status: foundation scaffold complete, business logic not started
 - Validation results: `npm run lint` passed, `npm run build` passed
@@ -20,6 +21,7 @@ Use this file to leave a concise handoff for the next working session.
 - Placeholder routes added for landing, auth, setup, home, chores, leaderboard, reports, and settings
 - Reusable UI primitives added for future feature work
 - Supabase placeholder helpers added without real auth or database logic
+- Route structure reviewed and confirmed to use visible `/auth/*` and `/setup/*` segments plus the `(app)` shell group
 
 ## Include
 
