@@ -5,14 +5,14 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 3 merged / preparing Phase 4 chore engine foundation
-- Current branch: main
-- Repo status: Phase 1, Phase 2, and Phase 3 merged
+- Current phase: Phase 4 chore engine foundation implemented and smoke-tested
+- Current branch: codex/phase4-chore-engine-foundation
+- Repo status: Phase 1, Phase 2, and Phase 3 merged; Phase 4 code is in the working tree
 - Supabase status: project created, migration and seed applied successfully
-- Auth status: Phase 3 smoke-tested and merged
+- Auth status: Phase 3 smoke-tested and merged; Phase 4 runtime smoke test passed
 - Next branch planned: codex/phase4-chore-engine-foundation
-- Next task: create core chore loop from Phase 4 blueprint
-- Implementation status: app scaffold, database, auth, and household onboarding complete; chore engine not started
+- Next task: finish validation, commit the Phase 4 implementation, and push the branch
+- Implementation status: app scaffold, database, auth, household onboarding, and chore engine foundation are complete
 - Current blockers: none
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
@@ -60,6 +60,8 @@ Use this file to leave a concise handoff for the next working session.
 - Phase 4 will focus on household chores, one-tap completion, and simple feedback
 - Starter chores must come from seeded templates and database data
 - A Codex-ready prompt is prepared for the next chore engine implementation task
+- Phase 4 runtime smoke test passed after a narrow profile bootstrap race fix
+- The home and chores pages now render household chores, quick actions, weekly scores, and recent activity
 - Advanced reporting, streaks, rewards, and photo proof remain out of scope for this phase
 
 ## Include

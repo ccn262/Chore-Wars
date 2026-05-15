@@ -37,3 +37,9 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: changed household creation to use a minimal insert, then query the inserted household back in a separate read before creating settings and verifying the owner member
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
 - Verification: runtime smoke test passed after the fix, including sign-in, household creation, owner-member creation, and sign-out
+
+- Issue: Phase 4 runtime smoke test hit `duplicate key value violates unique constraint "profiles_auth_user_id_key"` on the first signed-in `/home` render
+- Root cause: the app shell layout and the home page both call `getViewerContext()`, so profile bootstrap could race and attempt the same insert twice during the same render
+- Fix: made `ensureProfileForUser()` treat the unique-constraint conflict as a harmless concurrent bootstrap and re-read the existing profile
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: Phase 4 runtime smoke test passed after the fix; /home, /chores, chore completion, points ledger, and sign-out all validated locally

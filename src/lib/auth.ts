@@ -102,8 +102,38 @@ export async function ensureProfileForUser(
     .single();
 
   if (profileCreateError || !createdProfile) {
+    const message = getAuthErrorMessage(
+      profileCreateError,
+      "Unable to create your profile.",
+    );
+
+    if (
+      profileCreateError &&
+      message.toLowerCase().includes("profiles_auth_user_id_key")
+    ) {
+      const { data: conflictedProfile, error: conflictedLookupError } =
+        await supabase
+          .from("profiles")
+          .select("id, auth_user_id, email, display_name, locale, timezone")
+          .eq("auth_user_id", user.id)
+          .maybeSingle();
+
+      if (conflictedLookupError) {
+        throw new Error(
+          getAuthErrorMessage(
+            conflictedLookupError,
+            "Unable to load your profile.",
+          ),
+        );
+      }
+
+      if (conflictedProfile) {
+        return conflictedProfile as ViewerProfile;
+      }
+    }
+
     throw new Error(
-      getAuthErrorMessage(profileCreateError, "Unable to create your profile."),
+      message,
     );
   }
 
