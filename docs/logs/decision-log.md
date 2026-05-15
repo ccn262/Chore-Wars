@@ -51,6 +51,15 @@ Record major product and technical decisions here.
 - Chore completions write to the points ledger through a trigger so scoring stays centralised
 - Starter chore categories and templates are seeded in SQL
 
+## Phase 3 decisions
+
+- Auth and household onboarding should be built before chore engine
+- The first household member created during household creation should be the owner
+- Supabase credentials must only live in local or deployment environment variables
+- Additional member invites and Resend emails remain a later phase
+- Phase 3 should keep UI functional and mobile-first rather than final-polished
+- Protected route handling should stay narrow and predictable before chore features are added
+
 ## Entry format
 
 - Date

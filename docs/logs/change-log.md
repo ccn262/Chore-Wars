@@ -14,6 +14,8 @@ Record visible project changes and notable doc updates here.
 - Phase 2 Codex prompt created
 - Phase 2 database migration and seed files created
 - Phase 2 database docs updated for implemented schema
+- Phase 3 auth and household onboarding blueprint created
+- Phase 3 Codex prompt created
 
 ## Entry format
 

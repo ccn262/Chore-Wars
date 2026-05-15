@@ -13,6 +13,9 @@ Track unresolved issues that are understood and accepted for now.
 - Competitor pricing and app-store availability need deeper research before monetisation is finalised
 - Brand name, domain, trademark, and app-store availability still need validation
 - Phase 2 database foundation has now been manually validated in Supabase SQL Editor
+- No known implementation blockers for Phase 3 planning
+- Supabase credentials must be configured locally before Phase 3 implementation can be tested end to end
+- Earlier exposed credentials should be rotated before real app connection if not already done
 
 ## Entry format
 

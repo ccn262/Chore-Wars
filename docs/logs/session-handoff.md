@@ -5,13 +5,15 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 2 database foundation manually validated
-- Current branch: codex/phase2-database-foundation
-- Repo status: Phase 2 database foundation applied and validated in Supabase SQL Editor
-- Next branch planned: codex/phase2-database-foundation
-- Next task: prepare the next phase planning prompt
-- Implementation status: migration applied successfully; seed applied successfully
+- Current phase: Phase 2 merged / preparing Phase 3 auth and household onboarding
+- Current branch: main
+- Repo status: Phase 1 and Phase 2 merged
+- Supabase status: project created, migration and seed applied successfully
+- Next branch planned: codex/phase3-auth-household-foundation
+- Next task: create auth and household onboarding foundation from Phase 3 blueprint
+- Implementation status: app scaffold and database foundation complete; auth not started
 - Current blockers: none
+- Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
 
@@ -37,6 +39,13 @@ Use this file to leave a concise handoff for the next working session.
 - The seed has now been applied successfully in Supabase SQL Editor
 - Phase 2 database foundation has been manually validated in Supabase SQL Editor
 - The seed file now contains only global starter categories and templates
+
+## Phase 3 summary
+
+- Phase 3 blueprint prepared for Supabase Auth and household onboarding
+- Phase 3 will connect auth sessions to profile bootstrap and household creation
+- Protected routes and onboarding redirects are planned before chore engine work
+- A Codex-ready prompt is prepared for the next auth implementation task
 
 ## Include
 

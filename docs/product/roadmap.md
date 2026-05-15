@@ -27,14 +27,24 @@
 - Database validation
 - No UI feature work beyond placeholders
 
-## Phase 3: Retention and polish
+## Phase 3: Auth and household onboarding foundation
+
+- Supabase Auth connection
+- Sign up and sign in
+- Protected app routes
+- Profile bootstrap
+- Create household
+- Create owner household member
+- No chore engine yet
+
+## Phase 4: Retention and polish
 
 - Better reminders
 - Streaks or lightweight gamification
 - More visual reporting
 - Improved onboarding
 
-## Phase 4: Native expansion
+## Phase 5: Native expansion
 
 - Expo wrapper or native app path
 - Push notifications
