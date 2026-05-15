@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 5 implementation in progress
+- Current phase: Phase 5 duplicate-tap atomicity fix in progress
 - Current branch: codex/phase5-usability-polish
 - Repo status: Phase 1, Phase 2, Phase 3, and Phase 4 merged; Phase 5 implementation is in the working tree
 - Supabase status: project created, migration and seed applied successfully
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: codex/phase5-usability-polish
-- Next task: complete the Phase 5 review handoff and keep the branch ready for any follow-up fixes
-- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; Phase 5 review found no code changes required
-- Current blockers: local smoke auth is limited by Supabase email rate limiting, and full disposable-user retesting would be easier with a local service-role credential
+- Next task: finish the Phase 5 atomic duplicate-tap fix handoff and keep the branch ready for any follow-up review comments
+- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and database-level smoke validation passed
+- Current blockers: hosted Supabase auth sign-up remains rate-limited for fresh disposable users, so browser-based auth retesting is currently environment-limited
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -79,6 +79,8 @@ Use this file to leave a concise handoff for the next working session.
 - Sign-out now returns to the public landing page as intended
 - Phase 5 review confirmed the UI and data flow still align with the blueprint, and no code changes were needed during review
 - The latest local smoke attempt hit Supabase email rate limiting on fresh sign-up, so full auth retesting is currently environment-limited
+- The Phase 5 duplicate-tap fix now routes chore completion through an atomic RPC with an advisory lock and the database-level duplicate test passed
+- The hosted auth service still rate-limits fresh sign-ups, so browser-based smoke testing remains limited even though the database-level atomic completion test passed
 
 ## Include
 

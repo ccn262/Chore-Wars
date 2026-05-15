@@ -49,3 +49,9 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: switched profile bootstrap to a single `upsert(..., { onConflict: "auth_user_id" })` path so repeated renders converge on one profile row safely
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
 - Verification: Phase 4 runtime smoke test passed again after the atomic bootstrap fix; lint, build, and repository checks remained clean
+
+- Issue: Codex PR review flagged non-atomic duplicate-tap protection in `src/app/chores/actions.ts`
+- Root cause: the completion path did a read-for-recent-completion check and then a separate insert, which could race under concurrent submissions and award duplicate points
+- Fix: added a database-backed atomic completion RPC with an advisory transaction lock, then updated the server action to call it instead of doing the safety check in application code
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/chores/actions.ts`](C:/Users/Chris%20OneDrive/Documents/Chore%20Wars/src/app/chores/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/supabase/migrations/20260515130000_phase5_atomic_chore_completion.sql`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/supabase/migrations/20260515130000_phase5_atomic_chore_completion.sql), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/supabase/migrations/20260515131000_phase5_atomic_chore_completion_fix.sql`](C:/Users/Chris%20OneDrive/Documents/Chore%20Wars/supabase/migrations/20260515131000_phase5_atomic_chore_completion_fix.sql)
+- Verification: database-level smoke test passed; the RPC returned `inserted` on the first call, `already_completed` on the second call, and the household ended with exactly one `chore_completions` row and one `points_ledger` row

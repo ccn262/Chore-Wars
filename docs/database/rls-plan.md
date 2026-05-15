@@ -21,3 +21,4 @@ Every household record must only be visible to authorised members.
 - Allow members to create their own completions
 - Let invitees accept their own pending invites by email match
 - Review any service-role usage carefully
+- Expose chore completion through a security-definer RPC that validates the current household and acquires an advisory transaction lock before inserting

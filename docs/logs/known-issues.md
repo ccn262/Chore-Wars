@@ -34,6 +34,8 @@ Track unresolved issues that are understood and accepted for now.
 - Local review smoke retest hit Supabase email rate limiting on fresh sign-up attempts
 - The current local `.env.local` does not expose a service-role key, so disposable admin-created smoke-test users are not available from the local env alone
 - Full repeatable end-to-end auth smoke testing is therefore currently environment-limited rather than code-blocked
+- Phase 5 atomic duplicate-completion protection has now been validated at the database level
+- Hosted auth sign-up still rate-limits fresh disposable users, so browser-based auth smoke testing remains environment-limited
 
 ## Entry format
 

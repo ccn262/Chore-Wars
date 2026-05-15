@@ -31,3 +31,11 @@
 - Store timestamps with timezone awareness
 - Treat display formatting as a UI concern, not a schema concern
 - Seed templates for starter chores rather than hardcoding them in the UI
+- Use an atomic chore-completion RPC to guard the short duplicate-tap window
+
+## Operational functions
+
+- `complete_chore_atomically(target_chore_id uuid)` performs one atomic completion attempt
+- The function validates the caller's current household membership before writing
+- The function serialises concurrent completion attempts for the same member and chore
+- The existing completion trigger still writes the corresponding points ledger entry

@@ -43,19 +43,6 @@ function refreshChorePaths() {
   revalidatePath("/reports");
 }
 
-function isRecentTap(completedAt: string | null | undefined) {
-  if (!completedAt) {
-    return false;
-  }
-
-  const completedTime = new Date(completedAt).getTime();
-  if (Number.isNaN(completedTime)) {
-    return false;
-  }
-
-  return Date.now() - completedTime < 10_000;
-}
-
 export async function createChoreFromTemplateAction(
   _state: FormState,
   formData: FormData,
@@ -189,68 +176,47 @@ export async function completeChoreAction(
   }
 
   const viewer = await getViewerContext();
-  if (!viewer.session || !viewer.profile || !viewer.household) {
+  if (!viewer.session || !viewer.profile) {
     return { status: "error", message: "Sign in to complete chores." };
   }
 
-  const { data: chore, error: choreError } = await supabase
-    .from("chores")
-    .select("id, title, points, household_id, status")
-    .eq("id", choreId)
-    .eq("household_id", viewer.household.id)
-    .maybeSingle();
+  const { data, error } = await supabase
+    .rpc("complete_chore_atomically", {
+      target_chore_id: choreId,
+    })
+    .single();
+  const completion = data as
+    | {
+        status?: string;
+        chore_title?: string | null;
+        points_awarded?: number | null;
+      }
+    | null;
 
-  if (choreError || !chore || chore.status !== "active") {
+  if (error || !completion) {
     return {
       status: "error",
-      message: getActionErrorMessage(choreError, "That chore is not available."),
+      message: getActionErrorMessage(error, "Could not record that completion."),
     };
   }
 
-  const { data: recentCompletion, error: recentCompletionError } = await supabase
-    .from("chore_completions")
-    .select("id, completed_at")
-    .eq("household_id", viewer.household.id)
-    .eq("chore_id", chore.id)
-    .eq("completed_by_member_id", viewer.household.memberId)
-    .order("completed_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-
-  if (recentCompletionError) {
-    return {
-      status: "error",
-      message: getActionErrorMessage(
-        recentCompletionError,
-        "Could not check the latest completion.",
-      ),
-    };
-  }
-
-  if (isRecentTap(recentCompletion?.completed_at)) {
+  if (completion.status === "already_completed") {
     return {
       status: "error",
       message: "That tap already landed. Give the house a second to catch up.",
     };
   }
 
-  const { error: completionError } = await supabase.from("chore_completions").insert({
-    household_id: viewer.household.id,
-    chore_id: chore.id,
-    completed_by_member_id: viewer.household.memberId,
-    points_awarded: chore.points,
-  });
-
-  if (completionError) {
+  if (completion.status === "inserted") {
+    refreshChorePaths();
     return {
-      status: "error",
-      message: getActionErrorMessage(completionError, "Could not record that completion."),
+      status: "success",
+      message: `${completion.chore_title} done. +${completion.points_awarded} points.`,
     };
   }
 
-  refreshChorePaths();
   return {
-    status: "success",
-    message: `${chore.title} done. +${chore.points} points.`,
+    status: "error",
+    message: "Could not record that completion.",
   };
 }
