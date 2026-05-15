@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import { completeChoreAction } from "@/app/chores/actions";
 import type { FormState } from "@/lib/form-state";
@@ -24,14 +25,36 @@ export function ChoreCompleteButton({
   label = "Done",
   compact = false,
 }: ChoreCompleteButtonProps) {
+  const router = useRouter();
   const [state, formAction, pending] = useActionState(
     completeChoreAction,
     initialState,
   );
   const isSuccess = state.status === "success";
+  const lastSuccessKey = useRef<string | null>(null);
   const messageClasses = isSuccess
     ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-800"
     : "border-red-500/20 bg-red-500/10 text-red-800";
+
+  useEffect(() => {
+    if (pending) {
+      lastSuccessKey.current = null;
+      return;
+    }
+
+    if (state.status === "success" && state.message) {
+      const key = `success:${state.message}`;
+      if (lastSuccessKey.current !== key) {
+        lastSuccessKey.current = key;
+        router.refresh();
+      }
+      return;
+    }
+
+    if (state.status !== "success") {
+      lastSuccessKey.current = null;
+    }
+  }, [pending, router, state.message, state.status]);
 
   return (
     <div className="space-y-2">
