@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 6 merged and deployed / preparing Phase 7 rewards and forfeits
-- Current branch: main
+- Current phase: Phase 7 rewards and forfeits implementation in progress
+- Current branch: codex/phase7-rewards-forfeits
 - Repo status: Phases 1-6 merged and hosted MVP working
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, and atomic completion RPC applied
+- Supabase status: migrations, seed, atomic completion RPC, and rewards/forfeits settings columns applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: none yet
-- Next task: create rewards and forfeits foundation from the Phase 7 blueprint
-- Implementation status: hosted MVP core loop complete; rewards and forfeits not started
+- Next task: commit, push, and open the Phase 7 rewards/forfeits PR
+- Implementation status: hosted MVP core loop complete; rewards/forfeits settings and summary cards are now implemented
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders

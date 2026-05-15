@@ -102,6 +102,9 @@ Record major product and technical decisions here.
 - Forfeits should be playful and not shame-heavy
 - Automatic enforcement, email notifications, and payments remain future work
 - Weekly winner and bottom display should use existing weekly score data where possible
+- Household settings are the right place for simple reward and forfeit rule text
+- Weekly winner and bottom-place summaries should stay lightweight and derived from current score data
+- Owner/admin rule editing should remain household-scoped and mobile-first
 
 ## Entry format
 

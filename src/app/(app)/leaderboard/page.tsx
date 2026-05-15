@@ -20,6 +20,8 @@ export default async function LeaderboardPage() {
       <ScoreSummary
         scores={dashboard.weeklyScores}
         weekStartsOn={dashboard.settings.weekStartsOn}
+        winnerRewardText={dashboard.settings.winnerRewardText}
+        bottomForfeitText={dashboard.settings.bottomForfeitText}
       />
 
       <Card className="space-y-2 bg-muted/40">

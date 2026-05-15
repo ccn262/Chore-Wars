@@ -1,14 +1,24 @@
 import { Card } from "@/components/ui/card";
-import type { WeeklyMemberScore } from "@/lib/chore-engine";
+import {
+  getWeeklyCompetitionSummary,
+  type WeeklyMemberScore,
+} from "@/lib/chore-engine";
 
 type ScoreSummaryProps = {
   scores: WeeklyMemberScore[];
   weekStartsOn: number;
+  winnerRewardText?: string | null;
+  bottomForfeitText?: string | null;
 };
 
-export function ScoreSummary({ scores, weekStartsOn }: ScoreSummaryProps) {
+export function ScoreSummary({
+  scores,
+  weekStartsOn,
+  winnerRewardText = null,
+  bottomForfeitText = null,
+}: ScoreSummaryProps) {
   const topScore = scores[0]?.points ?? 0;
-  const leadingMember = scores[0];
+  const competition = getWeeklyCompetitionSummary(scores);
 
   return (
     <Card className="space-y-4">
@@ -21,16 +31,37 @@ export function ScoreSummary({ scores, weekStartsOn }: ScoreSummaryProps) {
         </p>
       </div>
 
-      {leadingMember ? (
+      <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-[1.25rem] bg-foreground px-4 py-3 text-background">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-background/70">
-            Leading this week
+            Winner gets
           </p>
           <p className="mt-1 text-sm font-semibold leading-6">
-            {leadingMember.displayName} is ahead with {leadingMember.points} points.
+            {winnerRewardText?.trim() || "Set a light weekly reward in Settings."}
+          </p>
+          <p className="mt-2 text-xs leading-5 text-background/75">
+            {competition.winner
+              ? `${competition.winner.displayName} is leading with ${competition.winner.points} points.`
+              : "No weekly winner yet. Finish a chore to start the race."}
           </p>
         </div>
-      ) : null}
+
+        <div className="rounded-[1.25rem] border border-border bg-surface px-4 py-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Bottom gets
+          </p>
+          <p className="mt-1 text-sm font-semibold leading-6 text-foreground">
+            {bottomForfeitText?.trim() || "Set a playful forfeit in Settings."}
+          </p>
+          <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            {competition.bottom
+              ? `${competition.bottom.displayName} is on ${competition.bottom.points} points.`
+              : competition.hasMeaningfulScores
+                ? "Need more scores before the bottom-place rule shows up."
+                : "No bottom-place member yet. Complete a few chores first."}
+          </p>
+        </div>
+      </div>
 
       <div className="space-y-3">
         {scores.length ? (

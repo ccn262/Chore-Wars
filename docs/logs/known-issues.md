@@ -58,8 +58,8 @@ Track unresolved issues that are understood and accepted for now.
 
 ## Phase 7 notes
 
-- Rewards and forfeits not yet implemented
-- Tie handling for weekly winner and bottom-place display is not yet designed
+- Rewards and forfeits are implemented in a simple manual form, but tie handling is still intentionally lightweight
+- Weekly winner and bottom-place display should still be reviewed with more score data
 - Legal pages remain placeholders
 - Support email remains placeholder
 - Account deletion is request/instructions only

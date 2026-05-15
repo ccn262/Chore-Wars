@@ -27,3 +27,4 @@ This document now tracks the core Phase 2 database contract.
 - Include created and updated timestamps where useful
 - Keep soft archive decisions deliberate, not accidental
 - Use immutable completion rows and ledger-based scoring where practical
+- Store simple household reward and forfeit text in `household_settings`

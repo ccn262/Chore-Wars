@@ -47,6 +47,10 @@ Record visible project changes and notable doc updates here.
 - Legal/support placeholder routes confirmed live
 - Phase 7 rewards and forfeits blueprint created
 - Phase 7 Codex prompt created
+- Phase 7 rewards and forfeits implementation started
+- Phase 7 household settings rule text columns added
+- Phase 7 weekly winner and bottom-place summary cards added
+- Phase 7 rewards and forfeits smoke test passed locally
 
 ## Entry format
 
