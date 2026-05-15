@@ -36,6 +36,8 @@ Record visible project changes and notable doc updates here.
 - App Store readiness phase added to roadmap and docs
 - Phase 6 production readiness blueprint created
 - Phase 6 Codex prompt created
+- Phase 6 draft privacy, terms, support, and account deletion pages implemented
+- Phase 6 draft legal/support pages smoke-tested locally
 
 ## Entry format
 

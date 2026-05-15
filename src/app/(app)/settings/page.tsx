@@ -45,6 +45,28 @@ export default async function SettingsPage() {
             </Button>
           </form>
         </Card>
+
+        <Card className="space-y-3">
+          <p className="text-sm font-semibold">Production basics</p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            Draft policy and support pages for hosted testing. Replace them
+            with final legal copy before release.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Button href="/privacy" variant="secondary" className="w-full">
+              Privacy policy
+            </Button>
+            <Button href="/terms" variant="secondary" className="w-full">
+              Terms of use
+            </Button>
+            <Button href="/support" variant="secondary" className="w-full">
+              Support
+            </Button>
+            <Button href="/account-deletion" variant="secondary" className="w-full">
+              Account deletion
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
   );

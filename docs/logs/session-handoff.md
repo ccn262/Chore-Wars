@@ -5,14 +5,14 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 5 merged / preparing Phase 6 production readiness
-- Current branch: main
-- Repo status: Phases 1-5 merged; App Store readiness planned
+- Current phase: Phase 6 production readiness implementation in progress
+- Current branch: codex/phase6-production-readiness
+- Repo status: Phases 1-5 merged; Phase 6 implementation branch in progress; App Store readiness planned
 - Supabase status: migrations, seed, and atomic completion RPC applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: codex/phase6-production-readiness
-- Next task: create production readiness foundation from Phase 6 blueprint
+- Next branch planned: none yet
+- Next task: validate the Phase 6 draft legal/support routes and production-readiness links, then finalise the branch
 - Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and database-level smoke validation passed
 - Current blockers: hosted Vercel smoke test still needs confirmation if not already done
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
@@ -95,6 +95,13 @@ Use this file to leave a concise handoff for the next working session.
 - Hosted smoke testing, mobile browser QA, legal/support placeholders, and account deletion guidance are the main deliverables
 - The next branch should be `codex/phase6-production-readiness`
 - App Store wrapper work remains later than Phase 6
+
+## Phase 6 implementation note
+
+- Draft privacy, terms, support, and account deletion pages now exist
+- Public and authenticated discovery links now point to the draft production-basics pages
+- Local smoke testing confirmed the new public pages render and `/settings` still redirects unauthenticated visitors to sign-in
+- Final legal review and hosted verification still remain before this phase can be considered complete
 
 ## Include
 
