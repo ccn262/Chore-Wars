@@ -20,6 +20,9 @@ Track unresolved issues that are understood and accepted for now.
 - Chore engine not yet implemented
 - Runtime testing will require Supabase env vars and an authenticated household user
 - RLS policies may need narrow follow-up fixes once chore completion is tested
+- Phase 4 runtime smoke test passed locally after a narrow profile bootstrap race fix
+- Phase 4 runtime smoke test passed locally after an atomic profile bootstrap fix
+- No current implementation blockers remain for the Phase 4 chore engine foundation
 
 ## Entry format
 

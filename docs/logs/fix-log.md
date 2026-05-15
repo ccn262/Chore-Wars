@@ -37,3 +37,15 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: changed household creation to use a minimal insert, then query the inserted household back in a separate read before creating settings and verifying the owner member
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
 - Verification: runtime smoke test passed after the fix, including sign-in, household creation, owner-member creation, and sign-out
+
+- Issue: Phase 4 runtime smoke test hit `duplicate key value violates unique constraint "profiles_auth_user_id_key"` on the first signed-in `/home` render
+- Root cause: the app shell layout and the home page both call `getViewerContext()`, so profile bootstrap could race and attempt the same insert twice during the same render
+- Fix: made `ensureProfileForUser()` treat the unique-constraint conflict as a harmless concurrent bootstrap and re-read the existing profile
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: Phase 4 runtime smoke test passed after the fix; /home, /chores, chore completion, points ledger, and sign-out all validated locally
+
+- Issue: Phase 4 review still showed the same profile bootstrap race on repeated authenticated `/home` renders
+- Root cause: the insert-and-recover path was still non-atomic, so two concurrent bootstrap calls could both miss the profile and race on the unique constraint
+- Fix: switched profile bootstrap to a single `upsert(..., { onConflict: "auth_user_id" })` path so repeated renders converge on one profile row safely
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: Phase 4 runtime smoke test passed again after the atomic bootstrap fix; lint, build, and repository checks remained clean

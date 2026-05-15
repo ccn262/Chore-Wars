@@ -89,21 +89,24 @@ export async function ensureProfileForUser(
   const profileDisplayName =
     displayName?.trim() || displayNameFromEmail(email);
 
-  const { data: createdProfile, error: profileCreateError } = await supabase
+  const { data: createdProfile, error: profileUpsertError } = await supabase
     .from("profiles")
-    .insert({
-      auth_user_id: user.id,
-      email,
-      display_name: profileDisplayName,
-      locale: defaultLocale,
-      timezone: defaultTimezone,
-    })
+    .upsert(
+      {
+        auth_user_id: user.id,
+        email,
+        display_name: profileDisplayName,
+        locale: defaultLocale,
+        timezone: defaultTimezone,
+      },
+      { onConflict: "auth_user_id" },
+    )
     .select("id, auth_user_id, email, display_name, locale, timezone")
     .single();
 
-  if (profileCreateError || !createdProfile) {
+  if (profileUpsertError || !createdProfile) {
     throw new Error(
-      getAuthErrorMessage(profileCreateError, "Unable to create your profile."),
+      getAuthErrorMessage(profileUpsertError, "Unable to create your profile."),
     );
   }
 
@@ -174,10 +177,13 @@ export async function getViewerContext(): Promise<ViewerContext> {
     };
   }
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  const user = session?.user ?? null;
+  const [{ data: sessionData }, { data: userData }] = await Promise.all([
+    supabase.auth.getSession(),
+    supabase.auth.getUser(),
+  ]);
+
+  const session = sessionData.session ?? null;
+  const user = userData.user ?? null;
 
   if (!user) {
     return {
