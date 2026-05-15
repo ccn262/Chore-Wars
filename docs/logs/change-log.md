@@ -12,6 +12,8 @@ Record visible project changes and notable doc updates here.
 - Phase 1 route structure reviewed and confirmed
 - Phase 2 database implementation blueprint created
 - Phase 2 Codex prompt created
+- Phase 2 database migration and seed files created
+- Phase 2 database docs updated for implemented schema
 
 ## Entry format
 

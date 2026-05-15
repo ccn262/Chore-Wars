@@ -45,6 +45,11 @@ Record major product and technical decisions here.
 - Household member identity remains separate from auth profile
 - Rewards, forfeits, achievements, and payments remain future phases
 - Default chores are seeded as templates, not hardcoded in UI
+- Profiles are app records with optional auth linkage rather than auth-user primary keys
+- Household creation auto-provisions the owner member via database trigger
+- Accepted invites materialize household members through the database layer
+- Chore completions write to the points ledger through a trigger so scoring stays centralised
+- Starter chore categories and templates are seeded in SQL
 
 ## Entry format
 

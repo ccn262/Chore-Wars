@@ -5,12 +5,12 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 1 merged / preparing Phase 2 database foundation
-- Current branch: main
-- Repo status: Phase 1 app foundation merged
+- Current phase: Phase 2 database foundation in progress
+- Current branch: codex/phase2-database-foundation
+- Repo status: Phase 2 database scaffold created locally
 - Next branch planned: codex/phase2-database-foundation
-- Next task: create Supabase database foundation from Phase 2 blueprint
-- Implementation status: app scaffold complete; database not started
+- Next task: finish validation, commit, and push the database foundation branch
+- Implementation status: Supabase SQL files and database docs updated
 - Current blockers: none
 
 ## Phase 1 summary
@@ -27,6 +27,9 @@ Use this file to leave a concise handoff for the next working session.
 - Phase 2 blueprint prepared for the Supabase database foundation
 - Core relational tables, RLS, seed data, and migration strategy are planned
 - A Codex-ready prompt is prepared for the next database implementation task
+- Core migration and seed SQL files have been created
+- Database docs have been aligned to the implemented table set
+- Validation available in this environment is limited to repo-level checks
 
 ## Include
 
