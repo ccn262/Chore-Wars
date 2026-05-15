@@ -31,6 +31,9 @@ Track unresolved issues that are understood and accepted for now.
 - RLS policies may still require follow-up as more member and role flows are added
 - Repeated local auth sign-up attempts can hit Supabase email rate limits during smoke testing, so a disposable admin-created test user may be needed for reliable validation
 - Phase 5 runtime smoke testing completed successfully after using a disposable confirmed user and cleaning up the test data
+- Local review smoke retest hit Supabase email rate limiting on fresh sign-up attempts
+- The current local `.env.local` does not expose a service-role key, so disposable admin-created smoke-test users are not available from the local env alone
+- Full repeatable end-to-end auth smoke testing is therefore currently environment-limited rather than code-blocked
 
 ## Entry format
 

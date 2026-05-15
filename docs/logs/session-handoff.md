@@ -12,9 +12,9 @@ Use this file to leave a concise handoff for the next working session.
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: codex/phase5-usability-polish
-- Next task: commit and push the Phase 5 usability polish implementation
-- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; Phase 5 runtime smoke test passed
-- Current blockers: none
+- Next task: complete the Phase 5 review handoff and keep the branch ready for any follow-up fixes
+- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; Phase 5 review found no code changes required
+- Current blockers: local smoke auth is limited by Supabase email rate limiting, and full disposable-user retesting would be easier with a local service-role credential
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -77,6 +77,8 @@ Use this file to leave a concise handoff for the next working session.
 - Phase 5 runtime smoke test passed locally against the Chore Wars Supabase project with a disposable admin-created test user
 - Test data from the smoke run was cleaned up after verification
 - Sign-out now returns to the public landing page as intended
+- Phase 5 review confirmed the UI and data flow still align with the blueprint, and no code changes were needed during review
+- The latest local smoke attempt hit Supabase email rate limiting on fresh sign-up, so full auth retesting is currently environment-limited
 
 ## Include
 
