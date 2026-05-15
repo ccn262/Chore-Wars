@@ -13,54 +13,6 @@ begin
 end;
 $$;
 
-create or replace function public.current_profile_id()
-returns uuid
-language sql
-stable
-security definer
-set search_path = public
-as $$
-  select p.id
-  from public.profiles p
-  where p.auth_user_id = auth.uid()
-  limit 1;
-$$;
-
-create or replace function public.is_household_member(target_household_id uuid)
-returns boolean
-language sql
-stable
-security definer
-set search_path = public
-as $$
-  select exists (
-    select 1
-    from public.household_members hm
-    where hm.household_id = target_household_id
-      and hm.profile_id = public.current_profile_id()
-      and hm.status = 'active'
-      and hm.archived_at is null
-  );
-$$;
-
-create or replace function public.is_household_admin(target_household_id uuid)
-returns boolean
-language sql
-stable
-security definer
-set search_path = public
-as $$
-  select exists (
-    select 1
-    from public.household_members hm
-    where hm.household_id = target_household_id
-      and hm.profile_id = public.current_profile_id()
-      and hm.status = 'active'
-      and hm.archived_at is null
-      and hm.role in ('owner', 'admin')
-  );
-$$;
-
 create table if not exists public.profiles (
   id uuid primary key default gen_random_uuid(),
   auth_user_id uuid unique,
@@ -266,6 +218,54 @@ create index if not exists audit_log_household_id_idx
 
 create index if not exists audit_log_created_at_idx
   on public.audit_log (created_at desc);
+
+create or replace function public.current_profile_id()
+returns uuid
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select p.id
+  from public.profiles p
+  where p.auth_user_id = auth.uid()
+  limit 1;
+$$;
+
+create or replace function public.is_household_member(target_household_id uuid)
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.household_members hm
+    where hm.household_id = target_household_id
+      and hm.profile_id = public.current_profile_id()
+      and hm.status = 'active'
+      and hm.archived_at is null
+  );
+$$;
+
+create or replace function public.is_household_admin(target_household_id uuid)
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.household_members hm
+    where hm.household_id = target_household_id
+      and hm.profile_id = public.current_profile_id()
+      and hm.status = 'active'
+      and hm.archived_at is null
+      and hm.role in ('owner', 'admin')
+  );
+$$;
 
 create trigger set_profiles_updated_at
 before update on public.profiles
