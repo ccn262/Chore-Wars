@@ -5,16 +5,26 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 6 production readiness foundation in progress
-- Current branch: codex/phase6-production-readiness
-- Repo status: Phases 1-5 merged; Phase 6 draft legal/support pages are implemented; App Store readiness planned
+- Current phase: Phase 6 merged and deployed / preparing Phase 7 rewards and forfeits
+- Current branch: main
+- Repo status: Phases 1-6 merged and hosted MVP working
+- Vercel status: hosted MVP deployed and working for early testing
 - Supabase status: migrations, seed, and atomic completion RPC applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: none yet
-- Next task: review the draft legal/support pages on the hosted Vercel deployment and confirm the production-readiness flow end to end
-- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, usability polish, and draft production-readiness pages are complete; the support contact placeholder is now configurable and public auth pages link to the draft legal pages
+- Next task: create rewards and forfeits foundation from the Phase 7 blueprint
+- Implementation status: hosted MVP core loop complete; rewards and forfeits not started
 - Current blockers: none known
+- Known limitations:
+  - legal pages are placeholders
+  - support email is placeholder
+  - account deletion is request/instructions only
+  - custom domain not connected
+  - Resend not configured
+  - App Store/Expo not started
+  - advanced reports not implemented
+  - photo proof not implemented
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -103,6 +113,14 @@ Use this file to leave a concise handoff for the next working session.
 - Local smoke testing confirmed the new public pages render and the auth pages still load
 - Support now uses a configurable placeholder contact value for early testing
 - Final legal review and hosted verification still remain before this phase can be considered complete
+
+## Phase 7 planning note
+
+- Rewards and forfeits are the next product layer after hosted MVP readiness
+- The rules should stay manual, playful, and household-configurable
+- Weekly winner and bottom-place displays should use existing score data where possible
+- Automatic enforcement, email notifications, payments, and advanced reporting remain out of scope
+- The next branch should be `codex/phase7-rewards-forfeits`
 
 ## Hosted smoke fix note
 

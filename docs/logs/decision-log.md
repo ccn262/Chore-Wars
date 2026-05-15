@@ -95,6 +95,14 @@ Record major product and technical decisions here.
 - Custom domain work can follow after hosted Vercel testing is stable
 - Draft production-basics pages can be linked from public and authenticated screens while legal review is pending
 
+## Phase 7 decisions
+
+- Rewards and forfeits are the next product layer after hosted MVP readiness
+- Rewards and forfeits should remain simple and manually configured in the MVP
+- Forfeits should be playful and not shame-heavy
+- Automatic enforcement, email notifications, and payments remain future work
+- Weekly winner and bottom display should use existing weekly score data where possible
+
 ## Entry format
 
 - Date

@@ -74,6 +74,16 @@
 - Release checklist updates
 - No major feature expansion
 
+## Phase 7: Rewards and forfeits foundation
+
+- Simple household reward rule
+- Simple household forfeit rule
+- Owner/admin edit
+- Winner/leader display
+- Bottom-place display
+- Lightweight rule cards
+- No payments, emails, or notifications yet
+
 ## Phase 8: App Store readiness and Expo wrapper
 
 - Expo wrapper
@@ -93,4 +103,5 @@
 ## Note
 
 - Phase 6 is the production-readiness phase for hosted testing.
+- Phase 7 is the next product phase after the hosted MVP readiness checkpoint.
 - Phase 8 is a future release-readiness phase and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.

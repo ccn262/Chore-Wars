@@ -56,6 +56,16 @@ Track unresolved issues that are understood and accepted for now.
 - App Store implementation not started
 - Hosted production verification remains pending even though the local draft-page smoke test passed
 
+## Phase 7 notes
+
+- Rewards and forfeits not yet implemented
+- Tie handling for weekly winner and bottom-place display is not yet designed
+- Legal pages remain placeholders
+- Support email remains placeholder
+- Account deletion is request/instructions only
+- App Store and Expo not started
+- Resend not configured
+
 ## Hosted smoke follow-up notes
 
 - The custom chore visibility issue was caused by missing client refresh after successful chore creation, not by a database insert failure

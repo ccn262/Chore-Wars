@@ -41,6 +41,12 @@ Record visible project changes and notable doc updates here.
 - Phase 6 support contact placeholder and auth-page public links added
 - Phase 6 production readiness foundation implementation updated and validated locally
 - Hosted chore visibility and weekly leaderboard smoke issues fixed
+- Hosted MVP readiness checkpoint recorded
+- Phase 6 deployed and verified
+- Vercel hosted app confirmed working for early testing
+- Legal/support placeholder routes confirmed live
+- Phase 7 rewards and forfeits blueprint created
+- Phase 7 Codex prompt created
 
 ## Entry format
 
