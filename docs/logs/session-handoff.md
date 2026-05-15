@@ -5,16 +5,13 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 0 - Planning and repo setup
+- Current phase: Phase 0 complete / preparing Phase 1
 - Current branch: main
-- GitHub repo: https://github.com/ccn262/Chore-Wars.git
-- Current status: planning docs created, no app implementation yet
+- Repo status: planning docs pushed to GitHub
+- Next branch planned: codex/phase1-app-foundation
+- Next task: scaffold app foundation from Phase 1 blueprint
 - Implementation status: not started
-- Deployment status: not connected to Vercel yet
-- Supabase status: not connected yet
-- Resend status: not connected yet
 - Current blockers: none
-- Next step: complete planning-doc readiness, push to GitHub, then prepare Phase 1 implementation prompt
 
 ## Include
 

@@ -25,6 +25,13 @@ Record major product and technical decisions here.
 - Internationalisation readiness should be built in from the start
 - Marketing and brand strategy must be considered alongside product build
 
+## Phase 1 decisions
+
+- Phase 1 is foundation-only
+- Business logic is excluded
+- Feature work starts after the app shell is stable
+- Feature branches should be used for implementation work
+
 ## Entry format
 
 - Date
