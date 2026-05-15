@@ -19,6 +19,8 @@ Record visible project changes and notable doc updates here.
 - Phase 3 auth and household onboarding foundation implemented
 - Phase 3 auth foundation review completed
 - Phase 3 Supabase server cookie safety hardened
+- Phase 3 runtime smoke test completed
+- Phase 3 household creation helper updated to avoid RLS select failures on insert
 
 ## Entry format
 

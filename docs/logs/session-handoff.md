@@ -5,13 +5,13 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 3 auth foundation review complete
+- Current phase: Phase 3 runtime smoke test complete
 - Current branch: codex/phase3-auth-household-foundation
-- Repo status: Phase 1 and Phase 2 merged; Phase 3 auth foundation reviewed and lightly hardened
+- Repo status: Phase 1 and Phase 2 merged; Phase 3 auth foundation smoke-tested and lightly hardened
 - Supabase status: project created, migration and seed applied successfully
-- Next branch planned: codex/phase3-auth-household-foundation
-- Next task: commit and push the auth foundation review fix if validation stays clean
-- Implementation status: app scaffold, database foundation, and auth/onboarding foundation complete locally
+- Next branch planned: codex/phase4-chore-engine-foundation
+- Next task: prepare Phase 4 chore engine planning from the validated auth/onboarding base
+- Implementation status: app scaffold, database foundation, and auth/onboarding foundation complete locally; runtime smoke test passed
 - Current blockers: none
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
@@ -50,7 +50,8 @@ Use this file to leave a concise handoff for the next working session.
 - The protected app shell now redirects unauthenticated users and users without a household
 - Profile bootstrap and household creation are wired to the Phase 2 database foundation
 - Server Supabase cookie writes are now guarded so server-rendered auth reads stay safer
-- Runtime auth testing is pending because local Supabase env vars are not available in `.env.local`
+- Runtime auth smoke test passed with a disposable test user in the local Supabase project
+- Landing, auth, redirect, household creation, owner-member creation, and sign-out flows all passed in the local runtime check
 
 ## Include
 

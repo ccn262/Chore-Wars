@@ -220,20 +220,34 @@ export async function createHouseholdForProfile(
   const locale = profile.locale || defaultLocale;
   const timezone = profile.timezone || defaultTimezone;
 
-  const { data: household, error: householdError } = await supabase
-    .from("households")
-    .insert({
-      name: householdName,
-      created_by_profile_id: profile.id,
-      locale,
-      timezone,
-    })
-    .select("id, name, locale, timezone, status")
-    .single();
+  const { error: householdError } = await supabase.from("households").insert({
+    name: householdName,
+    created_by_profile_id: profile.id,
+    locale,
+    timezone,
+  });
 
-  if (householdError || !household) {
+  if (householdError) {
     throw new Error(
       getAuthErrorMessage(householdError, "Unable to create your household."),
+    );
+  }
+
+  const { data: household, error: householdLookupError } = await supabase
+    .from("households")
+    .select("id, name, locale, timezone, status")
+    .eq("created_by_profile_id", profile.id)
+    .eq("name", householdName)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (householdLookupError || !household) {
+    throw new Error(
+      getAuthErrorMessage(
+        householdLookupError,
+        "Unable to confirm your household was created.",
+      ),
     );
   }
 
