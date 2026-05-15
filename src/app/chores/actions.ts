@@ -176,41 +176,47 @@ export async function completeChoreAction(
   }
 
   const viewer = await getViewerContext();
-  if (!viewer.session || !viewer.profile || !viewer.household) {
+  if (!viewer.session || !viewer.profile) {
     return { status: "error", message: "Sign in to complete chores." };
   }
 
-  const { data: chore, error: choreError } = await supabase
-    .from("chores")
-    .select("id, title, points, household_id, status")
-    .eq("id", choreId)
-    .eq("household_id", viewer.household.id)
-    .maybeSingle();
+  const { data, error } = await supabase
+    .rpc("complete_chore_atomically", {
+      target_chore_id: choreId,
+    })
+    .single();
+  const completion = data as
+    | {
+        status?: string;
+        chore_title?: string | null;
+        points_awarded?: number | null;
+      }
+    | null;
 
-  if (choreError || !chore || chore.status !== "active") {
+  if (error || !completion) {
     return {
       status: "error",
-      message: getActionErrorMessage(choreError, "That chore is not available."),
+      message: getActionErrorMessage(error, "Could not record that completion."),
     };
   }
 
-  const { error: completionError } = await supabase.from("chore_completions").insert({
-    household_id: viewer.household.id,
-    chore_id: chore.id,
-    completed_by_member_id: viewer.household.memberId,
-    points_awarded: chore.points,
-  });
-
-  if (completionError) {
+  if (completion.status === "already_completed") {
     return {
       status: "error",
-      message: getActionErrorMessage(completionError, "Could not record that completion."),
+      message: "That tap already landed. Give the house a second to catch up.",
     };
   }
 
-  refreshChorePaths();
+  if (completion.status === "inserted") {
+    refreshChorePaths();
+    return {
+      status: "success",
+      message: `${completion.chore_title} done. +${completion.points_awarded} points.`,
+    };
+  }
+
   return {
-    status: "success",
-    message: `${chore.title} done. +${chore.points} points.`,
+    status: "error",
+    message: "Could not record that completion.",
   };
 }

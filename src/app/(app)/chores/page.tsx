@@ -20,6 +20,15 @@ export default async function ChoresPage() {
         action={<Button href="/home" variant="secondary">Home</Button>}
       />
 
+      <Card className="space-y-2 bg-muted/40">
+        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+          One tap
+        </p>
+        <p className="text-sm leading-6 text-foreground">
+          Add a chore, then complete it quickly from Home or here. Keep the tap count low.
+        </p>
+      </Card>
+
       {dashboard.chores.length ? (
         <div className="space-y-3">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
@@ -47,6 +56,9 @@ export default async function ChoresPage() {
       <div className="space-y-3">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
           Starter templates
+        </p>
+        <p className="text-sm leading-6 text-muted-foreground">
+          Use a seeded template to add a household chore with the right points and icon.
         </p>
         <div className="grid gap-3">
           {dashboard.templates.map((template) => (

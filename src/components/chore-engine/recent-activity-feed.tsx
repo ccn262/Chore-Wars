@@ -16,6 +16,8 @@ export function RecentActivityFeed({
   locale,
   timezone,
 }: RecentActivityFeedProps) {
+  const latest = activity[0];
+
   return (
     <Card className="space-y-4">
       <div className="space-y-1">
@@ -27,9 +29,24 @@ export function RecentActivityFeed({
         </p>
       </div>
 
+      {latest ? (
+        <div className="rounded-[1.25rem] bg-foreground px-4 py-3 text-background">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-background/70">
+            Latest tap
+          </p>
+          <p className="mt-1 text-sm font-semibold leading-6">
+            {latest.memberDisplayName} finished {latest.choreTitle}
+          </p>
+          <p className="text-xs leading-5 text-background/75">
+            +{latest.pointsAwarded} points ·{" "}
+            {formatShortDateTime(latest.completedAt, locale, timezone)}
+          </p>
+        </div>
+      ) : null}
+
       {activity.length ? (
-        <div className="space-y-3">
-          {activity.map((item) => (
+        <div className="space-y-2">
+          {activity.slice(latest ? 1 : 0).map((item) => (
             <div
               key={item.id}
               className="flex items-start gap-3 rounded-[1.25rem] bg-muted/60 p-3"
@@ -50,9 +67,12 @@ export function RecentActivityFeed({
           ))}
         </div>
       ) : (
-        <p className="text-sm leading-6 text-muted-foreground">
-          No completions yet. The first tap will appear here.
-        </p>
+        <div className="rounded-[1.25rem] border border-dashed border-border bg-muted/25 p-4">
+          <p className="text-sm font-semibold text-foreground">No completions yet</p>
+          <p className="mt-1 text-sm leading-6 text-muted-foreground">
+            The first quick tap will show up here and give the household some momentum.
+          </p>
+        </div>
       )}
     </Card>
   );

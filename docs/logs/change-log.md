@@ -28,6 +28,11 @@ Record visible project changes and notable doc updates here.
 - Phase 4 chore engine foundation reviewed and hardened
 - Phase 5 usability and polish blueprint created
 - Phase 5 Codex prompt created
+- Phase 5 usability polish implemented and smoke-tested
+- Phase 5 usability polish review completed with no code changes required
+- Phase 5 runtime smoke retest was limited by Supabase email rate limiting in the local auth flow
+- Phase 5 atomic chore completion migration created and applied
+- Phase 5 duplicate-tap protection updated to use a database-backed atomic RPC
 
 ## Entry format
 

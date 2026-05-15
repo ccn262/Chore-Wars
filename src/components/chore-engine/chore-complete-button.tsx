@@ -28,6 +28,10 @@ export function ChoreCompleteButton({
     completeChoreAction,
     initialState,
   );
+  const isSuccess = state.status === "success";
+  const messageClasses = isSuccess
+    ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-800"
+    : "border-red-500/20 bg-red-500/10 text-red-800";
 
   return (
     <div className="space-y-2">
@@ -35,18 +39,18 @@ export function ChoreCompleteButton({
         <input type="hidden" name="choreId" value={choreId} />
         <Button
           type="submit"
-          className={compact ? "w-full text-xs" : "w-full"}
+          className={`w-full ${compact ? "text-xs" : ""}`}
           disabled={pending}
+          aria-busy={pending}
         >
-          {pending ? "Tapping..." : `${label} · +${points}`}
+          {pending ? "Saving..." : `${label} · +${points}`}
         </Button>
       </form>
       {state.message ? (
         <p
-          className={`text-xs leading-5 ${
-            state.status === "error" ? "text-red-700" : "text-emerald-700"
-          }`}
+          className={`rounded-2xl border px-3 py-2 text-xs leading-5 ${messageClasses}`}
           aria-live="polite"
+          role="status"
         >
           {state.message}
         </p>
