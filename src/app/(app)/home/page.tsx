@@ -12,11 +12,11 @@ export default async function HomePage() {
   const viewer = await getViewerContext();
   const dashboard = await getChoreEngineDashboard(viewer);
   const { household, profile } = viewer;
-  const chores = dashboard.chores.slice(0, 4);
+  const quickChores = dashboard.quickChores.slice(0, 4);
   const starterTemplates = dashboard.templates.slice(0, 4);
   const leadingMember = dashboard.weeklyScores[0];
   const viewerScore = dashboard.weeklyScores.find((score) => score.isViewer);
-  const nextAction = chores[0] ?? starterTemplates[0];
+  const nextAction = quickChores[0] ?? starterTemplates[0];
 
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
@@ -28,7 +28,7 @@ export default async function HomePage() {
             ? `${household.name} is live. Tap a chore, score points, and keep the house fair.`
             : "Your household will appear here once setup is complete."
         }
-        action={<Button href="/chores" variant="secondary">Chores</Button>}
+        action={<Button href="/chores" variant="secondary">View all chores</Button>}
       />
 
       <Card className="space-y-4 border-foreground/10 bg-foreground text-background">
@@ -71,16 +71,16 @@ export default async function HomePage() {
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-            {chores.length ? "Quick chores" : "Starter templates"}
+            {quickChores.length ? "Quick chores" : "Starter templates"}
           </h2>
           <Button href="/chores" variant="secondary" className="shrink-0">
-            Manage
+            View all chores
           </Button>
         </div>
 
-        {chores.length ? (
+        {quickChores.length ? (
           <div className="grid gap-3">
-            {chores.map((chore) => (
+            {quickChores.map((chore) => (
               <ChoreCard
                 key={chore.id}
                 chore={chore}
@@ -121,7 +121,7 @@ export default async function HomePage() {
             Next move
           </p>
           <p className="text-sm leading-6 text-foreground">
-            {chores.length
+            {quickChores.length
               ? `Tap ${nextAction.title} to keep the week moving.`
               : `Add ${nextAction.title} from the starter templates to begin.`}
           </p>

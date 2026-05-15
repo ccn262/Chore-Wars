@@ -67,3 +67,9 @@ Track unresolved issues that are understood and accepted for now.
 - Severity
 - Current workaround
 - Target fix
+
+## Hosted smoke fix note
+
+- Custom chores can be missing from Home quick actions if the quick-action limit is filled by earlier chores; this has now been fixed in the current branch
+- Repeat completions are allowed after the short duplicate-tap window; only rapid accidental duplicates are blocked
+- Hosted Vercel retest is still recommended after merge to confirm the quick-action ordering in production

@@ -46,3 +46,10 @@ Record visible project changes and notable doc updates here.
 - Change
 - Area
 - Notes
+
+## Hosted smoke fix note
+
+- Issue: Custom chores could fall out of the Home quick-actions set even when they were active
+- Fix: Home quick actions now prefer active custom chores first and keep the full chores list intact on the Chores page
+- Repeat-completion rule: the atomic duplicate-tap guard only blocks rapid accidental repeats; later legitimate completions are still allowed
+- Verification: local smoke test passed with one custom chore plus four starter chores, immediate duplicate completion was blocked, and repeat completion succeeded again after the short window
