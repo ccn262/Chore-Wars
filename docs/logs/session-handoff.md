@@ -117,3 +117,14 @@ Use this file to leave a concise handoff for the next working session.
 - Assumptions made
 - Risks or open questions
 - Suggested next step
+
+## Hosted smoke fix note
+
+- Current phase: Phase 5 hosted quick-actions follow-up complete; ready to retest hosted deployment after merge
+- Current branch: codex/fix-custom-chores-quick-actions
+- Repo status: Phase 1-6 planning and implementation are present; this branch contains a narrow Home quick-actions fix
+- Next branch planned: none yet
+- Next task: commit, push, and open the PR for the quick-actions fix, then retest the Vercel-hosted deployment after merge
+- Implementation status: Home quick actions now prefer active custom chores first; repeat completions remain allowed after the short duplicate window
+- Current blockers: none
+- Security note: secrets must remain outside git and only in `.env.local` or deployment env vars

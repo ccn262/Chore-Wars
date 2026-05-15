@@ -64,6 +64,7 @@ export type ChoreEngineDashboard = {
   settings: HouseholdSettingsSummary;
   templates: ChoreTemplateSummary[];
   chores: HouseholdChoreSummary[];
+  quickChores: HouseholdChoreSummary[];
   activity: ActivityItem[];
   weeklyScores: WeeklyMemberScore[];
   currentWeekStart: string;
@@ -81,6 +82,7 @@ function emptyDashboard(viewer: ViewerContext): ChoreEngineDashboard {
     },
     templates: [],
     chores: [],
+    quickChores: [],
     activity: [],
     weeklyScores: [],
     currentWeekStart: new Date().toISOString(),
@@ -109,6 +111,32 @@ function getTimeZoneOffsetMinutes(timezone: string, date: Date) {
   const hours = Number(match[2] || 0);
   const minutes = Number(match[3] || 0);
   return sign * (hours * 60 + minutes);
+}
+
+function getQuickChores(chores: HouseholdChoreSummary[], limit = 4) {
+  // Prefer active custom chores first so newly created chores are visible on Home
+  // without changing the full chores list or the one-tap completion flow.
+  return [...chores]
+    .sort((left, right) => {
+      const sourceRank = Number(right.source === "custom") - Number(left.source === "custom");
+      if (sourceRank !== 0) {
+        return sourceRank;
+      }
+
+      const createdAtDiff =
+        new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime();
+      if (createdAtDiff !== 0) {
+        return createdAtDiff;
+      }
+
+      const sortOrderDiff = left.sortOrder - right.sortOrder;
+      if (sortOrderDiff !== 0) {
+        return sortOrderDiff;
+      }
+
+      return left.title.localeCompare(right.title);
+    })
+    .slice(0, limit);
 }
 
 function getWeekStartDate(timezone: string, weekStartsOn: number) {
@@ -307,6 +335,7 @@ export async function getChoreEngineDashboard(
   const choreMap = new Map(chores.map((chore) => [chore.id, chore]));
   const memberMap = new Map(members.map((member) => [member.id, member]));
   const viewerProfileId = viewer.profile?.id ?? null;
+  const quickChores = getQuickChores(chores);
 
   const activity = (activityResult.data ?? []).map((row) => {
     const chore = choreMap.get(row.chore_id);
@@ -351,6 +380,7 @@ export async function getChoreEngineDashboard(
     },
     templates,
     chores,
+    quickChores,
     activity,
     weeklyScores,
     currentWeekStart: currentWeekStart.toISOString(),

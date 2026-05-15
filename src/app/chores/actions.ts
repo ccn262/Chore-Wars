@@ -180,6 +180,8 @@ export async function completeChoreAction(
     return { status: "error", message: "Sign in to complete chores." };
   }
 
+  // The RPC only suppresses rapid duplicate taps.
+  // Legitimate later completions of the same chore are still allowed over time.
   const { data, error } = await supabase
     .rpc("complete_chore_atomically", {
       target_chore_id: choreId,
