@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 5 hosted smoke-fix branch in progress
-- Current branch: codex/fix-hosted-chore-visibility-leaderboard
-- Repo status: Phases 1-5 merged; hosted smoke-test follow-up branch in progress; App Store readiness planned
+- Current phase: Phase 6 production readiness foundation in progress
+- Current branch: codex/phase6-production-readiness
+- Repo status: Phases 1-5 merged; Phase 6 draft legal/support pages are implemented; App Store readiness planned
 - Supabase status: migrations, seed, and atomic completion RPC applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: none yet
-- Next task: commit and push the hosted chore visibility and leaderboard fixes, then retest the deployed Vercel build after merge
-- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and the hosted chore visibility / leaderboard follow-up is being fixed
-- Current blockers: hosted Vercel retest still needs confirmation after the fix is deployed
+- Next task: review the draft legal/support pages on the hosted Vercel deployment and confirm the production-readiness flow end to end
+- Implementation status: app scaffold, database, auth, household onboarding, core chore loop, usability polish, and draft production-readiness pages are complete; the support contact placeholder is now configurable and public auth pages link to the draft legal pages
+- Current blockers: none known
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -100,7 +100,8 @@ Use this file to leave a concise handoff for the next working session.
 
 - Draft privacy, terms, support, and account deletion pages now exist
 - Public and authenticated discovery links now point to the draft production-basics pages
-- Local smoke testing confirmed the new public pages render and `/settings` still redirects unauthenticated visitors to sign-in
+- Local smoke testing confirmed the new public pages render and the auth pages still load
+- Support now uses a configurable placeholder contact value for early testing
 - Final legal review and hosted verification still remain before this phase can be considered complete
 
 ## Hosted smoke fix note

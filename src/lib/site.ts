@@ -13,6 +13,9 @@ export const defaultLocale =
 export const defaultTimezone =
   process.env.NEXT_PUBLIC_DEFAULT_TIMEZONE?.trim() || "Europe/London";
 
+export const supportEmail =
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() || "support@example.com";
+
 export const appSections = [
   { href: "/home", label: "Home" },
   { href: "/chores", label: "Chores" },
