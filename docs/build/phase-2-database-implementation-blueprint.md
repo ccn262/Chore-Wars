@@ -66,7 +66,7 @@ Create the core relational database base for Chore Wars in Supabase so the app c
 
 ## Table relationship overview
 
-- `profiles` stores the app-level user profile tied to a Supabase Auth user
+- `profiles` stores the app-level user profile and can link to a Supabase Auth user through a separate auth identifier
 - `households` is the shared home container
 - `household_members` links profiles to households and holds the household-scoped identity
 - `household_invites` supports controlled onboarding into a household

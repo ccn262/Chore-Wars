@@ -5,12 +5,12 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 1 merged / preparing Phase 2 database foundation
-- Current branch: main
-- Repo status: Phase 1 app foundation merged
+- Current phase: Phase 2 database foundation manually validated
+- Current branch: codex/phase2-database-foundation
+- Repo status: Phase 2 database foundation applied and validated in Supabase SQL Editor
 - Next branch planned: codex/phase2-database-foundation
-- Next task: create Supabase database foundation from Phase 2 blueprint
-- Implementation status: app scaffold complete; database not started
+- Next task: prepare the next phase planning prompt
+- Implementation status: migration applied successfully; seed applied successfully
 - Current blockers: none
 
 ## Phase 1 summary
@@ -27,6 +27,16 @@ Use this file to leave a concise handoff for the next working session.
 - Phase 2 blueprint prepared for the Supabase database foundation
 - Core relational tables, RLS, seed data, and migration strategy are planned
 - A Codex-ready prompt is prepared for the next database implementation task
+- Core migration and seed SQL files have been created
+- Database docs have been aligned to the implemented table set
+- Validation available in this environment is limited to repo-level checks
+- Chore Wars Supabase dev project exists
+- Supabase credentials must be stored only in `.env.local`
+- Do not commit or store secrets in tracked files
+- The migration has now been applied successfully in Supabase SQL Editor
+- The seed has now been applied successfully in Supabase SQL Editor
+- Phase 2 database foundation has been manually validated in Supabase SQL Editor
+- The seed file now contains only global starter categories and templates
 
 ## Include
 
