@@ -5,13 +5,12 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 1 scaffold complete / ready for feature work
-- Current branch: codex/phase1-app-foundation
-- Repo status: Phase 1 app foundation scaffolded and validated
-- Route review status: confirmed no duplicate auth/setup placeholder routes in the repo
-- Next task: start the first feature branch after the foundation is reviewed
-- Implementation status: foundation scaffold complete, business logic not started
-- Validation results: `npm run lint` passed, `npm run build` passed
+- Current phase: Phase 1 merged / preparing Phase 2 database foundation
+- Current branch: main
+- Repo status: Phase 1 app foundation merged
+- Next branch planned: codex/phase2-database-foundation
+- Next task: create Supabase database foundation from Phase 2 blueprint
+- Implementation status: app scaffold complete; database not started
 - Current blockers: none
 
 ## Phase 1 summary
@@ -22,6 +21,12 @@ Use this file to leave a concise handoff for the next working session.
 - Reusable UI primitives added for future feature work
 - Supabase placeholder helpers added without real auth or database logic
 - Route structure reviewed and confirmed to use visible `/auth/*` and `/setup/*` segments plus the `(app)` shell group
+
+## Phase 2 summary
+
+- Phase 2 blueprint prepared for the Supabase database foundation
+- Core relational tables, RLS, seed data, and migration strategy are planned
+- A Codex-ready prompt is prepared for the next database implementation task
 
 ## Include
 

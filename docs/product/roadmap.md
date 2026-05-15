@@ -19,14 +19,22 @@
 - Household activity summary
 - Notification/email foundations
 
-## Phase 2: Retention and polish
+## Phase 2: Supabase database foundation
+
+- Core schema
+- RLS
+- Seed starter chores
+- Database validation
+- No UI feature work beyond placeholders
+
+## Phase 3: Retention and polish
 
 - Better reminders
 - Streaks or lightweight gamification
 - More visual reporting
 - Improved onboarding
 
-## Phase 3: Native expansion
+## Phase 4: Native expansion
 
 - Expo wrapper or native app path
 - Push notifications

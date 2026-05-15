@@ -36,6 +36,16 @@ Record major product and technical decisions here.
 - Keep Supabase helpers as lazy placeholders until real integration is needed
 - Keep the foundation minimal and validation-focused before moving to feature development
 
+## Phase 2 decisions
+
+- Phase 2 is database foundation only
+- Database schema comes before chore UI integration
+- RLS must be included from the start
+- Points use ledger-based scoring
+- Household member identity remains separate from auth profile
+- Rewards, forfeits, achievements, and payments remain future phases
+- Default chores are seeded as templates, not hardcoded in UI
+
 ## Entry format
 
 - Date
