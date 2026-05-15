@@ -18,10 +18,18 @@ export async function getSupabaseServerClient(): Promise<SupabaseClient | null> 
         return cookieStore.get(name)?.value;
       },
       set(name, value, options) {
-        cookieStore.set(name, value, options);
+        try {
+          cookieStore.set(name, value, options);
+        } catch {
+          // Server Components can expose a read-only cookie store; ignore write attempts there.
+        }
       },
       remove(name, options) {
-        cookieStore.set(name, "", { ...options, maxAge: 0 });
+        try {
+          cookieStore.set(name, "", { ...options, maxAge: 0 });
+        } catch {
+          // Server Components can expose a read-only cookie store; ignore write attempts there.
+        }
       },
     },
   });

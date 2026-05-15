@@ -17,6 +17,8 @@ Record visible project changes and notable doc updates here.
 - Phase 3 auth and household onboarding blueprint created
 - Phase 3 Codex prompt created
 - Phase 3 auth and household onboarding foundation implemented
+- Phase 3 auth foundation review completed
+- Phase 3 Supabase server cookie safety hardened
 
 ## Entry format
 

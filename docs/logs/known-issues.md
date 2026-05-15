@@ -14,7 +14,7 @@ Track unresolved issues that are understood and accepted for now.
 - Brand name, domain, trademark, and app-store availability still need validation
 - Phase 2 database foundation has now been manually validated in Supabase SQL Editor
 - Earlier exposed credentials should be rotated before real app connection if not already done
-- Phase 3 auth foundation is implemented locally, but runtime auth and onboarding should still be verified with real env vars
+- Phase 3 auth foundation is implemented locally, but runtime auth and onboarding are still pending because local Supabase env vars are not present in `.env.local`
 
 ## Entry format
 

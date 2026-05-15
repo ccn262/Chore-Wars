@@ -5,12 +5,12 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 3 auth and household onboarding foundation in progress
+- Current phase: Phase 3 auth foundation review complete
 - Current branch: codex/phase3-auth-household-foundation
-- Repo status: Phase 1 and Phase 2 merged; Phase 3 auth foundation added locally
+- Repo status: Phase 1 and Phase 2 merged; Phase 3 auth foundation reviewed and lightly hardened
 - Supabase status: project created, migration and seed applied successfully
 - Next branch planned: codex/phase3-auth-household-foundation
-- Next task: commit, push, and verify the auth and household onboarding foundation branch
+- Next task: commit and push the auth foundation review fix if validation stays clean
 - Implementation status: app scaffold, database foundation, and auth/onboarding foundation complete locally
 - Current blockers: none
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
@@ -49,6 +49,8 @@ Use this file to leave a concise handoff for the next working session.
 - Supabase Auth sign-in, sign-up, sign-out, callback, and household onboarding actions are implemented
 - The protected app shell now redirects unauthenticated users and users without a household
 - Profile bootstrap and household creation are wired to the Phase 2 database foundation
+- Server Supabase cookie writes are now guarded so server-rendered auth reads stay safer
+- Runtime auth testing is pending because local Supabase env vars are not available in `.env.local`
 
 ## Include
 
