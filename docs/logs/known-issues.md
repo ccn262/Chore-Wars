@@ -16,6 +16,10 @@ Track unresolved issues that are understood and accepted for now.
 - Earlier exposed credentials should be rotated before real app connection if not already done
 - Phase 3 auth foundation runtime smoke test passed with a disposable local Supabase account
 - No current runtime blockers remain for the Phase 3 auth and household onboarding foundation
+- No known implementation blockers
+- Chore engine not yet implemented
+- Runtime testing will require Supabase env vars and an authenticated household user
+- RLS policies may need narrow follow-up fixes once chore completion is tested
 
 ## Entry format
 

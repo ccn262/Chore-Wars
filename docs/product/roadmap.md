@@ -37,14 +37,26 @@
 - Create owner household member
 - No chore engine yet
 
-## Phase 4: Retention and polish
+## Phase 4: Chore engine foundation
+
+- Household chores
+- Starter templates
+- Custom chores
+- One-tap completion
+- Chore completion events
+- Points ledger entries
+- Simple recent activity
+- Simple weekly score summary
+- No advanced reports yet
+
+## Phase 5: Retention and polish
 
 - Better reminders
 - Streaks or lightweight gamification
 - More visual reporting
 - Improved onboarding
 
-## Phase 5: Native expansion
+## Phase 6: Native expansion
 
 - Expo wrapper or native app path
 - Push notifications

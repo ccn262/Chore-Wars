@@ -21,6 +21,8 @@ Record visible project changes and notable doc updates here.
 - Phase 3 Supabase server cookie safety hardened
 - Phase 3 runtime smoke test completed
 - Phase 3 household creation helper updated to avoid RLS select failures on insert
+- Phase 4 chore engine blueprint created
+- Phase 4 Codex prompt created
 
 ## Entry format
 

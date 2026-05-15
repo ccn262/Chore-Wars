@@ -5,13 +5,14 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 3 runtime smoke test complete
-- Current branch: codex/phase3-auth-household-foundation
-- Repo status: Phase 1 and Phase 2 merged; Phase 3 auth foundation smoke-tested and lightly hardened
+- Current phase: Phase 3 merged / preparing Phase 4 chore engine foundation
+- Current branch: main
+- Repo status: Phase 1, Phase 2, and Phase 3 merged
 - Supabase status: project created, migration and seed applied successfully
+- Auth status: Phase 3 smoke-tested and merged
 - Next branch planned: codex/phase4-chore-engine-foundation
-- Next task: prepare Phase 4 chore engine planning from the validated auth/onboarding base
-- Implementation status: app scaffold, database foundation, and auth/onboarding foundation complete locally; runtime smoke test passed
+- Next task: create core chore loop from Phase 4 blueprint
+- Implementation status: app scaffold, database, auth, and household onboarding complete; chore engine not started
 - Current blockers: none
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
@@ -52,6 +53,14 @@ Use this file to leave a concise handoff for the next working session.
 - Server Supabase cookie writes are now guarded so server-rendered auth reads stay safer
 - Runtime auth smoke test passed with a disposable test user in the local Supabase project
 - Landing, auth, redirect, household creation, owner-member creation, and sign-out flows all passed in the local runtime check
+
+## Phase 4 summary
+
+- Phase 4 blueprint prepared for the chore engine foundation
+- Phase 4 will focus on household chores, one-tap completion, and simple feedback
+- Starter chores must come from seeded templates and database data
+- A Codex-ready prompt is prepared for the next chore engine implementation task
+- Advanced reporting, streaks, rewards, and photo proof remain out of scope for this phase
 
 ## Include
 

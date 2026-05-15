@@ -62,6 +62,12 @@ Record major product and technical decisions here.
 - Sign-in, sign-up, sign-out, and household creation should use server actions to keep session handling simple
 - Supabase auth callback handling should complete sign-up confirmation redirects without introducing extra UI
 - Profile bootstrap should happen before household creation and remain separate from household membership
+- Core chore loop is the next priority after auth and household onboarding
+- One-tap chore completion is the central product interaction
+- Starter chores must come from seeded templates and database data, not hardcoded UI
+- Points must be written to `points_ledger` when a chore is completed
+- Recent activity and simple weekly totals are enough for Phase 4
+- Advanced reporting, streaks, rewards, and photo proof remain future phases
 
 ## Entry format
 
