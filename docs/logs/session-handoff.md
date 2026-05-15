@@ -5,12 +5,12 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 2 database foundation fix in progress
+- Current phase: Phase 2 database foundation manually validated
 - Current branch: codex/phase2-database-foundation
-- Repo status: Phase 2 database scaffold created locally; migration ordering fix applied
+- Repo status: Phase 2 database foundation applied and validated in Supabase SQL Editor
 - Next branch planned: codex/phase2-database-foundation
-- Next task: validate, commit, and push the migration ordering fix
-- Implementation status: Supabase SQL files and database docs updated; migration file corrected
+- Next task: prepare the next phase planning prompt
+- Implementation status: migration applied successfully; seed applied successfully
 - Current blockers: none
 
 ## Phase 1 summary
@@ -33,11 +33,10 @@ Use this file to leave a concise handoff for the next working session.
 - Chore Wars Supabase dev project exists
 - Supabase credentials must be stored only in `.env.local`
 - Do not commit or store secrets in tracked files
-- Manual Supabase SQL Editor migration retry is pending after fixing the `public.profiles` ordering issue
 - The migration has now been applied successfully in Supabase SQL Editor
-- The seed file failed because it contained fake household/demo rows that violated foreign key constraints
-- The seed file has been corrected to include only global starter categories and templates
-- Manual Supabase seed retry is pending
+- The seed has now been applied successfully in Supabase SQL Editor
+- Phase 2 database foundation has been manually validated in Supabase SQL Editor
+- The seed file now contains only global starter categories and templates
 
 ## Include
 
