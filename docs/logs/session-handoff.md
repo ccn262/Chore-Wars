@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 5 merged / planning future App Store readiness
+- Current phase: Phase 5 merged / preparing Phase 6 production readiness
 - Current branch: main
-- Repo status: Phases 1-5 merged
+- Repo status: Phases 1-5 merged; App Store readiness planned
 - Supabase status: migrations, seed, and atomic completion RPC applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: none yet
-- Next task: sync main, test the Vercel-hosted MVP on a phone, then plan production readiness or the next MVP feature phase
+- Next branch planned: codex/phase6-production-readiness
+- Next task: create production readiness foundation from Phase 6 blueprint
 - Implementation status: app scaffold, database, auth, household onboarding, core chore loop, and usability polish are complete; duplicate-tap protection now uses an atomic database RPC and database-level smoke validation passed
-- Current blockers: none known, but hosted auth and real-phone smoke testing should be verified
+- Current blockers: hosted Vercel smoke test still needs confirmation if not already done
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
@@ -88,6 +88,13 @@ Use this file to leave a concise handoff for the next working session.
 - The recommended approach is an Expo plus React Native WebView wrapper around the production web app
 - Apple Developer, App Store Connect, privacy policy, terms, support, account deletion, screenshots, and app metadata work are still pending
 - Vercel production and Supabase production readiness should be confirmed before any wrapper or store submission work starts
+
+## Phase 6 planning note
+
+- Phase 6 will focus on production readiness for hosted testing, not on new gameplay features
+- Hosted smoke testing, mobile browser QA, legal/support placeholders, and account deletion guidance are the main deliverables
+- The next branch should be `codex/phase6-production-readiness`
+- App Store wrapper work remains later than Phase 6
 
 ## Include
 

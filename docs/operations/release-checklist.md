@@ -27,3 +27,13 @@
 - Confirm production Supabase project and env vars are configured
 - Confirm Vercel production env vars are set
 - Confirm final smoke test passes on real iPhones
+
+## Production readiness
+
+- Confirm hosted Vercel smoke test passes
+- Confirm mobile browser QA passes on iPhone-sized devices
+- Confirm auth callback routes work on production and preview deployments
+- Confirm Supabase redirect URLs include production, preview, and local callback URLs
+- Confirm environment variable scopes are correct for Production, Preview, and Development
+- Confirm privacy, terms, support, and account deletion pages or placeholders exist
+- Confirm pre-beta readiness notes are updated

@@ -34,6 +34,8 @@ Record visible project changes and notable doc updates here.
 - Phase 5 atomic chore completion migration created and applied
 - Phase 5 duplicate-tap protection updated to use a database-backed atomic RPC
 - App Store readiness phase added to roadmap and docs
+- Phase 6 production readiness blueprint created
+- Phase 6 Codex prompt created
 
 ## Entry format
 

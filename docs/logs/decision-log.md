@@ -86,6 +86,14 @@ Record major product and technical decisions here.
 - App Store privacy labels must match the actual data collection and retention model
 - Service-role keys must not be exposed to mobile or client code
 
+## Phase 6 decisions
+
+- Production readiness should come before adding larger feature areas
+- Early legal and support pages may be placeholders for testing but must be clear and reviewable
+- Account deletion must be planned before App Store submission and should start in Phase 6 as a basic request or instructions path
+- Hosted Vercel smoke testing is required before wider beta sharing
+- Custom domain work can follow after hosted Vercel testing is stable
+
 ## Entry format
 
 - Date

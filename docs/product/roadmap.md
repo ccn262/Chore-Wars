@@ -61,12 +61,18 @@
 - Mobile-first UI refinement
 - No advanced reports yet
 
-## Phase 6: Native expansion
+## Phase 6: Production readiness foundation
 
-- Expo wrapper or native app path
-- Push notifications
-- Store-specific polish
-- Locale expansion and regional tuning
+- Hosted Vercel smoke test
+- Mobile browser QA
+- Privacy policy placeholder
+- Terms placeholder
+- Support/contact page
+- Account deletion request path
+- Production env var checks
+- Supabase Auth redirect checks
+- Release checklist updates
+- No major feature expansion
 
 ## Phase 8: App Store readiness and Expo wrapper
 
@@ -86,4 +92,5 @@
 
 ## Note
 
+- Phase 6 is the production-readiness phase for hosted testing.
 - Phase 8 is a future release-readiness phase and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.

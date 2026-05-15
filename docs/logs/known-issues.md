@@ -46,6 +46,14 @@ Track unresolved issues that are understood and accepted for now.
 - Production custom domain is not yet connected
 - Hosted Vercel real-phone smoke testing still needs confirmation if not already done
 
+## Phase 6 notes
+
+- Hosted Vercel full smoke test still needs confirmation
+- Legal, privacy, and terms pages are not yet implemented
+- Account deletion path is not yet implemented
+- Custom domain not yet connected
+- App Store implementation not started
+
 ## Entry format
 
 - Issue
