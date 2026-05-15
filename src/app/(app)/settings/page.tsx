@@ -1,21 +1,27 @@
 import { signOutAction } from "@/app/auth/actions";
+import { HouseholdInviteManager } from "@/components/invites/household-invite-manager";
 import { HouseholdRulesForm } from "@/components/chore-engine/household-rules-form";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScreenHeader } from "@/components/screen-header";
 import { getChoreEngineDashboard } from "@/lib/chore-engine";
 import { getViewerContext } from "@/lib/auth";
+import { getHouseholdInvitesForHousehold } from "@/lib/household-invites";
 
 export default async function SettingsPage() {
   const viewer = await getViewerContext();
   const dashboard = await getChoreEngineDashboard(viewer);
+  const invites =
+    viewer.supabase && viewer.household
+      ? await getHouseholdInvitesForHousehold(viewer.supabase, viewer.household.id)
+      : [];
 
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
       <ScreenHeader
         eyebrow="Settings"
         title="Household settings"
-        description="Account, household, and house rule basics are live. More controls come later."
+        description="Account, household, house rules, and invites are live for hosted testing. More controls come later."
         action={<Button href="/home" variant="secondary">Home</Button>}
       />
 
@@ -42,6 +48,15 @@ export default async function SettingsPage() {
           bottomForfeitText={dashboard.settings.bottomForfeitText}
           canEdit={dashboard.canManageChores}
         />
+
+        {dashboard.canManageChores ? (
+          <HouseholdInviteManager
+            canEdit={dashboard.canManageChores}
+            invites={invites}
+            locale={dashboard.settings.locale}
+            timezone={dashboard.settings.timezone}
+          />
+        ) : null}
 
         <Card className="space-y-3">
           <p className="text-sm font-semibold">Session</p>

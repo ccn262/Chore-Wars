@@ -6,9 +6,24 @@ import { ScreenHeader } from "@/components/screen-header";
 import { AuthForm } from "@/components/auth/auth-form";
 import { signUpAction } from "@/app/auth/actions";
 import { getViewerContext } from "@/lib/auth";
+import type { Route } from "next";
+import { addInternalQueryParam, normalizeInternalPath } from "@/lib/navigation";
 
-export default async function SignUpPage() {
+type SignUpPageProps = {
+  searchParams?: {
+    next?: string | string[];
+  };
+};
+
+export default async function SignUpPage({ searchParams }: SignUpPageProps) {
   const viewer = await getViewerContext();
+  const returnTo = normalizeInternalPath(
+    typeof searchParams?.next === "string" ? searchParams.next : "",
+    "",
+  );
+  const signInHref = returnTo
+    ? (addInternalQueryParam("/auth/sign-in", "next", returnTo) as Route)
+    : "/auth/sign-in";
 
   if (viewer.session) {
     redirect(viewer.household ? "/home" : "/setup/create-household");
@@ -28,9 +43,10 @@ export default async function SignUpPage() {
           description="Create a simple account for yourself. Your first household comes next."
           action={signUpAction}
           submitLabel="Create account"
-          alternateHref="/auth/sign-in"
+          alternateHref={signInHref}
           alternateLabel="I already have an account"
           showDisplayName
+          returnTo={returnTo || undefined}
         />
 
         <Card className="space-y-3">

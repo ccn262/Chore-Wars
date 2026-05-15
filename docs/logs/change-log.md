@@ -53,6 +53,8 @@ Record visible project changes and notable doc updates here.
 - Phase 7 rewards and forfeits smoke test passed locally
 - Phase 8 household invites blueprint created
 - Phase 8 Codex prompt created
+- Phase 8 household invites implementation completed and smoke-tested
+- Phase 8 invite-link flow and member join trigger validated locally
 
 ## Entry format
 

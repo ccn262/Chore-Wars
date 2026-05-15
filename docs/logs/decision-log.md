@@ -114,6 +114,9 @@ Record major product and technical decisions here.
 - Invite acceptance must be household-scoped and RLS-safe
 - New users should be able to sign up or sign in and return to the invite flow
 - Resend email invitations remain future work
+- Copyable invite links are the MVP invite mechanism for now, with email automation left to a later phase
+- Invite acceptance should rely on the existing database trigger to materialize the household member row
+- Invite management should stay lightweight and owner/admin-scoped until more household controls are needed
 
 ## Entry format
 

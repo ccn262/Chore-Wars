@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 7 merged and deployed / preparing Phase 8 household invites
+- Current phase: Phase 8 merged and deployed / hosted invite-link readiness checkpoint
 - Current branch: main
-- Repo status: Phases 1-7 merged and hosted MVP working
+- Repo status: Phases 1-8 merged and hosted MVP working
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, atomic completion RPC, and rewards/forfeits migration applied
+- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and invite-flow database trigger path applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/phase8-household-invites`
-- Next task: create household invite and member joining foundation from the Phase 8 blueprint
-- Implementation status: hosted MVP core loop and rewards/forfeits complete; household invites not started
+- Next branch planned: `codex/phase9-app-store-readiness`
+- Next task: plan app-store readiness or other post-MVP polish from the current roadmap
+- Implementation status: hosted MVP core loop, rewards/forfeits, and household invite links are complete
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders
@@ -25,7 +25,8 @@ Use this file to leave a concise handoff for the next working session.
   - App Store/Expo not started
   - advanced reports not implemented
   - photo proof not implemented
-  - invite emails not implemented
+  - invite emails are not implemented
+  - invite links are copyable/manual only for now
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary
