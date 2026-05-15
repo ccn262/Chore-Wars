@@ -5,14 +5,15 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 4 chore engine foundation reviewed, fixed, and smoke-tested
-- Current branch: codex/phase4-chore-engine-foundation
-- Repo status: Phase 1, Phase 2, and Phase 3 merged; Phase 4 code is in the working tree
+- Current phase: Phase 4 merged / preparing Phase 5 usability polish
+- Current branch: main
+- Repo status: Phase 1, Phase 2, Phase 3, and Phase 4 merged
 - Supabase status: project created, migration and seed applied successfully
-- Auth status: Phase 3 smoke-tested and merged; Phase 4 runtime smoke test passed after review fix
-- Next branch planned: codex/phase4-chore-engine-foundation
-- Next task: commit the Phase 4 review fix and push the branch
-- Implementation status: app scaffold, database, auth, household onboarding, and chore engine foundation are complete; profile bootstrap is now atomic
+- Auth status: Phase 3 smoke-tested and merged
+- Chore engine status: Phase 4 smoke-tested and merged
+- Next branch planned: codex/phase5-usability-polish
+- Next task: improve MVP usability, simple leaderboard clarity, and mobile polish from Phase 5 blueprint
+- Implementation status: app scaffold, database, auth, household onboarding, and core chore loop complete; usability polish not started
 - Current blockers: none
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
@@ -64,6 +65,14 @@ Use this file to leave a concise handoff for the next working session.
 - Phase 4 review confirmed the chore engine stays in scope and the runtime smoke test passes after the atomic profile bootstrap fix
 - The home and chores pages now render household chores, quick actions, weekly scores, and recent activity
 - Advanced reporting, streaks, rewards, and photo proof remain out of scope for this phase
+
+## Phase 5 summary
+
+- Phase 5 blueprint prepared for MVP usability, leaderboard clarity, and polish
+- Phase 5 will refine the existing chore loop rather than add major new features
+- A Codex-ready prompt is prepared for the next usability implementation task
+- Duplicate-tap protection, completion feedback, and clearer score/readability surfaces are planned
+- Advanced reports, charts, rewards, streaks, and photo proof remain out of scope
 
 ## Include
 

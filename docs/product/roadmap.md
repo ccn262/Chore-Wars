@@ -49,12 +49,17 @@
 - Simple weekly score summary
 - No advanced reports yet
 
-## Phase 5: Retention and polish
+## Phase 5: MVP usability, leaderboard, and polish
 
-- Better reminders
-- Streaks or lightweight gamification
-- More visual reporting
-- Improved onboarding
+- Home screen polish
+- Chore card polish
+- Duplicate-tap protection
+- Completion feedback
+- Simple leaderboard refinement
+- Recent activity polish
+- Empty, loading, and error states
+- Mobile-first UI refinement
+- No advanced reports yet
 
 ## Phase 6: Native expansion
 

@@ -24,6 +24,12 @@ Track unresolved issues that are understood and accepted for now.
 - Phase 4 runtime smoke test passed locally after an atomic profile bootstrap fix
 - No current implementation blockers remain for the Phase 4 chore engine foundation
 
+## Phase 5 notes
+
+- The MVP core loop works but needs usability polish
+- Runtime testing for Phase 5 will require Supabase env vars and an authenticated household user
+- RLS policies may still require follow-up as more member and role flows are added
+
 ## Entry format
 
 - Issue

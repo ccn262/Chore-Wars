@@ -69,6 +69,14 @@ Record major product and technical decisions here.
 - Recent activity and simple weekly totals are enough for Phase 4
 - Advanced reporting, streaks, rewards, and photo proof remain future phases
 
+## Phase 5 decisions
+
+- Phase 5 should polish the existing MVP loop before adding major new features
+- Simple leaderboard or member score clarity is allowed in Phase 5
+- Advanced reports, charts, streaks, achievements, rewards, photo proof, and notifications remain later phases
+- Duplicate-tap protection is required before heavier usage
+- Completion feedback should be clear, fast, and playful but not intrusive
+
 ## Entry format
 
 - Date
