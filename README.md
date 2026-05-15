@@ -1,19 +1,19 @@
 # Chore Wars
 
-Chore Wars is a mobile-first household chore app for families, couples, flatmates, and shared homes.
+Chore Wars is a mobile-first household chore competition app for families, couples, flatmates, and shared homes.
+
+## Current stage
+
+- Phase 1 scaffold is in place
+- Planning docs remain the source of truth
+- App implementation is foundation-only so far
 
 ## What this repo is for
 
-- Planning and product definition first
-- App implementation later
-- Mobile-first UX with thumb-first interactions
+- Product and implementation planning
+- Mobile-first app foundation
+- Thumb-first interactions
 - International-ready copy, dates, time, and currency handling
-
-## Current status
-
-- Initial planning docs are in place
-- No app code has been created yet
-- No dependencies have been installed yet
 
 ## Core product rules
 
@@ -27,6 +27,8 @@ Chore Wars is a mobile-first household chore app for families, couples, flatmate
 ## Initial stack
 
 - Next.js
+- TypeScript
+- Tailwind CSS
 - Supabase
 - Vercel
 - Resend
@@ -39,14 +41,22 @@ Chore Wars is a mobile-first household chore app for families, couples, flatmate
 - `docs/product/` product direction and scope
 - `docs/architecture/` technical shape and boundaries
 - `docs/ui/` design and interaction rules
-- `docs/database/` schema and migration guidance
+- `docs/database/` schema and data governance
 - `docs/engineering/` build and delivery rules
 - `docs/market/` positioning and go-to-market notes
 - `docs/prompts/` reusable Codex task prompts
+- `docs/build/` implementation blueprints and next-task prompts
 - `docs/logs/` decision and change tracking
 - `docs/operations/` service setup and release flow
 - `supabase/` database migrations, functions, and policies
-- `emails/` Resend email templates later
+- `emails/` email templates later
 - `public/` static assets later
 - `tests/` test fixtures and future automated checks
+
+## Phase 1 scaffold
+
+- App Router routes for landing, auth, setup, and dashboard placeholders
+- Mobile-first shell with bottom navigation
+- Reusable UI primitives for later features
+- Supabase placeholders without real auth or data logic
 

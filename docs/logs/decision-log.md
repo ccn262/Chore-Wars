@@ -31,6 +31,10 @@ Record major product and technical decisions here.
 - Business logic is excluded
 - Feature work starts after the app shell is stable
 - Feature branches should be used for implementation work
+- Use the existing repo as the Next.js App Router codebase rather than creating a separate app
+- Use actual `/auth/*` and `/setup/*` URL segments for placeholder routes
+- Keep Supabase helpers as lazy placeholders until real integration is needed
+- Keep the foundation minimal and validation-focused before moving to feature development
 
 ## Entry format
 
