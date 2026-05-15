@@ -17,3 +17,9 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: moved the table-querying helper functions below the core table creation block so `public.profiles` exists before any function or policy references it
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/supabase/migrations/20260515120000_phase2_database_foundation.sql`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/supabase/migrations/20260515120000_phase2_database_foundation.sql)
 - Verification: repo-level validation pending; manual Supabase SQL Editor retry still needed after this fix
+
+- Issue: Phase 2 seed failed in Supabase SQL Editor with `ERROR: 23503: insert or update on table "household_invites" violates foreign key constraint "household_invites_invited_by_member_id_fkey"`
+- Root cause: the seed file inserted fake household-specific demo rows, including an invite that pointed at a household member id not present in the target table during seed execution
+- Fix: reduced the seed file to safe global starter data only, limited to chore categories and chore templates
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/supabase/seed/20260515121000_phase2_seed.sql`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/supabase/seed/20260515121000_phase2_seed.sql)
+- Verification: repo-level validation pending; manual seed retry still needed after this fix

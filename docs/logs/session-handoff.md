@@ -34,6 +34,10 @@ Use this file to leave a concise handoff for the next working session.
 - Supabase credentials must be stored only in `.env.local`
 - Do not commit or store secrets in tracked files
 - Manual Supabase SQL Editor migration retry is pending after fixing the `public.profiles` ordering issue
+- The migration has now been applied successfully in Supabase SQL Editor
+- The seed file failed because it contained fake household/demo rows that violated foreign key constraints
+- The seed file has been corrected to include only global starter categories and templates
+- Manual Supabase seed retry is pending
 
 ## Include
 
