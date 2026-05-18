@@ -115,7 +115,7 @@ export async function archiveHouseholdMemberAction(
   if (!["owner", "admin"].includes(viewer.household.memberRole)) {
     return {
       status: "error",
-      message: "Only owners or admins can archive members.",
+      message: "Only owners or admins can pause members.",
     };
   }
 
@@ -123,7 +123,7 @@ export async function archiveHouseholdMemberAction(
   if (!memberId) {
     return {
       status: "error",
-      message: "Choose a household member to archive.",
+      message: "Choose a household member to pause.",
     };
   }
 
@@ -151,21 +151,21 @@ export async function archiveHouseholdMemberAction(
   if (targetMember.role === "owner") {
     return {
       status: "error",
-      message: "The household owner can’t be archived.",
+      message: "The household owner can’t be paused.",
     };
   }
 
   if (targetMember.profile_id === viewer.profile.id) {
     return {
       status: "error",
-      message: "You can’t archive your own membership.",
+      message: "You can’t pause your own membership.",
     };
   }
 
   if (targetMember.status !== "active" || targetMember.archived_at) {
     return {
       status: "error",
-      message: "That household member is already archived.",
+      message: "That household member is already paused.",
     };
   }
 
@@ -185,8 +185,7 @@ export async function archiveHouseholdMemberAction(
   if (updateError || !updatedMember) {
     return {
       status: "error",
-      message:
-        updateError?.message || "Unable to archive that household member.",
+      message: updateError?.message || "Unable to pause that household member.",
     };
   }
 
@@ -196,6 +195,6 @@ export async function archiveHouseholdMemberAction(
 
   return {
     status: "success",
-    message: "Household member archived.",
+    message: "Household member paused.",
   };
 }

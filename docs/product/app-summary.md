@@ -24,7 +24,7 @@ Track chores, award points, and keep the home moving with a fast, colourful mobi
 - Bottom place can receive forfeits
 - Default chores are available at setup
 - Chores can be added, edited, removed, and given icons
-- Members can be added, edited, or removed
+- Members can be added, edited, or paused
 - Reporting is clear, visual, colourful, and uncluttered
 - The app reduces arguments and makes chores feel fair
 - Future reporting should include household habit trends, fairness insights, and weekly summaries

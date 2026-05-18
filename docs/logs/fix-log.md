@@ -12,6 +12,12 @@ Track notable fixes, especially anything that affects core flows.
 
 ## 2026-05-18
 
+- Issue: Archived household members were already being hidden from active views, but the UI copy did not clearly explain that pausing a member keeps their history and that rejoin restores the same household member row
+- Root cause: the soft-archive and invite-reactivation behavior was already present in the schema, but the member management surface still used archive-only wording without spelling out the history-preserving rule
+- Fix: update the member roster copy and pause action wording to explain that pausing keeps history, and document that invite rejoin reactivates the same household member row
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/components/household/household-member-list.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/components/household/household-member-list.tsx), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/(app)/settings/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/(app)/settings/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/docs/database/schema-overview.md`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/docs/database/schema-overview.md), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/docs/database/table-specs.md`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/docs/database/table-specs.md), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/docs/logs/decision-log.md`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/docs/logs/decision-log.md)
+- Verification: schema inspection confirms the unique household/profile member constraint plus invite-trigger upsert reactivates the existing member row, and active roster/leaderboard queries continue to exclude archived members while they are paused
+
 - Issue: Household owners could create pending invites but had no UI path to cancel stale test invites and create a fresh link
 - Root cause: invite management only exposed copy-link creation and status labels, even though the database and RLS already supported a revoked status
 - Fix: add a household-scoped revoke action for pending invites, surface cancel controls for pending invite cards, and clarify the duplicate-invite error copy

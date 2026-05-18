@@ -33,6 +33,7 @@
 - Treat display formatting as a UI concern, not a schema concern
 - Seed templates for starter chores rather than hardcoding them in the UI
 - Use an atomic chore-completion RPC to guard the short duplicate-tap window
+- Treat archived household members as paused identity rows, not deletions; invite rejoin should reactivate the same row so household history remains attached
 
 ## Operational functions
 

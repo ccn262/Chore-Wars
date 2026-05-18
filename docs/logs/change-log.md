@@ -67,6 +67,7 @@ Record visible project changes and notable doc updates here.
 - Invite confirmation return flow now preserves invite intent across email confirmation and callback redirects
 - Invite management now includes cancel/revoke controls for pending invites and clearer duplicate-invite guidance
 - Invite token page now renders dynamically so revoked invite status is not served from stale route cache
+- Archived member pause and rejoin history rules were clarified in the member roster copy and docs
 - Phase 9B household admin controls blueprint created
 - Phase 9B Codex prompt created
 - Added retention, insights, and trends strategy
