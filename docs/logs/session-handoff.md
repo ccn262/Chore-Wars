@@ -5,15 +5,15 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 9B complete and verified on production
-- Current branch: `codex/phase9b-household-admin-controls`
-- Repo status: Phases 1-9B are merged and the hosted MVP remains working
-- Vercel status: hosted MVP deployed and verified with invited member flow
-- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, household invites, and admin-control work are applied and verified
+- Current phase: Phase 9B complete / preparing Phase 10 beta feedback
+- Current branch: `main`
+- Repo status: Phases 1-9B merged, deployed, and production-verified
+- Vercel status: production deployed and working
+- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits, household invites, archive/rejoin, and Phase 9B admin behaviours applied and verified
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/testing-playwright-foundation`
-- Next task: continue with Playwright smoke testing foundation and future verification work
+- Next branch planned: `codex/phase10-beta-feedback`
+- Next task: add beta feedback and issue capture foundation from Phase 10 blueprint
 - Implementation status: hosted multi-user MVP working; Phase 9B household admin controls are complete and production-verified
 - Latest fix: Phase 9B week-start fallback now stays on Monday when unset, so the leaderboard window and reward summaries use a stable default
 - Latest planning update: retention insights strategy added so future reporting can focus on fairness, habit trends, and weekly summaries
@@ -24,7 +24,7 @@ Use this file to leave a concise handoff for the next working session.
 - Latest fix: invite management now exposes cancel controls for pending invites and clearer duplicate-invite guidance
 - Current blockers: none known
 - Known limitations:
-  - authenticated owner/member browser coverage is still a later extension for Playwright
+  - feedback capture is not yet implemented
   - legal pages are placeholders
   - support email is placeholder
   - account deletion is request/instructions only

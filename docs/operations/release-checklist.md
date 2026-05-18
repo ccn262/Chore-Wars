@@ -37,3 +37,12 @@
 - Confirm environment variable scopes are correct for Production, Preview, and Development
 - Confirm privacy, terms, support, and account deletion pages or placeholders exist
 - Confirm pre-beta readiness notes are updated
+
+## Beta feedback readiness
+
+- Confirm support or beta feedback route exists
+- Confirm bug-report flow exists
+- Confirm suggest-a-chore flow exists
+- Confirm beta tester checklist exists or is linked
+- Confirm copy tells testers not to include passwords or sensitive data
+- Confirm support contact is configurable and current

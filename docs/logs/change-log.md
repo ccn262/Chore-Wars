@@ -77,6 +77,8 @@ Record visible project changes and notable doc updates here.
 - Playwright smoke testing foundation created
 - Playwright smoke testing foundation validated locally
 - Phase 9B production verification recorded
+- Phase 10 beta feedback blueprint created
+- Phase 10 Codex prompt created
 
 ## Entry format
 
