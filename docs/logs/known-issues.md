@@ -99,6 +99,12 @@ Track unresolved issues that are understood and accepted for now.
 - The leaderboard score issue was caused by the weekly score window cutoff not lining up cleanly with the household timezone boundary
 - Local smoke verification passed after the narrow fix, but the hosted Vercel deployment should be retested after merge
 
+## Invite follow-up notes
+
+- Invite auth links now preserve the real token on the invite page
+- `/invite/undefined` now renders the invalid invite state instead of building a broken auth return flow
+- Visible auth links no longer point at `/invite/undefined`
+
 ## Entry format
 
 - Issue

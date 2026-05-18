@@ -15,6 +15,7 @@ Use this file to leave a concise handoff for the next working session.
 - Next branch planned: `codex/phase9-real-household-beta-polish`
 - Next task: review Phase 9 beta polish and prepare the next planning checkpoint
 - Implementation status: hosted multi-user MVP complete; beta polish implemented and smoke-tested
+- Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders
