@@ -64,6 +64,7 @@ Record visible project changes and notable doc updates here.
 - Invite auth return token fix implemented and validated locally
 - Invite sign-up verification-state fix implemented and validated locally
 - Invite sign-up display name now survives confirmation-required flows through auth metadata
+- Invite confirmation return flow now preserves invite intent across email confirmation and callback redirects
 - Invite management now includes cancel/revoke controls for pending invites and clearer duplicate-invite guidance
 - Invite token page now renders dynamically so revoked invite status is not served from stale route cache
 - Phase 9B household admin controls blueprint created
