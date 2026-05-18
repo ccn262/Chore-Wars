@@ -125,7 +125,7 @@ export function HouseholdInviteManager({
           Invite your household
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          Share a copyable link with the people you want in the house battle.
+          Create a copyable link for the people you want in the house battle.
         </p>
       </div>
 
@@ -149,6 +149,9 @@ export function HouseholdInviteManager({
             <span className="text-sm font-medium text-foreground">
               Invite email
             </span>
+            <p className="text-xs leading-5 text-muted-foreground">
+              Add an email to keep the invite tracked. You’ll still share the link in chat or text.
+            </p>
             <Input
               name="inviteEmail"
               type="email"

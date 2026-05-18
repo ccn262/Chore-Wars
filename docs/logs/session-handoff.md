@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 8 merged and deployed / preparing Phase 9 real household beta polish
-- Current branch: main
+- Current phase: Phase 9 real household beta polish implementation complete and smoke-tested
+- Current branch: codex/phase9-real-household-beta-polish
 - Repo status: Phases 1-8 merged and hosted MVP working
 - Vercel status: hosted MVP deployed and working for early testing
 - Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: `codex/phase9-real-household-beta-polish`
-- Next task: prepare the MVP for real household beta testing from the Phase 9 blueprint
-- Implementation status: hosted multi-user MVP complete; beta polish not started
+- Next task: review Phase 9 beta polish and prepare the next planning checkpoint
+- Implementation status: hosted multi-user MVP complete; beta polish implemented and smoke-tested
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders
@@ -27,6 +27,7 @@ Use this file to leave a concise handoff for the next working session.
   - photo proof not implemented
   - invite emails are not implemented
   - invite links are copyable/manual only for now
+  - household member management is still basic, with archive-only flow
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary

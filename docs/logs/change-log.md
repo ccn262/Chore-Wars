@@ -57,6 +57,10 @@ Record visible project changes and notable doc updates here.
 - Phase 8 invite-link flow and member join trigger validated locally
 - Phase 9 real household beta polish blueprint created
 - Phase 9 Codex prompt created
+- Phase 9 real household beta polish implementation started
+- Phase 9 household member roster and archive flow added
+- Phase 9 real household beta polish implementation completed and smoke-tested
+- Phase 9 first-run guidance and invite copy refinements verified
 
 ## Entry format
 

@@ -91,3 +91,111 @@ export async function saveHouseholdRulesAction(
     message: "House rules saved.",
   };
 }
+
+export async function archiveHouseholdMemberAction(
+  _state: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const supabase = await getSupabaseServerClient();
+  if (!supabase) {
+    return {
+      status: "error",
+      message: "Supabase is not configured in this environment.",
+    };
+  }
+
+  const viewer = await getViewerContext();
+  if (!viewer.profile || !viewer.household) {
+    return {
+      status: "error",
+      message: "Sign in to manage household members.",
+    };
+  }
+
+  if (!["owner", "admin"].includes(viewer.household.memberRole)) {
+    return {
+      status: "error",
+      message: "Only owners or admins can archive members.",
+    };
+  }
+
+  const memberId = readField(formData, "memberId");
+  if (!memberId) {
+    return {
+      status: "error",
+      message: "Choose a household member to archive.",
+    };
+  }
+
+  const { data: targetMember, error: memberError } = await supabase
+    .from("household_members")
+    .select("id, household_id, profile_id, role, status, archived_at")
+    .eq("id", memberId)
+    .eq("household_id", viewer.household.id)
+    .maybeSingle();
+
+  if (memberError) {
+    return {
+      status: "error",
+      message: memberError.message || "Unable to load that household member.",
+    };
+  }
+
+  if (!targetMember) {
+    return {
+      status: "error",
+      message: "That household member could not be found.",
+    };
+  }
+
+  if (targetMember.role === "owner") {
+    return {
+      status: "error",
+      message: "The household owner can’t be archived.",
+    };
+  }
+
+  if (targetMember.profile_id === viewer.profile.id) {
+    return {
+      status: "error",
+      message: "You can’t archive your own membership.",
+    };
+  }
+
+  if (targetMember.status !== "active" || targetMember.archived_at) {
+    return {
+      status: "error",
+      message: "That household member is already archived.",
+    };
+  }
+
+  const { data: updatedMember, error: updateError } = await supabase
+    .from("household_members")
+    .update({
+      status: "archived",
+      archived_at: new Date().toISOString(),
+    })
+    .eq("id", memberId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .select("id")
+    .maybeSingle();
+
+  if (updateError || !updatedMember) {
+    return {
+      status: "error",
+      message:
+        updateError?.message || "Unable to archive that household member.",
+    };
+  }
+
+  revalidatePath("/home");
+  revalidatePath("/leaderboard");
+  revalidatePath("/settings");
+
+  return {
+    status: "success",
+    message: "Household member archived.",
+  };
+}
