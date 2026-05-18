@@ -106,3 +106,9 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: added a dedicated quick-actions selection that prefers active custom chores first, while keeping the full chores list unchanged on the Chores page
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/chore-engine.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/chore-engine.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/(app)/home/page.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/(app)/home/page.tsx)
 - Verification: local smoke test passed with a household containing four starter chores plus one custom chore; the custom chore appeared on both Home and Chores, immediate duplicate completion was blocked, and repeat completion was allowed again after the short duplicate window
+
+- Issue: Invited users who signed up through a confirmation-required Supabase flow could land on `/setup/create-household` after confirming their email instead of returning to the invite
+- Root cause: the invite return path could be lost across the email-confirmation round trip when the auth callback had no safe fallback path to consume
+- Fix: persist a short-lived, normalized internal auth-return path during invite sign-up and let the auth callback prefer that path before household setup
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/callback/route.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/callback/route.ts)
+- Verification: local validation confirms invite return intent still preserves `/invite/<token>`, `/invite/undefined` remains rejected, and normal sign-up without an invite still reaches household creation

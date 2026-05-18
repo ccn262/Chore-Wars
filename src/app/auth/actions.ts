@@ -2,6 +2,7 @@
 
 import type { Route } from "next";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 import {
   ensureProfileForUser,
@@ -13,6 +14,15 @@ import { appUrl } from "@/lib/site";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import type { FormState } from "@/lib/form-state";
 
+const pendingAuthReturnPathCookieName = "chore-wars-auth-return-path";
+const pendingAuthReturnPathCookieOptions = {
+  httpOnly: true,
+  sameSite: "lax" as const,
+  secure: process.env.NODE_ENV === "production",
+  path: "/auth",
+  maxAge: 60 * 15,
+};
+
 function readField(formData: FormData, key: string) {
   const value = formData.get(key);
   return typeof value === "string" ? value.trim() : "";
@@ -20,6 +30,19 @@ function readField(formData: FormData, key: string) {
 
 function readNextPath(formData: FormData) {
   return normalizeInternalPath(readField(formData, "next"), "");
+}
+
+async function rememberAuthReturnPath(returnTo: string) {
+  if (!returnTo) {
+    return;
+  }
+
+  const cookieStore = await cookies();
+  cookieStore.set(
+    pendingAuthReturnPathCookieName,
+    returnTo,
+    pendingAuthReturnPathCookieOptions,
+  );
 }
 
 export async function signInAction(
@@ -116,6 +139,8 @@ export async function signUpAction(
   }
 
   if (!data.session) {
+    await rememberAuthReturnPath(returnTo);
+
     return {
       status: "success",
       message: returnTo
