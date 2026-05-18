@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 9B household admin controls implementation
-- Current branch: `codex/phase9b-household-admin-controls`
-- Repo status: Phases 1-9 merged and hosted MVP working, with Phase 9B controls in branch
+- Current phase: Playwright smoke testing foundation
+- Current branch: `codex/testing-playwright-foundation`
+- Repo status: Phases 1-9B are merged or in progress, and the hosted MVP remains working
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied and verified
+- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, household invites, and admin-control work are applied and verified
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
 - Next branch planned: none yet
-- Next task: finish household admin controls and week settings from the Phase 9B branch
-- Implementation status: hosted multi-user MVP working; member names, chore editing, chore archiving, and week-start controls are being added
+- Next task: finish the minimal Playwright smoke testing foundation and validate public/protected route coverage
+- Implementation status: hosted multi-user MVP working; browser smoke coverage is now in place for public, protected, and invite routes
 - Latest fix: Phase 9B week-start fallback now stays on Monday when unset, so the leaderboard window and reward summaries use a stable default
 - Latest planning update: retention insights strategy added so future reporting can focus on fairness, habit trends, and weekly summaries
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
@@ -24,6 +24,7 @@ Use this file to leave a concise handoff for the next working session.
 - Latest fix: invite management now exposes cancel controls for pending invites and clearer duplicate-invite guidance
 - Current blockers: none known
 - Known limitations:
+  - public/protected browser smoke tests are being added; authenticated owner/member browser coverage is still a later extension
   - legal pages are placeholders
   - support email is placeholder
   - account deletion is request/instructions only

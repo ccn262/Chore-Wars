@@ -112,6 +112,7 @@ Track unresolved issues that are understood and accepted for now.
 - App Store and Expo not started
 - Advanced reports and insights not implemented
 - Photo proof not implemented
+- Playwright browser smoke tests are being added, but authenticated owner/member browser coverage is still a future extension
 
 ## Hosted smoke follow-up notes
 

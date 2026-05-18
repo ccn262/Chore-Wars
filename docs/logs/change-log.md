@@ -74,6 +74,8 @@ Record visible project changes and notable doc updates here.
 - Phase 9B week-start selector and chore/member editors added
 - Phase 9B week-start fallback normalized to Monday
 - Added retention, insights, and trends strategy
+- Playwright smoke testing foundation created
+- Playwright smoke testing foundation validated locally
 
 ## Entry format
 
