@@ -79,6 +79,19 @@ Track unresolved issues that are understood and accepted for now.
 - Custom domain is still not connected
 - Hosted invite acceptance smoke test was validated locally, but hosted retesting should still happen after merge
 
+## Phase 9 notes
+
+- Real household beta polish not yet implemented
+- Member management is still basic
+- Invite email sending not implemented
+- Resend not configured
+- Legal pages remain placeholders
+- Support email remains placeholder
+- Account deletion is request/instructions only
+- App Store and Expo not started
+- Advanced reporting not implemented
+- Photo proof not implemented
+
 ## Hosted smoke follow-up notes
 
 - The custom chore visibility issue was caused by missing client refresh after successful chore creation, not by a database insert failure

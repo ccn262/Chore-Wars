@@ -55,6 +55,8 @@ Record visible project changes and notable doc updates here.
 - Phase 8 Codex prompt created
 - Phase 8 household invites implementation completed and smoke-tested
 - Phase 8 invite-link flow and member join trigger validated locally
+- Phase 9 real household beta polish blueprint created
+- Phase 9 Codex prompt created
 
 ## Entry format
 

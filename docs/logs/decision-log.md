@@ -118,6 +118,14 @@ Record major product and technical decisions here.
 - Invite acceptance should rely on the existing database trigger to materialize the household member row
 - Invite management should stay lightweight and owner/admin-scoped until more household controls are needed
 
+## Phase 9 decisions
+
+- Real household beta polish is the next priority after invite links are live
+- The app should be tested with a small real household before adding larger features
+- Member visibility and invite clarity matter more now than advanced reporting
+- Resend email invites remain future work
+- Member removal should prefer archive or deactivate over destructive deletion
+
 ## Entry format
 
 - Date

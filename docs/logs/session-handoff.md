@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 8 merged and deployed / hosted invite-link readiness checkpoint
+- Current phase: Phase 8 merged and deployed / preparing Phase 9 real household beta polish
 - Current branch: main
 - Repo status: Phases 1-8 merged and hosted MVP working
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and invite-flow database trigger path applied
+- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/phase9-app-store-readiness`
-- Next task: plan app-store readiness or other post-MVP polish from the current roadmap
-- Implementation status: hosted MVP core loop, rewards/forfeits, and household invite links are complete
+- Next branch planned: `codex/phase9-real-household-beta-polish`
+- Next task: prepare the MVP for real household beta testing from the Phase 9 blueprint
+- Implementation status: hosted multi-user MVP complete; beta polish not started
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders
@@ -132,6 +132,15 @@ Use this file to leave a concise handoff for the next working session.
 - Invite tokens must be secure and unguessable
 - Email invitations remain future work
 - The next branch should be `codex/phase8-household-invites`
+
+## Phase 9 planning note
+
+- Real household beta polish is the next priority after invite links are live
+- The app should be tested with a small real household before adding larger features
+- Member visibility and invite clarity matter more now than advanced reporting
+- Resend email invites remain future work
+- Member removal should prefer archive or deactivate over destructive deletion
+- The next branch should be `codex/phase9-real-household-beta-polish`
 
 ## Hosted smoke fix note
 
