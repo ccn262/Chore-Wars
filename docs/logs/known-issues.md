@@ -106,6 +106,7 @@ Track unresolved issues that are understood and accepted for now.
 - Visible auth links no longer point at `/invite/undefined`
 - Sign-up confirmation now stays on a friendly check-email path instead of crashing when Supabase returns no session
 - Sign-up now preserves the entered display name in auth metadata so the first authenticated request can bootstrap the profile with the user-entered name
+- Pending invites can now be revoked from Settings, but manual copy-link sharing is still the only invite distribution path until email sending is added
 
 ## Entry format
 

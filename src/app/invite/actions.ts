@@ -35,8 +35,11 @@ function formatInviteError(error: unknown, fallback: string) {
   return fallback;
 }
 
-function refreshInvitePaths() {
+function refreshInvitePaths(token?: string) {
   revalidatePath("/settings");
+  if (token) {
+    revalidatePath(buildInvitePath(token));
+  }
 }
 
 export async function createHouseholdInviteAction(
@@ -92,7 +95,8 @@ export async function createHouseholdInviteAction(
   if (pendingInvite) {
     return {
       status: "error",
-      message: "A pending invite already exists for that email.",
+      message:
+        "A pending invite already exists for that email. Use the existing link below, or cancel it and create a new one.",
     };
   }
 
@@ -117,7 +121,8 @@ export async function createHouseholdInviteAction(
     if (insertError?.code === "23505") {
       return {
         status: "error",
-        message: "A pending invite already exists for that email.",
+        message:
+          "A pending invite already exists for that email. Use the existing link below, or cancel it and create a new one.",
       };
     }
 
@@ -138,6 +143,98 @@ export async function createHouseholdInviteAction(
       expiresAt: invite.expires_at,
       token: invite.token,
     },
+  };
+}
+
+export async function revokeHouseholdInviteAction(
+  _state: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const supabase = await getSupabaseServerClient();
+  if (!supabase) {
+    return {
+      status: "error",
+      message: "Supabase is not configured in this environment.",
+    };
+  }
+
+  const viewer = await getViewerContext();
+  if (!viewer.profile || !viewer.household) {
+    return {
+      status: "error",
+      message: "Sign in to manage household invites.",
+    };
+  }
+
+  if (!["owner", "admin"].includes(viewer.household.memberRole)) {
+    return {
+      status: "error",
+      message: "Only owners or admins can cancel invites.",
+    };
+  }
+
+  const token = readField(formData, "token");
+  if (!token) {
+    return {
+      status: "error",
+      message: "Choose an invite to cancel.",
+    };
+  }
+
+  const { data: invite, error: inviteError } = await supabase
+    .from("household_invites")
+    .select("id, household_id, status, token")
+    .eq("token", token)
+    .eq("household_id", viewer.household.id)
+    .maybeSingle();
+
+  if (inviteError) {
+    return {
+      status: "error",
+      message: formatInviteError(inviteError, "Unable to load that invite."),
+    };
+  }
+
+  if (!invite) {
+    return {
+      status: "error",
+      message: "That invite could not be found.",
+    };
+  }
+
+  if (invite.status !== "pending") {
+    return {
+      status: "error",
+      message: "Only pending invites can be cancelled.",
+    };
+  }
+
+  const { data: updatedInvite, error: updateError } = await supabase
+    .from("household_invites")
+    .update({
+      status: "revoked",
+    })
+    .eq("token", token)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "pending")
+    .select("id")
+    .maybeSingle();
+
+  if (updateError || !updatedInvite) {
+    return {
+      status: "error",
+      message: formatInviteError(
+        updateError,
+        "Unable to cancel that invite right now.",
+      ),
+    };
+  }
+
+  refreshInvitePaths();
+
+  return {
+    status: "success",
+    message: "Invite cancelled.",
   };
 }
 
@@ -257,7 +354,7 @@ export async function acceptHouseholdInviteAction(
     };
   }
 
-  refreshInvitePaths();
+  refreshInvitePaths(token);
   revalidatePath(buildInvitePath(token));
   redirect("/home");
 }

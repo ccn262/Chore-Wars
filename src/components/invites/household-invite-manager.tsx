@@ -7,6 +7,7 @@ import { createHouseholdInviteAction } from "@/app/invite/actions";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { PendingInviteCancelButton } from "@/components/invites/pending-invite-cancel-button";
 import type { FormState } from "@/lib/form-state";
 import type { HouseholdInviteSummary } from "@/lib/household-invites";
 
@@ -202,6 +203,9 @@ export function HouseholdInviteManager({
                   : "Copy link"}
               </Button>
             </div>
+            {state.data?.token ? (
+              <PendingInviteCancelButton token={state.data.token} label="Cancel invite" />
+            ) : null}
             <p className="text-xs leading-5 text-muted-foreground">
               {state.data?.inviteEmail ? `${state.data.inviteEmail} · ` : ""}
               {inviteExpiresAt
@@ -249,14 +253,19 @@ export function HouseholdInviteManager({
 
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Input readOnly value={invite.inviteUrl} aria-label="Invite link" />
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    className="w-full sm:w-auto"
-                    onClick={() => handleCopyLink(invite.inviteUrl, invite.token)}
-                  >
-                    {copiedToken === invite.token ? "Copied" : "Copy link"}
-                  </Button>
+                  <div className="flex w-full flex-col gap-3 sm:w-auto sm:min-w-[11rem]">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      className="w-full"
+                      onClick={() => handleCopyLink(invite.inviteUrl, invite.token)}
+                    >
+                      {copiedToken === invite.token ? "Copied" : "Copy link"}
+                    </Button>
+                    {invite.status === "pending" ? (
+                      <PendingInviteCancelButton token={invite.token} />
+                    ) : null}
+                  </div>
                 </div>
               </Card>
             ))}
@@ -267,6 +276,7 @@ export function HouseholdInviteManager({
           <p className="text-sm font-semibold">No invites yet</p>
           <p className="mt-1 text-sm leading-6 text-muted-foreground">
             Create a copyable invite link when you’re ready to bring someone in.
+            Email sending comes later.
           </p>
         </Card>
       ) : null}
