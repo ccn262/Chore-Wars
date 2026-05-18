@@ -68,8 +68,7 @@ Track unresolved issues that are understood and accepted for now.
 
 ## Phase 8 notes
 
-- Household invites not yet implemented
-- Invite email sending not implemented
+- Household invite links are implemented, but invite email sending is still not implemented
 - Resend not configured
 - Legal pages remain placeholders
 - Support email remains placeholder
@@ -77,6 +76,8 @@ Track unresolved issues that are understood and accepted for now.
 - App Store and Expo not started
 - Advanced reporting not implemented
 - Photo proof not implemented
+- Custom domain is still not connected
+- Hosted invite acceptance smoke test was validated locally, but hosted retesting should still happen after merge
 
 ## Hosted smoke follow-up notes
 

@@ -21,6 +21,7 @@ type AuthFormProps = {
   alternateHref: Route;
   alternateLabel: string;
   showDisplayName?: boolean;
+  returnTo?: string;
 };
 
 export function AuthForm({
@@ -31,6 +32,7 @@ export function AuthForm({
   alternateHref,
   alternateLabel,
   showDisplayName = false,
+  returnTo,
 }: AuthFormProps) {
   const [state, formAction, pending] = useActionState(action, initialState);
 
@@ -57,6 +59,7 @@ export function AuthForm({
       ) : null}
 
       <form action={formAction} className="space-y-4">
+        {returnTo ? <input type="hidden" name="next" value={returnTo} /> : null}
         {showDisplayName ? (
           <label className="block space-y-2">
             <span className="text-sm font-medium text-foreground">
