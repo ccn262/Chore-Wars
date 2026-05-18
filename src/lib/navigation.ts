@@ -20,6 +20,10 @@ export function normalizeInternalPath(
       return fallback;
     }
 
+    if (/^\/invite\/undefined(?:[/?#]|$)/.test(candidate.pathname)) {
+      return fallback;
+    }
+
     return `${candidate.pathname}${candidate.search}${candidate.hash}` || fallback;
   } catch {
     return fallback;

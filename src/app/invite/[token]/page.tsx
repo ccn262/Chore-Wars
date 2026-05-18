@@ -14,19 +14,33 @@ import {
 import { addInternalQueryParam } from "@/lib/navigation";
 
 type InvitePageProps = {
-  params: {
-    token: string;
-  };
+  params:
+    | {
+        token?: string;
+      }
+    | Promise<{
+        token?: string;
+      }>;
 };
 
 export default async function InvitePage({ params }: InvitePageProps) {
   const viewer = await getViewerContext();
-  const invitePath = buildInvitePath(params.token);
-  const signInHref = addInternalQueryParam("/auth/sign-in", "next", invitePath);
-  const signUpHref = addInternalQueryParam("/auth/sign-up", "next", invitePath);
+  const resolvedParams = await params;
+  const token =
+    typeof resolvedParams?.token === "string"
+      ? resolvedParams.token.trim()
+      : "";
+  const hasToken = Boolean(token && token !== "undefined");
+  const invitePath = hasToken ? buildInvitePath(token) : "";
+  const signInHref = hasToken
+    ? addInternalQueryParam("/auth/sign-in", "next", invitePath)
+    : "/auth/sign-in";
+  const signUpHref = hasToken
+    ? addInternalQueryParam("/auth/sign-up", "next", invitePath)
+    : "/auth/sign-up";
   const homeHref = "/" as Route;
-  const invite = viewer.supabase && viewer.session
-    ? await getHouseholdInviteByToken(viewer.supabase, params.token)
+  const invite = hasToken && viewer.supabase && viewer.session
+    ? await getHouseholdInviteByToken(viewer.supabase, token)
     : null;
 
   let membership = null;
@@ -48,7 +62,17 @@ export default async function InvitePage({ params }: InvitePageProps) {
           action={<Button href={homeHref} variant="secondary">Home</Button>}
         />
 
-        {!viewer.session ? (
+        {!hasToken ? (
+          <Card className="space-y-3">
+            <p className="text-sm font-semibold">This invite is not available</p>
+            <p className="text-sm leading-6 text-muted-foreground">
+              The link is missing its token or it is not valid. Ask the household owner for a fresh invite.
+            </p>
+            <Button href={homeHref} variant="secondary" className="w-full">
+              Go home
+            </Button>
+          </Card>
+        ) : !viewer.session ? (
           <Card className="space-y-4">
             <div className="space-y-1">
               <p className="text-sm font-semibold">Sign in first</p>
@@ -125,7 +149,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
             </div>
           </Card>
         ) : (
-          <InviteJoinCard token={params.token} inviteEmail={invite.inviteEmail} />
+          <InviteJoinCard token={token} inviteEmail={invite.inviteEmail} />
         )}
       </div>
     </main>

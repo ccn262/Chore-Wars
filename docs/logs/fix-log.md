@@ -12,6 +12,14 @@ Track notable fixes, especially anything that affects core flows.
 
 ## 2026-05-18
 
+- Issue: Invite sign-up/sign-in links could be generated with `/invite/undefined` and then crash after auth
+- Root cause: the invite page read `params.token` directly without normalizing the Next 16 route params shape, so a missing token could flow into auth return URLs
+- Fix: resolve route params before reading the token, treat missing or literal `undefined` tokens as invalid, and reject `/invite/undefined` in internal-path normalization
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/invite/[token]/page.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/invite/[token]/page.tsx), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/navigation.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/navigation.ts)
+- Verification: local smoke test confirmed real invite links preserve the token in sign-in/sign-up URLs, `/invite/undefined` shows a friendly invalid state, and no visible auth links build `/invite/undefined`
+
+## 2026-05-18
+
 - Issue: Phase 9 runtime smoke testing hit a `ReferenceError` on `/home` and `/settings`
 - Root cause: `viewerProfileId` was referenced inside the member mapping in `src/lib/chore-engine.ts` before the variable was initialized
 - Fix: moved the `viewerProfileId` declaration above the member mapping so the dashboard render can safely compare member profile ids to the viewer profile
