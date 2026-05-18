@@ -22,6 +22,7 @@ export type HouseholdChoreSummary = {
   cadence: string | null;
   source: string;
   status: string;
+  archivedAt: string | null;
   sortOrder: number;
   createdAt: string;
 };
@@ -65,7 +66,9 @@ export type HouseholdMemberSummary = {
   id: string;
   displayName: string;
   role: string;
+  status: string;
   profileId: string | null;
+  archivedAt: string | null;
   joinedAt: string;
   isViewer: boolean;
 };
@@ -113,6 +116,20 @@ function emptyDashboard(viewer: ViewerContext): ChoreEngineDashboard {
 
 function clampWeekStart(value: number | null | undefined) {
   return typeof value === "number" && value >= 0 && value <= 6 ? value : 1;
+}
+
+const weekdayLabels = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+export function getWeekStartLabel(weekStartsOn: number) {
+  return weekdayLabels[clampWeekStart(weekStartsOn)] ?? "Monday";
 }
 
 function getTimeZoneOffsetMinutes(timezone: string, date: Date) {
@@ -318,7 +335,9 @@ export async function getChoreEngineDashboard(
         .order("default_title", { ascending: true }),
       supabase
         .from("chores")
-        .select("id, title, icon_key, points, cadence, source, status, sort_order, created_at")
+        .select(
+          "id, title, icon_key, points, cadence, source, status, archived_at, sort_order, created_at",
+        )
         .eq("household_id", viewer.household.id)
         .eq("status", "active")
         .is("archived_at", null)
@@ -345,6 +364,7 @@ export async function getChoreEngineDashboard(
     cadence: row.cadence,
     source: row.source,
     status: row.status,
+    archivedAt: row.archived_at,
     sortOrder: row.sort_order,
     createdAt: row.created_at,
   }));
@@ -353,7 +373,9 @@ export async function getChoreEngineDashboard(
     id: row.id,
     displayName: row.display_name,
     role: row.role,
+    status: row.status,
     profileId: row.profile_id,
+    archivedAt: row.archived_at,
     joinedAt: row.joined_at,
     isViewer: viewerProfileId !== null && row.profile_id === viewerProfileId,
   }));

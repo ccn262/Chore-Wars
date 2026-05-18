@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import {
   getWeeklyCompetitionSummary,
+  getWeekStartLabel,
   type WeeklyMemberScore,
 } from "@/lib/chore-engine";
 
@@ -27,7 +28,7 @@ export function ScoreSummary({
           Weekly score
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          Week starts on {weekStartsOn === 0 ? "Sunday" : "Monday"}.
+          Your leaderboard week starts on {getWeekStartLabel(weekStartsOn)}.
         </p>
       </div>
 

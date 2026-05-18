@@ -70,6 +70,8 @@ Record visible project changes and notable doc updates here.
 - Archived member pause and rejoin history rules were clarified in the member roster copy and docs
 - Phase 9B household admin controls blueprint created
 - Phase 9B Codex prompt created
+- Phase 9B household admin controls implementation added
+- Phase 9B week-start selector and chore/member editors added
 - Added retention, insights, and trends strategy
 
 ## Entry format

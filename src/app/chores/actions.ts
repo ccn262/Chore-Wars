@@ -41,6 +41,7 @@ function refreshChorePaths() {
   revalidatePath("/chores");
   revalidatePath("/leaderboard");
   revalidatePath("/reports");
+  revalidatePath("/settings");
 }
 
 export async function createChoreFromTemplateAction(
@@ -158,6 +159,170 @@ export async function createCustomChoreAction(
   return {
     status: "success",
     message: `${title} added to the household.`,
+  };
+}
+
+export async function updateHouseholdChoreAction(
+  _state: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const supabase = await getSupabaseServerClient();
+  if (!supabase) {
+    return { status: "error", message: "Supabase is not configured in this environment." };
+  }
+
+  const viewer = await getViewerContext();
+  if (!viewer.session || !viewer.profile || !viewer.household) {
+    return { status: "error", message: "Sign in before editing chores." };
+  }
+
+  if (!requireAdminRole(viewer.household.memberRole)) {
+    return { status: "error", message: "Only the household owner or admin can edit chores." };
+  }
+
+  const choreId = readField(formData, "choreId");
+  const title = readField(formData, "title").slice(0, 80);
+  const cadence = readField(formData, "cadence").slice(0, 80);
+  const pointsRaw = readField(formData, "points");
+
+  if (!choreId) {
+    return { status: "error", message: "Choose a chore to edit." };
+  }
+
+  if (!title) {
+    return { status: "error", message: "Enter a chore name." };
+  }
+
+  if (!pointsRaw) {
+    return { status: "error", message: "Enter chore points." };
+  }
+
+  const points = Number.parseInt(pointsRaw, 10);
+  if (!Number.isFinite(points) || points <= 0) {
+    return { status: "error", message: "Chore points must be at least 1." };
+  }
+
+  const { data: targetChore, error: choreError } = await supabase
+    .from("chores")
+    .select("id, household_id, status, archived_at")
+    .eq("id", choreId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .maybeSingle();
+
+  if (choreError) {
+    return {
+      status: "error",
+      message: getActionErrorMessage(choreError, "Unable to load that chore."),
+    };
+  }
+
+  if (!targetChore) {
+    return {
+      status: "error",
+      message: "That chore could not be found.",
+    };
+  }
+
+  const { data: updatedChore, error: updateError } = await supabase
+    .from("chores")
+    .update({
+      title,
+      points,
+      cadence: cadence || null,
+    })
+    .eq("id", choreId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .select("id")
+    .maybeSingle();
+
+  if (updateError || !updatedChore) {
+    return {
+      status: "error",
+      message: getActionErrorMessage(updateError, "Unable to update that chore."),
+    };
+  }
+
+  refreshChorePaths();
+  return {
+    status: "success",
+    message: "Chore updated.",
+  };
+}
+
+export async function archiveHouseholdChoreAction(
+  _state: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const supabase = await getSupabaseServerClient();
+  if (!supabase) {
+    return { status: "error", message: "Supabase is not configured in this environment." };
+  }
+
+  const viewer = await getViewerContext();
+  if (!viewer.session || !viewer.profile || !viewer.household) {
+    return { status: "error", message: "Sign in before editing chores." };
+  }
+
+  if (!requireAdminRole(viewer.household.memberRole)) {
+    return { status: "error", message: "Only the household owner or admin can archive chores." };
+  }
+
+  const choreId = readField(formData, "choreId");
+  if (!choreId) {
+    return { status: "error", message: "Choose a chore to archive." };
+  }
+
+  const { data: targetChore, error: choreError } = await supabase
+    .from("chores")
+    .select("id, household_id, status, archived_at")
+    .eq("id", choreId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .maybeSingle();
+
+  if (choreError) {
+    return {
+      status: "error",
+      message: getActionErrorMessage(choreError, "Unable to load that chore."),
+    };
+  }
+
+  if (!targetChore) {
+    return {
+      status: "error",
+      message: "That chore could not be found.",
+    };
+  }
+
+  const { data: updatedChore, error: updateError } = await supabase
+    .from("chores")
+    .update({
+      status: "archived",
+      archived_at: new Date().toISOString(),
+    })
+    .eq("id", choreId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .select("id")
+    .maybeSingle();
+
+  if (updateError || !updatedChore) {
+    return {
+      status: "error",
+      message: getActionErrorMessage(updateError, "Unable to archive that chore."),
+    };
+  }
+
+  refreshChorePaths();
+  return {
+    status: "success",
+    message: "Chore archived. It stays in history but leaves active lists.",
   };
 }
 

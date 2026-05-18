@@ -1,13 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { getChoreIconGlyph, type HouseholdChoreSummary } from "@/lib/chore-engine";
 import { ChoreCompleteButton } from "@/components/chore-engine/chore-complete-button";
+import { ChoreAdminControls } from "@/components/chore-engine/chore-admin-controls";
 
 type ChoreCardProps = {
   chore: HouseholdChoreSummary;
   canComplete: boolean;
+  canManageChores?: boolean;
 };
 
-export function ChoreCard({ chore, canComplete }: ChoreCardProps) {
+export function ChoreCard({ chore, canComplete, canManageChores = false }: ChoreCardProps) {
   return (
     <Card className="space-y-4">
       <div className="flex items-start gap-3">
@@ -23,6 +25,9 @@ export function ChoreCard({ chore, canComplete }: ChoreCardProps) {
             +{chore.points} points
           </p>
         </div>
+        <span className="ml-auto rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
+          {chore.status === "active" ? "Active" : chore.status}
+        </span>
       </div>
 
       {canComplete ? (
@@ -34,6 +39,8 @@ export function ChoreCard({ chore, canComplete }: ChoreCardProps) {
           </p>
         </div>
       )}
+
+      {canManageChores ? <ChoreAdminControls chore={chore} /> : null}
     </Card>
   );
 }

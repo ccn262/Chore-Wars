@@ -7,7 +7,9 @@ import { saveHouseholdRulesAction } from "@/app/(app)/settings/actions";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 import type { FormState } from "@/lib/form-state";
+import { getWeekStartLabel } from "@/lib/chore-engine";
 
 const initialState: FormState = {
   status: "idle",
@@ -17,12 +19,14 @@ const initialState: FormState = {
 type HouseholdRulesFormProps = {
   winnerRewardText: string | null;
   bottomForfeitText: string | null;
+  weekStartsOn: number;
   canEdit: boolean;
 };
 
 export function HouseholdRulesForm({
   winnerRewardText,
   bottomForfeitText,
+  weekStartsOn,
   canEdit,
 }: HouseholdRulesFormProps) {
   const router = useRouter();
@@ -59,7 +63,7 @@ export function HouseholdRulesForm({
           House rules
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          Keep the weekly reward and forfeit short, playful, and easy to scan.
+          Keep the weekly reward, forfeit, and week start short, playful, and easy to scan.
         </p>
       </div>
 
@@ -78,6 +82,27 @@ export function HouseholdRulesForm({
       ) : null}
 
       <form action={formAction} className="space-y-4">
+        <label className="block space-y-2">
+          <span className="text-sm font-medium text-foreground">Leaderboard week starts on</span>
+          <Select
+            name="weekStartsOn"
+            defaultValue={String(weekStartsOn)}
+            disabled={!canEdit}
+          >
+            <option value="0">Sunday</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+          </Select>
+          <p className="text-xs leading-5 text-muted-foreground">
+            Your leaderboard week starts on {getWeekStartLabel(weekStartsOn)}.
+            Leaderboard, rewards, and future insights all use this week window.
+          </p>
+        </label>
+
         <label className="block space-y-2">
           <span className="text-sm font-medium text-foreground">Winner gets</span>
           <Input

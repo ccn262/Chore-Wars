@@ -19,6 +19,21 @@ function normalizeRuleText(value: string) {
   return value ? value : null;
 }
 
+function parseWeekStartDay(value: string, fallback: number) {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed) || parsed < 0 || parsed > 6) {
+    return fallback;
+  }
+
+  return parsed;
+}
+
+function refreshHouseholdPaths() {
+  revalidatePath("/home");
+  revalidatePath("/leaderboard");
+  revalidatePath("/settings");
+}
+
 export async function saveHouseholdRulesAction(
   _state: FormState,
   formData: FormData,
@@ -64,13 +79,17 @@ export async function saveHouseholdRulesAction(
     };
   }
 
+  const weekStartsOn = parseWeekStartDay(
+    readField(formData, "weekStartsOn"),
+    currentSettings?.week_starts_on ??
+      getDefaultWeekStart(currentSettings?.locale ?? viewer.household.locale),
+  );
+
   const { error: updateError } = await supabase.from("household_settings").upsert({
     household_id: viewer.household.id,
     locale: currentSettings?.locale ?? viewer.household.locale,
     timezone: currentSettings?.timezone ?? viewer.household.timezone,
-    week_starts_on:
-      currentSettings?.week_starts_on ??
-      getDefaultWeekStart(currentSettings?.locale ?? viewer.household.locale),
+    week_starts_on: weekStartsOn,
     allow_photo_proof: currentSettings?.allow_photo_proof ?? true,
     winner_reward_text: normalizeRuleText(winnerRewardText),
     bottom_forfeit_text: normalizeRuleText(bottomForfeitText),
@@ -83,12 +102,104 @@ export async function saveHouseholdRulesAction(
     };
   }
 
-  revalidatePath("/leaderboard");
-  revalidatePath("/settings");
+  refreshHouseholdPaths();
 
   return {
     status: "success",
     message: "House rules saved.",
+  };
+}
+
+export async function updateHouseholdMemberDisplayNameAction(
+  _state: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const supabase = await getSupabaseServerClient();
+  if (!supabase) {
+    return {
+      status: "error",
+      message: "Supabase is not configured in this environment.",
+    };
+  }
+
+  const viewer = await getViewerContext();
+  if (!viewer.profile || !viewer.household) {
+    return {
+      status: "error",
+      message: "Sign in to update member names.",
+    };
+  }
+
+  if (!["owner", "admin"].includes(viewer.household.memberRole)) {
+    return {
+      status: "error",
+      message: "Only owners or admins can edit member names.",
+    };
+  }
+
+  const memberId = readField(formData, "memberId");
+  const displayName = readField(formData, "displayName").slice(0, 80);
+
+  if (!memberId) {
+    return {
+      status: "error",
+      message: "Choose a member to rename.",
+    };
+  }
+
+  if (!displayName) {
+    return {
+      status: "error",
+      message: "Enter a display name or nickname.",
+    };
+  }
+
+  const { data: targetMember, error: memberError } = await supabase
+    .from("household_members")
+    .select("id, household_id, profile_id, role, status, archived_at")
+    .eq("id", memberId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .maybeSingle();
+
+  if (memberError) {
+    return {
+      status: "error",
+      message: memberError.message || "Unable to load that household member.",
+    };
+  }
+
+  if (!targetMember) {
+    return {
+      status: "error",
+      message: "That household member could not be found.",
+    };
+  }
+
+  const { data: updatedMember, error: updateError } = await supabase
+    .from("household_members")
+    .update({ display_name: displayName })
+    .eq("id", memberId)
+    .eq("household_id", viewer.household.id)
+    .eq("status", "active")
+    .is("archived_at", null)
+    .select("id")
+    .maybeSingle();
+
+  if (updateError || !updatedMember) {
+    return {
+      status: "error",
+      message:
+        updateError?.message || "Unable to update that member name.",
+    };
+  }
+
+  refreshHouseholdPaths();
+
+  return {
+    status: "success",
+    message: "Member name updated.",
   };
 }
 
@@ -115,7 +226,7 @@ export async function archiveHouseholdMemberAction(
   if (!["owner", "admin"].includes(viewer.household.memberRole)) {
     return {
       status: "error",
-      message: "Only owners or admins can pause members.",
+      message: "Only owners or admins can archive members.",
     };
   }
 
@@ -195,6 +306,6 @@ export async function archiveHouseholdMemberAction(
 
   return {
     status: "success",
-    message: "Household member paused.",
+    message: "Household member archived. Their history stays attached.",
   };
 }

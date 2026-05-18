@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Archived member rejoin scoring check / Phase 9B planning still open
-- Current branch: `codex/check-archived-member-rejoin-scoring`
-- Repo status: Phases 1-9 merged and hosted MVP working
+- Current phase: Phase 9B household admin controls implementation
+- Current branch: `codex/phase9b-household-admin-controls`
+- Repo status: Phases 1-9 merged and hosted MVP working, with Phase 9B controls in branch
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied
+- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied and verified
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/phase9b-household-admin-controls`
-- Next task: verify and formalise archived member scoring and rejoin behaviour from the current branch
-- Implementation status: hosted multi-user MVP working; archive/rejoin scoring behaviour is being checked
+- Next branch planned: none yet
+- Next task: finish household admin controls and week settings from the Phase 9B branch
+- Implementation status: hosted multi-user MVP working; member names, chore editing, chore archiving, and week-start controls are being added
 - Latest planning update: retention insights strategy added so future reporting can focus on fairness, habit trends, and weekly summaries
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state
@@ -33,7 +33,7 @@ Use this file to leave a concise handoff for the next working session.
   - photo proof not implemented
   - invite emails are not implemented
 - invite links are copyable/manual only for now
-- household member management is still basic, with archive-only flow
+- household member management is still basic, with archive-only flow and member renaming still being tightened up
 - archived members are paused rather than deleted, and invite rejoin should reactivate the same household member row so history stays attached
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
