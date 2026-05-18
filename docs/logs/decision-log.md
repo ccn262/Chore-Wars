@@ -136,6 +136,8 @@ Record major product and technical decisions here.
 - Household week start day should be configurable because households may consider their chore week differently
 - Weekly score, leaderboard, rewards/forfeits, and future insights should respect the household week start setting
 - Phase 9B admin controls should stay inline and mobile-first instead of becoming a separate desktop-style settings area
+- Phase 9B is complete and verified on production
+- Playwright smoke coverage should stay as the browser-verification foundation for future owner/member auth testing
 
 ## Entry format
 
