@@ -118,7 +118,7 @@
 - No destructive deletes
 - No complex scheduling yet
 
-## Phase 10: App Store readiness and Expo wrapper
+## Phase 11: App Store readiness and Expo wrapper
 
 - Expo wrapper
 - TestFlight
@@ -134,6 +134,15 @@
 - Production Vercel/domain checks
 - Supabase production checks
 
+## Phase 10: Beta feedback and issue capture
+
+- Beta feedback route or support section
+- Bug report link or flow
+- Suggest-a-chore link or flow
+- Beta tester checklist
+- No Resend yet
+- No database-heavy feedback system yet
+
 ## Note
 
 - Phase 6 is the production-readiness phase for hosted testing.
@@ -141,10 +150,11 @@
 - Phase 8 is household invites and member joining.
 - Phase 9 is the real-household beta-polish phase and should focus on making the multi-user MVP clear and low-friction for a small real household.
 - Phase 9B is the follow-up admin-controls phase and should stay narrow: member names, chore edits, archive flows, and week-start settings.
-- Phase 10 is the future release-readiness phase for App Store and Expo work and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.
-- Phase 11 is the insights and retention phase and should focus on making the app worth returning to each week through fairness reports, trends, and playful summaries.
+- Phase 10 is the beta feedback and issue-capture phase and should be used to prepare real-household testing before heavier release work.
+- Phase 11 is the future App Store readiness phase for Expo and store submission work.
+- Phase 12 is the insights and retention phase and should focus on making the app worth returning to each week through fairness reports, trends, and playful summaries.
 
-## Phase 11: Insights, trends, and retention loops
+## Phase 12: Insights, trends, and retention loops
 
 - Fairness reports
 - Household habit trends

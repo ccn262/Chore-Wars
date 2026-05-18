@@ -115,6 +115,17 @@ Track unresolved issues that are understood and accepted for now.
 - Playwright browser smoke tests are being added, but authenticated owner/member browser coverage is still a future extension
 - Phase 9B is now complete and verified on production
 
+## Phase 10 notes
+
+- Beta feedback flow is not yet implemented
+- Support email may still be a placeholder
+- Legal pages remain placeholders
+- Account deletion is request/instructions only
+- Resend not configured
+- App Store and Expo not started
+- Advanced insights not implemented
+- Photo proof not implemented
+
 ## Hosted smoke follow-up notes
 
 - The custom chore visibility issue was caused by missing client refresh after successful chore creation, not by a database insert failure

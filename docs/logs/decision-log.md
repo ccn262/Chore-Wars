@@ -138,6 +138,11 @@ Record major product and technical decisions here.
 - Phase 9B admin controls should stay inline and mobile-first instead of becoming a separate desktop-style settings area
 - Phase 9B is complete and verified on production
 - Playwright smoke coverage should stay as the browser-verification foundation for future owner/member auth testing
+- Beta feedback capture should come before larger feature expansion
+- Early feedback should use simple mailto or support flows before database-heavy systems
+- Feedback copy should ask testers not to include passwords or sensitive data
+- Resend and email automation remain future work
+- Real tester friction should guide the next feature priority
 
 ## Entry format
 
