@@ -104,6 +104,7 @@ export async function signUpAction(
     password,
     options: {
       emailRedirectTo: callbackUrl.toString(),
+      data: displayName ? { display_name: displayName } : undefined,
     },
   });
 

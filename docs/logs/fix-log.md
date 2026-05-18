@@ -12,6 +12,14 @@ Track notable fixes, especially anything that affects core flows.
 
 ## 2026-05-18
 
+- Issue: Invite sign-up confirmation flow preserved the email-check state but dropped the entered display name when Supabase returned no session
+- Root cause: profile bootstrap was deferred until the first authenticated request, but the submitted display name was not persisted into auth metadata for later recovery
+- Fix: write the submitted display name into Supabase auth metadata during sign-up and prefer user metadata before falling back to an email-derived name in profile bootstrap
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: local validation confirms the sign-up action still returns the check-email state, invite `next` stays intact, and profile bootstrap now has access to the entered display name through auth metadata
+
+## 2026-05-18
+
 - Issue: Invite sign-up from a confirmation-required Supabase flow could crash instead of showing a friendly email-check state
 - Root cause: the sign-up action still attempted profile bootstrap even when Supabase returned a created user without an active session, which is expected before email confirmation
 - Fix: treat no-session sign-up as a success state, skip profile bootstrap until the user is authenticated, and preserve the invite return path for later sign-in/callback

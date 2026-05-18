@@ -17,6 +17,7 @@ Use this file to leave a concise handoff for the next working session.
 - Implementation status: hosted multi-user MVP complete; beta polish implemented and smoke-tested
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state
+- Latest fix: invite sign-up now persists the entered display name into auth metadata so it survives email confirmation
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders
