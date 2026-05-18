@@ -12,6 +12,13 @@ Track notable fixes, especially anything that affects core flows.
 
 ## 2026-05-18
 
+- Issue: Household owners could create pending invites but had no UI path to cancel stale test invites and create a fresh link
+- Root cause: invite management only exposed copy-link creation and status labels, even though the database and RLS already supported a revoked status
+- Fix: add a household-scoped revoke action for pending invites, surface cancel controls for pending invite cards, and clarify the duplicate-invite error copy
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/invite/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/invite/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/components/invites/household-invite-manager.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/components/invites/household-invite-manager.tsx), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/components/invites/pending-invite-cancel-button.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/components/invites/pending-invite-cancel-button.tsx), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/invite/[token]/page.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/invite/[token]/page.tsx)
+- Verification: pending invite management now exposes copy and cancel controls, revoked invites show a clear fresh-link prompt, and the action stays household-scoped with owner/admin-only access
+- Follow-up: the invite token route is forced dynamic to avoid stale invite-status rendering during hosted testing
+
 - Issue: Invite sign-up confirmation flow preserved the email-check state but dropped the entered display name when Supabase returned no session
 - Root cause: profile bootstrap was deferred until the first authenticated request, but the submitted display name was not persisted into auth metadata for later recovery
 - Fix: write the submitted display name into Supabase auth metadata during sign-up and prefer user metadata before falling back to an email-derived name in profile bootstrap

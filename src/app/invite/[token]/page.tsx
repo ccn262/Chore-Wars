@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import { unstable_noStore as noStore } from "next/cache";
 
 import { signOutAction } from "@/app/auth/actions";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,9 @@ import {
 } from "@/lib/household-invites";
 import { addInternalQueryParam } from "@/lib/navigation";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type InvitePageProps = {
   params:
     | {
@@ -24,6 +28,7 @@ type InvitePageProps = {
 };
 
 export default async function InvitePage({ params }: InvitePageProps) {
+  noStore();
   const viewer = await getViewerContext();
   const resolvedParams = await params;
   const token =
@@ -111,7 +116,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
           </Card>
         ) : invite.status === "revoked" ? (
           <Card className="space-y-3">
-            <p className="text-sm font-semibold">This invite has been revoked</p>
+            <p className="text-sm font-semibold">This invite has been cancelled</p>
             <p className="text-sm leading-6 text-muted-foreground">
               Ask the household owner for a fresh link if you still need one.
             </p>
