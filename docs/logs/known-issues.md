@@ -100,6 +100,19 @@ Track unresolved issues that are understood and accepted for now.
 - Retention loops beyond rewards and forfeits are still future work
 - Resend email summaries are not configured
 
+## Phase 9B notes
+
+- Member display names are not yet owner/admin editable
+- Chore editing and archiving are not yet implemented
+- Week start day is not yet configurable
+- Legal pages remain placeholders
+- Support email remains placeholder
+- Account deletion is request/instructions only
+- Resend not configured
+- App Store and Expo not started
+- Advanced reports and insights not implemented
+- Photo proof not implemented
+
 ## Hosted smoke follow-up notes
 
 - The custom chore visibility issue was caused by missing client refresh after successful chore creation, not by a database insert failure

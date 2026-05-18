@@ -130,6 +130,11 @@ Record major product and technical decisions here.
 - Reporting should focus on fairness, household habits, and playful weekly summaries
 - Points are the core mechanic, but insights are the long-term value
 - Email and push summaries should come later after in-app insights prove useful
+- Owner/admin users should be able to manage household-facing member names
+- Owner/admin users should be able to edit and archive household chores
+- Chore and member management should avoid destructive deletion in the MVP
+- Household week start day should be configurable because households may consider their chore week differently
+- Weekly score, leaderboard, rewards/forfeits, and future insights should respect the household week start setting
 
 ## Entry format
 

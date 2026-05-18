@@ -150,6 +150,14 @@ Use this file to leave a concise handoff for the next working session.
 - Member removal should prefer archive or deactivate over destructive deletion
 - The next branch should be `codex/phase9-real-household-beta-polish`
 
+## Phase 9B planning note
+
+- Household admin controls should stay narrow and mobile-first
+- Owners and admins should be able to edit member display names, chore settings, and the household week start day
+- Chore and member management should prefer pause or archive over delete
+- Weekly scores, rewards/forfeits, and future insights should respect the selected household week start
+- The next branch should be `codex/phase9b-household-admin-controls`
+
 ## Hosted smoke fix note
 
 - Hosted Vercel smoke testing exposed a custom chore visibility gap and a weekly leaderboard score gap after Phase 5
