@@ -82,6 +82,7 @@ export default async function SettingsPage() {
         <HouseholdRulesForm
           winnerRewardText={dashboard.settings.winnerRewardText}
           bottomForfeitText={dashboard.settings.bottomForfeitText}
+          weekStartsOn={dashboard.settings.weekStartsOn}
           canEdit={dashboard.canManageChores}
         />
 

@@ -40,6 +40,7 @@ export default async function ChoresPage() {
                 key={chore.id}
                 chore={chore}
                 canComplete={true}
+                canManageChores={dashboard.canManageChores}
               />
             ))}
           </div>

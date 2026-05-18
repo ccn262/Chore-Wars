@@ -5,16 +5,17 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Archived member rejoin scoring check / Phase 9B planning still open
-- Current branch: `codex/check-archived-member-rejoin-scoring`
-- Repo status: Phases 1-9 merged and hosted MVP working
+- Current phase: Playwright smoke testing foundation
+- Current branch: `codex/testing-playwright-foundation`
+- Repo status: Phases 1-9B are merged or in progress, and the hosted MVP remains working
 - Vercel status: hosted MVP deployed and working for early testing
-- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied
+- Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, household invites, and admin-control work are applied and verified
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/phase9b-household-admin-controls`
-- Next task: verify and formalise archived member scoring and rejoin behaviour from the current branch
-- Implementation status: hosted multi-user MVP working; archive/rejoin scoring behaviour is being checked
+- Next branch planned: none yet
+- Next task: finish the minimal Playwright smoke testing foundation and validate public/protected route coverage
+- Implementation status: hosted multi-user MVP working; browser smoke coverage is now in place for public, protected, and invite routes
+- Latest fix: Phase 9B week-start fallback now stays on Monday when unset, so the leaderboard window and reward summaries use a stable default
 - Latest planning update: retention insights strategy added so future reporting can focus on fairness, habit trends, and weekly summaries
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state
@@ -23,6 +24,7 @@ Use this file to leave a concise handoff for the next working session.
 - Latest fix: invite management now exposes cancel controls for pending invites and clearer duplicate-invite guidance
 - Current blockers: none known
 - Known limitations:
+  - public/protected browser smoke tests are being added; authenticated owner/member browser coverage is still a later extension
   - legal pages are placeholders
   - support email is placeholder
   - account deletion is request/instructions only
@@ -33,7 +35,7 @@ Use this file to leave a concise handoff for the next working session.
   - photo proof not implemented
   - invite emails are not implemented
 - invite links are copyable/manual only for now
-- household member management is still basic, with archive-only flow
+- household member management is still basic, with archive-only flow and member renaming still being tightened up
 - archived members are paused rather than deleted, and invite rejoin should reactivate the same household member row so history stays attached
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 

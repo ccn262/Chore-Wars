@@ -135,6 +135,7 @@ Record major product and technical decisions here.
 - Chore and member management should avoid destructive deletion in the MVP
 - Household week start day should be configurable because households may consider their chore week differently
 - Weekly score, leaderboard, rewards/forfeits, and future insights should respect the household week start setting
+- Phase 9B admin controls should stay inline and mobile-first instead of becoming a separate desktop-style settings area
 
 ## Entry format
 

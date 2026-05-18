@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { archiveHouseholdMemberAction } from "@/app/(app)/settings/actions";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { MemberDisplayNameForm } from "@/components/household/member-display-name-form";
 import type { FormState } from "@/lib/form-state";
 import type { HouseholdMemberSummary } from "@/lib/chore-engine";
 
@@ -83,7 +84,7 @@ export function HouseholdMemberList({
           Household members
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          Pausing a member keeps their history. If they rejoin later, their points and completions stay attached to the same household record.
+          Archiving pauses a member and keeps their history. If they rejoin later, their points and completions stay attached to the same household record.
         </p>
       </div>
 
@@ -115,14 +116,26 @@ export function HouseholdMemberList({
                     {getRoleLabel(member.role)}
                   </p>
                 </div>
-                <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
-                  {member.role}
-                </span>
+                <div className="flex flex-col items-end gap-2">
+                  <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
+                    {member.role}
+                  </span>
+                  <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
+                    {member.status === "active" ? "Active" : member.status}
+                  </span>
+                </div>
               </div>
 
               <p className="text-xs leading-5 text-muted-foreground">
                 Joined {formatJoinedAt(member.joinedAt, locale, timezone)}
               </p>
+
+              {canEdit ? (
+                <MemberDisplayNameForm
+                  memberId={member.id}
+                  displayName={member.displayName}
+                />
+              ) : null}
 
               {canEdit && member.role !== "owner" && !member.isViewer ? (
                 <form action={formAction}>
@@ -133,7 +146,7 @@ export function HouseholdMemberList({
                     className="w-full"
                     disabled={pending}
                   >
-                    {pending ? "Pausing..." : "Pause member"}
+                    {pending ? "Archiving..." : "Archive member"}
                   </Button>
                 </form>
               ) : null}

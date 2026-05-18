@@ -102,9 +102,9 @@ Track unresolved issues that are understood and accepted for now.
 
 ## Phase 9B notes
 
-- Member display names are not yet owner/admin editable
-- Chore editing and archiving are not yet implemented
-- Week start day is not yet configurable
+- Member display names are now owner/admin editable in the Phase 9B branch
+- Chore editing and archiving are now implemented in the Phase 9B branch
+- Week start day is now configurable in the Phase 9B branch and falls back to Monday when unset
 - Legal pages remain placeholders
 - Support email remains placeholder
 - Account deletion is request/instructions only
@@ -112,6 +112,7 @@ Track unresolved issues that are understood and accepted for now.
 - App Store and Expo not started
 - Advanced reports and insights not implemented
 - Photo proof not implemented
+- Playwright browser smoke tests are being added, but authenticated owner/member browser coverage is still a future extension
 
 ## Hosted smoke follow-up notes
 
