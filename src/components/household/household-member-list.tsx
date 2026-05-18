@@ -83,7 +83,7 @@ export function HouseholdMemberList({
           Household members
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          Keep the roster simple so everyone can see who’s in the house battle.
+          Pausing a member keeps their history. If they rejoin later, their points and completions stay attached to the same household record.
         </p>
       </div>
 
@@ -133,7 +133,7 @@ export function HouseholdMemberList({
                     className="w-full"
                     disabled={pending}
                   >
-                    {pending ? "Archiving..." : "Archive member"}
+                    {pending ? "Pausing..." : "Pause member"}
                   </Button>
                 </form>
               ) : null}

@@ -105,6 +105,7 @@ Record major product and technical decisions here.
 - Household settings are the right place for simple reward and forfeit rule text
 - Weekly winner and bottom-place summaries should stay lightweight and derived from current score data
 - Owner/admin rule editing should remain household-scoped and mobile-first
+- Archived household members should be paused, not deleted, and invite rejoin should reactivate the same household member row so points and completions stay attached to history
 
 ## Phase 8 decisions
 
