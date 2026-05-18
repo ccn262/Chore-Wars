@@ -61,9 +61,19 @@ export type HouseholdSettingsSummary = {
   bottomForfeitText: string | null;
 };
 
+export type HouseholdMemberSummary = {
+  id: string;
+  displayName: string;
+  role: string;
+  profileId: string | null;
+  joinedAt: string;
+  isViewer: boolean;
+};
+
 export type ChoreEngineDashboard = {
   viewer: ViewerContext;
   settings: HouseholdSettingsSummary;
+  members: HouseholdMemberSummary[];
   templates: ChoreTemplateSummary[];
   chores: HouseholdChoreSummary[];
   quickChores: HouseholdChoreSummary[];
@@ -90,6 +100,7 @@ function emptyDashboard(viewer: ViewerContext): ChoreEngineDashboard {
       winnerRewardText: null,
       bottomForfeitText: null,
     },
+    members: [],
     templates: [],
     chores: [],
     quickChores: [],
@@ -315,7 +326,7 @@ export async function getChoreEngineDashboard(
         .order("created_at", { ascending: true }),
       supabase
         .from("household_members")
-        .select("id, display_name, role, profile_id, status, archived_at")
+        .select("id, display_name, role, profile_id, status, archived_at, joined_at")
         .eq("household_id", viewer.household.id)
         .eq("status", "active")
         .is("archived_at", null)
@@ -337,11 +348,14 @@ export async function getChoreEngineDashboard(
     sortOrder: row.sort_order,
     createdAt: row.created_at,
   }));
+  const viewerProfileId = viewer.profile?.id ?? null;
   const members = (membersResult.data ?? []).map((row) => ({
     id: row.id,
     displayName: row.display_name,
     role: row.role,
     profileId: row.profile_id,
+    joinedAt: row.joined_at,
+    isViewer: viewerProfileId !== null && row.profile_id === viewerProfileId,
   }));
 
   const weekStartsOn = clampWeekStart(settingsRow?.week_starts_on);
@@ -366,7 +380,6 @@ export async function getChoreEngineDashboard(
 
   const choreMap = new Map(chores.map((chore) => [chore.id, chore]));
   const memberMap = new Map(members.map((member) => [member.id, member]));
-  const viewerProfileId = viewer.profile?.id ?? null;
   const quickChores = getQuickChores(chores);
 
   const activity = (activityResult.data ?? []).map((row) => {
@@ -412,6 +425,7 @@ export async function getChoreEngineDashboard(
       winnerRewardText: settingsRow?.winner_reward_text ?? null,
       bottomForfeitText: settingsRow?.bottom_forfeit_text ?? null,
     },
+    members,
     templates,
     chores,
     quickChores,

@@ -81,8 +81,8 @@ Track unresolved issues that are understood and accepted for now.
 
 ## Phase 9 notes
 
-- Real household beta polish not yet implemented
-- Member management is still basic
+- Real household beta polish is implemented and smoke-tested locally
+- Member management is still basic and intentionally archive-first
 - Invite email sending not implemented
 - Resend not configured
 - Legal pages remain placeholders
@@ -91,6 +91,7 @@ Track unresolved issues that are understood and accepted for now.
 - App Store and Expo not started
 - Advanced reporting not implemented
 - Photo proof not implemented
+- Hosted beta retest is still recommended after merge to confirm the current behavior on Vercel
 
 ## Hosted smoke follow-up notes
 

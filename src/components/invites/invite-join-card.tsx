@@ -30,7 +30,7 @@ export function InviteJoinCard({ token, inviteEmail }: InviteJoinCardProps) {
           Join household
         </p>
         <p className="text-sm leading-6 text-muted-foreground">
-          You’re invited to join {inviteEmail}. Tap once to accept.
+          You’re invited to join {inviteEmail}. Tap once to accept and jump into the household.
         </p>
       </div>
 

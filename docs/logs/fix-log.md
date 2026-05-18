@@ -10,6 +10,14 @@ Track notable fixes, especially anything that affects core flows.
 - Fix
 - Verification
 
+## 2026-05-18
+
+- Issue: Phase 9 runtime smoke testing hit a `ReferenceError` on `/home` and `/settings`
+- Root cause: `viewerProfileId` was referenced inside the member mapping in `src/lib/chore-engine.ts` before the variable was initialized
+- Fix: moved the `viewerProfileId` declaration above the member mapping so the dashboard render can safely compare member profile ids to the viewer profile
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/chore-engine.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/chore-engine.ts)
+- Verification: local smoke test passed after the fix; `/home`, `/settings`, invite pages, member roster, and sign-out all returned the expected results
+
 ## 2026-05-15
 
 - Issue: Phase 2 migration failed in the manual Supabase SQL Editor with `ERROR: 42P01: relation "public.profiles" does not exist`

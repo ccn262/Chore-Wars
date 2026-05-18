@@ -17,6 +17,7 @@ export default async function HomePage() {
   const leadingMember = dashboard.weeklyScores[0];
   const viewerScore = dashboard.weeklyScores.find((score) => score.isViewer);
   const nextAction = quickChores[0] ?? starterTemplates[0];
+  const isBetaHousehold = dashboard.members.length <= 1;
 
   return (
     <div className="flex flex-1 flex-col gap-4 pb-4">
@@ -67,6 +68,27 @@ export default async function HomePage() {
         scores={dashboard.weeklyScores}
         weekStartsOn={dashboard.settings.weekStartsOn}
       />
+
+      {isBetaHousehold ? (
+        <Card className="space-y-3 border-dashed bg-muted/40">
+          <div className="space-y-1">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              First run
+            </p>
+            <p className="text-sm leading-6 text-muted-foreground">
+              Invite your household from Settings, add a couple of chores, then use the big quick-action buttons here.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Button href="/settings" variant="secondary" className="w-full">
+              Invite members
+            </Button>
+            <Button href="/chores" variant="secondary" className="w-full">
+              Open chores
+            </Button>
+          </div>
+        </Card>
+      ) : null}
 
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-3">

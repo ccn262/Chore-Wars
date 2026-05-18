@@ -1,4 +1,5 @@
 import { signOutAction } from "@/app/auth/actions";
+import { HouseholdMemberList } from "@/components/household/household-member-list";
 import { HouseholdInviteManager } from "@/components/invites/household-invite-manager";
 import { HouseholdRulesForm } from "@/components/chore-engine/household-rules-form";
 import { Button } from "@/components/ui/button";
@@ -21,7 +22,7 @@ export default async function SettingsPage() {
       <ScreenHeader
         eyebrow="Settings"
         title="Household settings"
-        description="Account, household, house rules, and invites are live for hosted testing. More controls come later."
+        description="Account, household, members, house rules, and invites are live for hosted testing. More controls come later."
         action={<Button href="/home" variant="secondary">Home</Button>}
       />
 
@@ -42,6 +43,41 @@ export default async function SettingsPage() {
             {viewer.household?.name ?? "No household selected"}
           </p>
         </Card>
+
+        {viewer.household ? (
+          dashboard.members.length <= 1 ? (
+            <Card className="space-y-3 border-dashed bg-muted/40">
+              <div className="space-y-1">
+                <p className="text-sm font-semibold">First-run checklist</p>
+                <p className="text-sm leading-6 text-muted-foreground">
+                  Invite your household, add a couple of chores, then start from Home with the big quick-action buttons.
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <a
+                  href="#household-members"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-surface px-4 text-sm font-semibold text-foreground ring-1 ring-border transition hover:bg-muted active:translate-y-px"
+                >
+                  Check members
+                </a>
+                <Button href="/chores" variant="secondary" className="w-full">
+                  Add chores
+                </Button>
+              </div>
+            </Card>
+          ) : null
+        ) : null}
+
+        {viewer.household ? (
+          <div id="household-members">
+            <HouseholdMemberList
+              members={dashboard.members}
+              canEdit={dashboard.canManageChores}
+              locale={dashboard.settings.locale}
+              timezone={dashboard.settings.timezone}
+            />
+          </div>
+        ) : null}
 
         <HouseholdRulesForm
           winnerRewardText={dashboard.settings.winnerRewardText}
@@ -90,6 +126,16 @@ export default async function SettingsPage() {
               Account deletion
             </Button>
           </div>
+        </Card>
+
+        <Card className="space-y-3">
+          <p className="text-sm font-semibold">Beta feedback</p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            If a screen feels confusing, send a short note and mention what you were trying to do.
+          </p>
+          <Button href="/support" variant="secondary" className="w-full">
+            Open support
+          </Button>
         </Card>
       </div>
     </div>
