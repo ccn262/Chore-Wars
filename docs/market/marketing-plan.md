@@ -46,3 +46,24 @@
 - Fairer points
 - Easy household coordination
 - Fun and competitive, not strict or corporate
+- Visible fairness and household habits
+- Weekly summaries people actually want to read
+
+## Content angles for future insight features
+
+- Who really does the most?
+- The chore leaderboard never lies
+- Couples chore challenge
+- Flatmate fairness check
+- Weekly household champion
+- Sunday reset recap
+- The bins were defeated twice this week
+- Bathroom duty remains the final boss
+
+## Short-form video ideas
+
+- chore argument before-and-after with a fairness summary
+- weekly leaderboard reveal
+- couple or flatmate fairness check reaction
+- household champion reveal
+- funny stats overlay showing the busiest day or most ignored chore

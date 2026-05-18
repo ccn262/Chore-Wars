@@ -26,6 +26,9 @@ Make it effortless for people who share a home to agree on chores, complete them
 - Members can be added, edited, or removed
 - Reports should be clear, visual, colourful, and uncluttered
 - The app should reduce arguments and make chores feel fair
+- The app should become more than a chore tracker by showing household fairness, trends, and weekly habit insights
+- The app should help households understand who is carrying the load without becoming shaming or dry
+- The app should be fun enough to check every week, not just when someone is annoyed
 
 ## Product principles
 
@@ -33,6 +36,7 @@ Make it effortless for people who share a home to agree on chores, complete them
 - Mobile first: the app should feel like a phone app, not a website
 - Shared-home friendly: the product must support multiple living arrangements
 - Fair and visible: chores and rewards should be easy to understand
+- Insightful: the app should show trends, fairness, and household habits over time
 - International-ready: language, date, time, and money must be locale aware
 
 ## Non-goals for the first release

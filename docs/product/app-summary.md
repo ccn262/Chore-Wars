@@ -27,6 +27,9 @@ Track chores, award points, and keep the home moving with a fast, colourful mobi
 - Members can be added, edited, or removed
 - Reporting is clear, visual, colourful, and uncluttered
 - The app reduces arguments and makes chores feel fair
+- Future reporting should include household habit trends, fairness insights, and weekly summaries
+- The app should include retention hooks that make it worth checking weekly
+- Insights should help the app feel fun and useful, not like a plain task manager
 
 ## Core loop
 
@@ -35,6 +38,7 @@ Track chores, award points, and keep the home moving with a fast, colourful mobi
 3. Tap to complete or award points
 4. Get a quick celebratory response
 5. Return later to a visual summary of progress
+6. Check weekly fairness insights and household habit trends
 
 ## Why it exists
 

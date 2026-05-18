@@ -129,3 +129,16 @@
 - Phase 8 is household invites and member joining.
 - Phase 9 is the real-household beta-polish phase and should focus on making the multi-user MVP clear and low-friction for a small real household.
 - Phase 10 is the future release-readiness phase for App Store and Expo work and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.
+- Phase 11 is the insights and retention phase and should focus on making the app worth returning to each week through fairness reports, trends, and playful summaries.
+
+## Phase 11: Insights, trends, and retention loops
+
+- Fairness reports
+- Household habit trends
+- Weekly summaries
+- Personal stats
+- Retention loops
+- Later email summaries
+- Later push notifications
+- No heavy dashboards
+- No boring task-manager feel

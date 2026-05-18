@@ -125,6 +125,10 @@ Record major product and technical decisions here.
 - Member visibility and invite clarity matter more now than advanced reporting
 - Resend email invites remain future work
 - Member removal should prefer archive or deactivate over destructive deletion
+- Chore Wars needs insight and retention loops beyond basic points
+- Reporting should focus on fairness, household habits, and playful weekly summaries
+- Points are the core mechanic, but insights are the long-term value
+- Email and push summaries should come later after in-app insights prove useful
 
 ## Entry format
 

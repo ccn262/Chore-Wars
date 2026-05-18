@@ -5,16 +5,17 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 9 real household beta polish implementation complete and smoke-tested
-- Current branch: codex/phase9-real-household-beta-polish
-- Repo status: Phases 1-8 merged and hosted MVP working
+- Current phase: Phase 9B planning / retention insights strategy added
+- Current branch: main
+- Repo status: Phases 1-9 merged and hosted MVP working
 - Vercel status: hosted MVP deployed and working for early testing
 - Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/phase9-real-household-beta-polish`
-- Next task: review Phase 9 beta polish and prepare the next planning checkpoint
-- Implementation status: hosted multi-user MVP complete; beta polish implemented and smoke-tested
+- Next branch planned: `codex/phase9b-household-admin-controls`
+- Next task: add owner/admin controls for member names, chore editing, and week start settings from the Phase 9B blueprint
+- Implementation status: hosted multi-user MVP working; Phase 9B not started
+- Latest planning update: retention insights strategy added so future reporting can focus on fairness, habit trends, and weekly summaries
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state
 - Latest fix: invite sign-up now persists the entered display name into auth metadata so it survives email confirmation

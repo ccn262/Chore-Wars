@@ -66,6 +66,9 @@ Record visible project changes and notable doc updates here.
 - Invite sign-up display name now survives confirmation-required flows through auth metadata
 - Invite management now includes cancel/revoke controls for pending invites and clearer duplicate-invite guidance
 - Invite token page now renders dynamically so revoked invite status is not served from stale route cache
+- Phase 9B household admin controls blueprint created
+- Phase 9B Codex prompt created
+- Added retention, insights, and trends strategy
 
 ## Entry format
 

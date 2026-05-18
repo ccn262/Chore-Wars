@@ -92,6 +92,13 @@ Track unresolved issues that are understood and accepted for now.
 - Advanced reporting not implemented
 - Photo proof not implemented
 - Hosted beta retest is still recommended after merge to confirm the current behavior on Vercel
+- Member display names are not yet owner/admin editable
+- Chore editing and archiving are not yet implemented
+- Week start day is not yet configurable
+- Insights and trends are not yet implemented
+- Weekly summaries are not yet implemented
+- Retention loops beyond rewards and forfeits are still future work
+- Resend email summaries are not configured
 
 ## Hosted smoke follow-up notes
 

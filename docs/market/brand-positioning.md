@@ -41,9 +41,17 @@ Chore Wars is the playful, polished chore app that makes household life feel lig
 - More polished than a toy game
 - More household-friendly than a solo productivity tool
 - Clearer and more competitive than a basic chore chart
+- More insightful than a generic chore tracker
+- Better at showing household fairness and habit patterns than a plain task manager
 
 ## Colour direction
 
 - Warm neutral background
 - Strong dark text
 - Playful accents such as coral, teal, yellow, mint, and purple
+
+## Differentiation
+
+- generic chore charts often stop at task lists and reminders
+- Chore Wars should show fairness, humour, and repeated weekly use
+- the brand should feel like a playful household scoreboard with useful insight, not a boring admin dashboard
