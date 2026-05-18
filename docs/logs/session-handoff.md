@@ -5,16 +5,16 @@ Use this file to leave a concise handoff for the next working session.
 ## Active Project
 
 - Active project: Chore Wars
-- Current phase: Phase 9 real household beta polish implementation complete and smoke-tested
-- Current branch: codex/phase9-real-household-beta-polish
-- Repo status: Phases 1-8 merged and hosted MVP working
+- Current phase: Phase 9 merged and deployed / preparing Phase 9B household admin controls
+- Current branch: main
+- Repo status: hosted multi-user MVP working
 - Vercel status: hosted MVP deployed and working for early testing
 - Supabase status: migrations, seed, atomic completion RPC, rewards/forfeits migration, and household invites applied
 - Auth status: Phase 3 smoke-tested and merged
 - Chore engine status: Phase 4 smoke-tested and merged
-- Next branch planned: `codex/phase9-real-household-beta-polish`
-- Next task: review Phase 9 beta polish and prepare the next planning checkpoint
-- Implementation status: hosted multi-user MVP complete; beta polish implemented and smoke-tested
+- Next branch planned: `codex/phase9b-household-admin-controls`
+- Next task: add owner/admin controls for member names, chore editing, and week start settings from the Phase 9B blueprint
+- Implementation status: hosted multi-user MVP working; Phase 9B not started
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state
 - Latest fix: invite sign-up now persists the entered display name into auth metadata so it survives email confirmation
@@ -32,6 +32,9 @@ Use this file to leave a concise handoff for the next working session.
   - invite emails are not implemented
   - invite links are copyable/manual only for now
   - household member management is still basic, with archive-only flow
+  - member display names are not yet owner/admin editable
+  - chore settings are not yet editable after creation
+  - week start is not yet configurable
 - Security note: secrets must remain outside git and only in `.env.local` / deployment env vars
 
 ## Phase 1 summary

@@ -106,6 +106,16 @@
 - Beta feedback capture
 - No Resend yet
 
+## Phase 9B: Household admin controls and week settings
+
+- Member name or nickname editing
+- Chore editing
+- Chore archiving
+- Week start day setting
+- Leaderboard and week calculation update
+- No destructive deletes
+- No complex scheduling yet
+
 ## Phase 10: App Store readiness and Expo wrapper
 
 - Expo wrapper
@@ -128,4 +138,5 @@
 - Phase 7 is the next product phase after the hosted MVP readiness checkpoint.
 - Phase 8 is household invites and member joining.
 - Phase 9 is the real-household beta-polish phase and should focus on making the multi-user MVP clear and low-friction for a small real household.
+- Phase 9B is the household admin-controls phase and should stay focused on practical maintenance controls and week settings, not broad feature expansion.
 - Phase 10 is the future release-readiness phase for App Store and Expo work and should not become the next implementation step unless the hosted web MVP is stable on real phones and the release prerequisites are in place.

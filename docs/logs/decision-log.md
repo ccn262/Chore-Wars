@@ -126,6 +126,14 @@ Record major product and technical decisions here.
 - Resend email invites remain future work
 - Member removal should prefer archive or deactivate over destructive deletion
 
+## Phase 9B decisions
+
+- Owner and admin users should be able to manage household-facing member names
+- Owner and admin users should be able to edit and archive household chores
+- Chore and member management should avoid destructive deletion in the MVP
+- Household week start day should be configurable because households may consider their chore week differently
+- Weekly score, leaderboard, and rewards/forfeits should respect the household week start setting
+
 ## Entry format
 
 - Date
