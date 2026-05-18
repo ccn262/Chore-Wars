@@ -113,6 +113,7 @@ Track unresolved issues that are understood and accepted for now.
 - Advanced reports and insights not implemented
 - Photo proof not implemented
 - Playwright browser smoke tests are being added, but authenticated owner/member browser coverage is still a future extension
+- Phase 9B is now complete and verified on production
 
 ## Hosted smoke follow-up notes
 
