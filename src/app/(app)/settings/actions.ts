@@ -11,8 +11,8 @@ function readField(formData: FormData, key: string) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function getDefaultWeekStart(locale: string | null | undefined) {
-  return locale?.toLowerCase().startsWith("en-us") ? 0 : 1;
+function getDefaultWeekStart() {
+  return 1;
 }
 
 function normalizeRuleText(value: string) {
@@ -82,7 +82,7 @@ export async function saveHouseholdRulesAction(
   const weekStartsOn = parseWeekStartDay(
     readField(formData, "weekStartsOn"),
     currentSettings?.week_starts_on ??
-      getDefaultWeekStart(currentSettings?.locale ?? viewer.household.locale),
+      getDefaultWeekStart(),
   );
 
   const { error: updateError } = await supabase.from("household_settings").upsert({

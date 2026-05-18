@@ -104,7 +104,7 @@ Track unresolved issues that are understood and accepted for now.
 
 - Member display names are now owner/admin editable in the Phase 9B branch
 - Chore editing and archiving are now implemented in the Phase 9B branch
-- Week start day is now configurable in the Phase 9B branch
+- Week start day is now configurable in the Phase 9B branch and falls back to Monday when unset
 - Legal pages remain placeholders
 - Support email remains placeholder
 - Account deletion is request/instructions only

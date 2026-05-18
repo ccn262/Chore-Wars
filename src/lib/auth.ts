@@ -58,8 +58,8 @@ function displayNameFromUserMetadata(user: User) {
     : "";
 }
 
-function getWeekStartForLocale(locale: string | null | undefined) {
-  return locale?.toLowerCase().startsWith("en-us") ? 0 : 1;
+function getWeekStartForLocale() {
+  return 1;
 }
 
 function getAuthErrorMessage(error: unknown, fallback: string) {
@@ -273,7 +273,7 @@ export async function createHouseholdForProfile(
       household_id: household.id,
       locale,
       timezone,
-      week_starts_on: getWeekStartForLocale(locale),
+      week_starts_on: getWeekStartForLocale(),
       allow_photo_proof: true,
     },
   );

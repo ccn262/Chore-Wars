@@ -118,3 +118,9 @@ Track notable fixes, especially anything that affects core flows.
 - Fix: persist a short-lived, normalized internal auth-return path during invite sign-up and let the auth callback prefer that path before household setup
 - Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/callback/route.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/callback/route.ts)
 - Verification: local validation confirms invite return intent still preserves `/invite/<token>`, `/invite/undefined` remains rejected, and normal sign-up without an invite still reaches household creation
+
+- Issue: Phase 9B week-start fallback still defaulted to locale-based behavior when the setting was missing
+- Root cause: the household settings save path and auth bootstrap helper still used a locale heuristic instead of a stable Monday default when the field was unset
+- Fix: normalize the unset week-start fallback to Monday in both the auth bootstrap path and the household settings save action
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/(app)/settings/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/(app)/settings/actions.ts)
+- Verification: code review and route smoke confirm the new week-start selector is still visible, the scoreboard label uses the selected day, and unset settings now fall back to Monday consistently

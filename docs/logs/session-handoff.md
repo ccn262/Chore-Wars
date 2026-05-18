@@ -15,6 +15,7 @@ Use this file to leave a concise handoff for the next working session.
 - Next branch planned: none yet
 - Next task: finish household admin controls and week settings from the Phase 9B branch
 - Implementation status: hosted multi-user MVP working; member names, chore editing, chore archiving, and week-start controls are being added
+- Latest fix: Phase 9B week-start fallback now stays on Monday when unset, so the leaderboard window and reward summaries use a stable default
 - Latest planning update: retention insights strategy added so future reporting can focus on fairness, habit trends, and weekly summaries
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
 - Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state

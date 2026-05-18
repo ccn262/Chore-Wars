@@ -72,6 +72,7 @@ Record visible project changes and notable doc updates here.
 - Phase 9B Codex prompt created
 - Phase 9B household admin controls implementation added
 - Phase 9B week-start selector and chore/member editors added
+- Phase 9B week-start fallback normalized to Monday
 - Added retention, insights, and trends strategy
 
 ## Entry format
