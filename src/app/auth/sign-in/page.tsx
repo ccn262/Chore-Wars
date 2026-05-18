@@ -10,15 +10,22 @@ import { getViewerContext } from "@/lib/auth";
 import { addInternalQueryParam, normalizeInternalPath } from "@/lib/navigation";
 
 type SignInPageProps = {
-  searchParams?: {
-    next?: string | string[];
-  };
+  searchParams?:
+    | {
+        next?: string | string[];
+      }
+    | Promise<{
+        next?: string | string[];
+      }>;
 };
 
 export default async function SignInPage({ searchParams }: SignInPageProps) {
   const viewer = await getViewerContext();
+  const resolvedSearchParams = await searchParams;
   const returnTo = normalizeInternalPath(
-    typeof searchParams?.next === "string" ? searchParams.next : "",
+    typeof resolvedSearchParams?.next === "string"
+      ? resolvedSearchParams.next
+      : "",
     "",
   );
   const signUpHref = returnTo

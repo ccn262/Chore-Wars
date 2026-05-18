@@ -12,6 +12,22 @@ Track notable fixes, especially anything that affects core flows.
 
 ## 2026-05-18
 
+- Issue: Invite sign-up confirmation flow preserved the email-check state but dropped the entered display name when Supabase returned no session
+- Root cause: profile bootstrap was deferred until the first authenticated request, but the submitted display name was not persisted into auth metadata for later recovery
+- Fix: write the submitted display name into Supabase auth metadata during sign-up and prefer user metadata before falling back to an email-derived name in profile bootstrap
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/lib/auth.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/lib/auth.ts)
+- Verification: local validation confirms the sign-up action still returns the check-email state, invite `next` stays intact, and profile bootstrap now has access to the entered display name through auth metadata
+
+## 2026-05-18
+
+- Issue: Invite sign-up from a confirmation-required Supabase flow could crash instead of showing a friendly email-check state
+- Root cause: the sign-up action still attempted profile bootstrap even when Supabase returned a created user without an active session, which is expected before email confirmation
+- Fix: treat no-session sign-up as a success state, skip profile bootstrap until the user is authenticated, and preserve the invite return path for later sign-in/callback
+- Affected file: [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/actions.ts`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/actions.ts), [`/C:/Users/Chris/OneDrive/Documents/Chore Wars/src/app/auth/sign-in/page.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/sign-in/page.tsx), [`/C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/sign-up/page.tsx`](C:/Users/Chris/OneDrive/Documents/Chore%20Wars/src/app/auth/sign-up/page.tsx)
+- Verification: local route smoke confirmed the invite return path stays on the real token, the sign-up page renders the invite `next` value, and the hosted crash path no longer reproduces as a server error
+
+## 2026-05-18
+
 - Issue: Invite sign-up/sign-in links could be generated with `/invite/undefined` and then crash after auth
 - Root cause: the invite page read `params.token` directly without normalizing the Next 16 route params shape, so a missing token could flow into auth return URLs
 - Fix: resolve route params before reading the token, treat missing or literal `undefined` tokens as invalid, and reject `/invite/undefined` in internal-path normalization

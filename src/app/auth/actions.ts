@@ -104,6 +104,7 @@ export async function signUpAction(
     password,
     options: {
       emailRedirectTo: callbackUrl.toString(),
+      data: displayName ? { display_name: displayName } : undefined,
     },
   });
 
@@ -111,6 +112,15 @@ export async function signUpAction(
     return {
       status: "error",
       message: getFriendlyAuthErrorMessage(error),
+    };
+  }
+
+  if (!data.session) {
+    return {
+      status: "success",
+      message: returnTo
+        ? "Check your email to confirm your account. After confirming, return to this invite link or sign in to continue."
+        : "Check your email to confirm your account. After confirming, sign in to continue.",
     };
   }
 

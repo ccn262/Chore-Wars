@@ -47,6 +47,17 @@ function displayNameFromEmail(email: string | null | undefined) {
     .join(" ");
 }
 
+function displayNameFromUserMetadata(user: User) {
+  const metadataDisplayName =
+    typeof user.user_metadata === "object" && user.user_metadata
+      ? user.user_metadata["display_name"]
+      : undefined;
+
+  return typeof metadataDisplayName === "string"
+    ? metadataDisplayName.trim()
+    : "";
+}
+
 function getWeekStartForLocale(locale: string | null | undefined) {
   return locale?.toLowerCase().startsWith("en-us") ? 0 : 1;
 }
@@ -87,7 +98,7 @@ export async function ensureProfileForUser(
 
   const email = user.email ?? null;
   const profileDisplayName =
-    displayName?.trim() || displayNameFromEmail(email);
+    displayName?.trim() || displayNameFromUserMetadata(user) || displayNameFromEmail(email);
 
   const { data: createdProfile, error: profileUpsertError } = await supabase
     .from("profiles")
