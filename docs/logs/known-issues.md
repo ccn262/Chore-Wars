@@ -104,6 +104,7 @@ Track unresolved issues that are understood and accepted for now.
 - Invite auth links now preserve the real token on the invite page
 - `/invite/undefined` now renders the invalid invite state instead of building a broken auth return flow
 - Visible auth links no longer point at `/invite/undefined`
+- Sign-up confirmation now stays on a friendly check-email path instead of crashing when Supabase returns no session
 
 ## Entry format
 

@@ -16,6 +16,7 @@ Use this file to leave a concise handoff for the next working session.
 - Next task: review Phase 9 beta polish and prepare the next planning checkpoint
 - Implementation status: hosted multi-user MVP complete; beta polish implemented and smoke-tested
 - Latest fix: invite auth return flow now preserves real invite tokens and rejects `/invite/undefined`
+- Latest fix: invite sign-up now treats confirmation-required no-session sign-ups as a friendly success state
 - Current blockers: none known
 - Known limitations:
   - legal pages are placeholders

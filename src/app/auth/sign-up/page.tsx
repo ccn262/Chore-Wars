@@ -10,15 +10,22 @@ import type { Route } from "next";
 import { addInternalQueryParam, normalizeInternalPath } from "@/lib/navigation";
 
 type SignUpPageProps = {
-  searchParams?: {
-    next?: string | string[];
-  };
+  searchParams?:
+    | {
+        next?: string | string[];
+      }
+    | Promise<{
+        next?: string | string[];
+      }>;
 };
 
 export default async function SignUpPage({ searchParams }: SignUpPageProps) {
   const viewer = await getViewerContext();
+  const resolvedSearchParams = await searchParams;
   const returnTo = normalizeInternalPath(
-    typeof searchParams?.next === "string" ? searchParams.next : "",
+    typeof resolvedSearchParams?.next === "string"
+      ? resolvedSearchParams.next
+      : "",
     "",
   );
   const signInHref = returnTo

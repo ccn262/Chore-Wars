@@ -62,6 +62,7 @@ Record visible project changes and notable doc updates here.
 - Phase 9 real household beta polish implementation completed and smoke-tested
 - Phase 9 first-run guidance and invite copy refinements verified
 - Invite auth return token fix implemented and validated locally
+- Invite sign-up verification-state fix implemented and validated locally
 
 ## Entry format
 

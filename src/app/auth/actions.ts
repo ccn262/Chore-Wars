@@ -114,6 +114,15 @@ export async function signUpAction(
     };
   }
 
+  if (!data.session) {
+    return {
+      status: "success",
+      message: returnTo
+        ? "Check your email to confirm your account. After confirming, return to this invite link or sign in to continue."
+        : "Check your email to confirm your account. After confirming, sign in to continue.",
+    };
+  }
+
   const profile = await ensureProfileForUser(supabase, data.user, displayName);
 
   if (data.session) {
